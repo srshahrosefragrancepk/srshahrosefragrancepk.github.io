@@ -5,161 +5,230 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Luxury Perfume</title>
 
+  <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
 
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@400;500;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: 'Montserrat', sans-serif; background:#ffffff; color:#111; }
-    header { background: #000; padding: 3rem 1rem 2rem 1rem; text-align: center; color: white; }
-    header img { height: 120px; display: block; margin: 0 auto 10px; border-radius: 12px; }
-    nav a { font-weight: 500; color:white; margin:0 1rem; text-decoration:none; font-size:1.1rem; transition:color 0.3s; text-transform: uppercase; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background:#fff;
+      color:#111;
+    }
+
+    /* Header */
+    header {
+      background: #000;
+      padding: 3rem 1rem 2rem 1rem;
+      text-align: center;
+      color: white;
+    }
+
+    header img {
+      height: 120px;
+      display: block;
+      margin: 0 auto 10px;
+      border-radius: 12px;
+    }
+
+    header .tagline {
+      font-family: 'Lora', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+      color: #fff;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    header .tagline-bottom {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      margin-top: 0.5rem;
+      color: #fff;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      color:white;
+      margin:0 1rem;
+      text-decoration:none;
+      font-size:1.1rem;
+      transition:color 0.3s;
+      text-transform: uppercase;
+    }
     nav a:hover { color:#c89b3c; }
+
     .search-bar { max-width:500px; margin:1rem auto 0; }
-    .search-bar input { width:100%; padding:0.8rem 1rem; font-size:1rem; border-radius:8px; border:none; outline:none; }
+    .search-bar input {
+      width:100%;
+      padding:0.8rem 1rem;
+      font-size:1rem;
+      border-radius:8px;
+      border:none;
+      outline:none;
+      font-family:'Montserrat', sans-serif;
+    }
 
-    .hero { position: relative; height: 100vh; overflow: hidden; display:flex; align-items:center; justify-content:center; text-align:center; }
-    .hero video { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-1; }
-
-    .about, .products, .contact { padding:4rem 2rem; text-align:center; }
-    .products-grid {
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 3rem;
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+      text-align: center;
       padding: 2rem;
     }
+    .hero video {
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:-1;
+      opacity:1;
+    }
+    .hero h1 {
+      font-size:3rem;
+      font-family:'Lora', serif;
+      margin-bottom:1.5rem;
+      color:#fff;
+      text-shadow:2px 2px 4px rgba(0,0,0,0.6);
+      text-transform: uppercase;
+    }
+    .hero-btn {
+      padding:0.8rem 2rem;
+      background-color:#25D366;
+      color:#fff;
+      font-size:1.2rem;
+      font-weight:500;
+      border:none;
+      border-radius:8px;
+      text-decoration:none;
+      font-family:'Montserrat', sans-serif;
+      transition:background-color 0.3s;
+      text-transform: uppercase;
+    }
+    .hero-btn:hover { background-color:#128C7E; }
+
+    /* About Section */
+    .about { padding:4rem 2rem; background:#fff; text-align:center; }
+    .about-content { max-width:850px; margin:0 auto; font-size:1.1rem; line-height:1.8; color:#333; font-family: 'Montserrat', sans-serif; }
+    .about h2 { font-family:'Lora', serif; font-weight:700; font-size:2.5rem; margin-bottom:2rem; color:#111; text-transform: uppercase; }
+
+    /* Products Section */
+    .products { padding:4rem 2rem; text-align:center; background:#f9f9f9; }
+    .products h2 { font-family:'Lora', serif; font-weight:700; font-size:2.5rem; margin-bottom:2rem; text-transform: uppercase; }
+    .products-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; }
     .product-card {
-      background: #f7e7b4;
-      border-radius: 28px;
-      padding: 2.2rem;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.18);
-      transition: 0.4s ease;
-      border: 1px solid #c9992d;
-      transform: scale(1);
+      background:#fff;
+      border-radius:12px;
+      box-shadow:0 4px 16px rgba(0,0,0,0.1);
+      padding:1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    .product-card:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.25);
-      border-color: #c89b3c;
-    }
-    .product-card img {
-      width: 100%;
-      height: 420px;
-      object-fit: cover;
-      border-radius: 22px;
-      margin-bottom: 1.2rem;
-      border: 3px solid #d4b06a;
-    }
+    .product-card:hover { transform: translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+    .product-card img { width:100%; border-radius:8px; margin-bottom:1rem; }
+    .product-card h3 { font-family:'Lora', serif; font-weight:700; font-size:1.5rem; margin-bottom:0.5rem; text-transform: uppercase; }
+    .product-card p { font-family:'Montserrat', sans-serif; font-weight:400; font-size:1.1rem; color:#333; text-transform: uppercase; }
     .order-btn {
       display:inline-block;
-      margin-top:1.5rem;
-      padding:0.9rem 1.7rem;
+      margin-top:1rem;
+      padding:0.6rem 1.2rem;
       background-color:#25D366;
       color:white;
-      border-radius:8px;
-      font-size:1.1rem;
-      font-weight:600;
+      border:none;
+      border-radius:5px;
       text-decoration:none;
-      transition:0.3s;
+      font-family:'Montserrat', sans-serif;
+      font-weight:500;
+      transition:background 0.3s;
+      text-transform: uppercase;
     }
+    .order-btn:hover { background-color:#128C7E; }
+
+    /* Contact Section */
+    .contact { padding:4rem 2rem; background:#f3f3f3; text-align:center; }
+    .contact-content { max-width:600px; margin:0 auto; font-family:'Montserrat', sans-serif; font-weight:400; font-size:1.1rem; color:#111; text-transform: uppercase; }
+    .contact h2 { font-family:'Lora', serif; font-weight:700; font-size:2.3rem; margin-bottom:1.5rem; text-transform: uppercase; }
+    .contact a { font-family:'Montserrat', sans-serif; font-weight:500; color:#25D366; text-decoration:none; text-transform: uppercase; }
+    .contact a:hover { text-decoration:underline; }
   </style>
 </head>
 <body>
 
+<!-- Header -->
 <header>
-  <img src="logo.jpg" alt="Brand Logo" />
+  <img src="logo.jpg" alt="Brand Logo (filled)" aria-label="Brand logo" />
+
   <nav>
     <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#products">Collection</a>
     <a href="#contact">Contact</a>
   </nav>
-  <div class="search-bar"><input type="text" id="searchInput" placeholder="Search Products..." onkeyup="filterProducts()" /></div>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search Products..." onkeyup="filterProducts()" />
+  </div>
+  <div class="tagline-bottom">Not just a Fragrance, a Legacy</div>
 </header>
 
+<!-- Hero Section -->
 <section class="hero" id="home">
-  <video autoplay muted loop playsinline><source src="hero-video.mp4" type="video/mp4"></video>
+  <video autoplay muted loop playsinline>
+    <source src="hero-video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </section>
 
+<!-- About Section -->
 <section class="about" id="about">
-  <h2>About Our Fragrances</h2>
-  <p>We believe fragrance is more than a scent — it’s a signature of the soul...</p>
-</section>
-
-<section class="products" id="products">
-  <h2>Our Collection</h2>
-
-  <div class="products-grid" id="productsGrid">
-
-    <!-- Romance King -->
-    <div class="product-card">
-      <img src="romance-king.jpg" alt="Romance King" />
-      <h3 {
-      font-size: 1.9rem;
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-      text-transform: uppercase;
-    }
-    h3>Romance King</h3>
-      <p><strong>For Men</strong></p>
-      <p>Notes: Patchouli, Musk, Amber, Coffee</p>
-      <p>Rs. 2500</p>
-      <a class="order-btn" href="https://wa.me/923188002906?text=I%20want%20Romance%20King" target="_blank">Order on WhatsApp</a>
-    </div>
-
-    <!-- Aura -->
-    <div class="product-card">
-      <img src="aura.jpg" alt="Aura Perfume" />
-      <h3>Aura</h3>
-      <p><strong>Unisex</strong></p>
-      <p>Notes: Jasmine, Vanilla, Musk</p>
-      <p>Rs. 2600</p>
-      <a class="order-btn" href="https://wa.me/923188002906?text=I%20want%20Aura" target="_blank">Order on WhatsApp</a>
-    </div>
-
-    <!-- Black Coat -->
-    <div class="product-card">
-      <img src="black-coat.jpg" alt="Black Coat Perfume" />
-      <h3>Black Coat</h3>
-      <p><strong>For Men</strong></p>
-      <p>Notes: Leather, Oud, Amber</p>
-      <p>Rs. 2700</p>
-      <a class="order-btn" href="https://wa.me/923188002906?text=I%20want%20Black%20Coat" target="_blank">Order on WhatsApp</a>
-    </div>
-
-    <!-- Laila -->
-    <div class="product-card">
-      <img src="laila.jpg" alt="Laila Perfume" />
-      <h3>Laila</h3>
-      <p><strong>For Women</strong></p>
-      <p>Notes: Rose, Vanilla, Soft Musk</p>
-      <p>Rs. 2400</p>
-      <a class="order-btn" href="https://wa.me/923188002906?text=I%20want%20Laila" target="_blank">Order on WhatsApp</a>
-    </div>
-
-    <!-- Oud of Honour -->
-    <div class="product-card">
-      <img src="oud-of-honour.jpg" alt="Oud of Honour" />
-      <h3>Oud of Honour</h3>
-      <p><strong>Premium Unisex</strong></p>
-      <p>Notes: Oud, Amber, Saffron</p>
-      <p>Rs. 3500</p>
-      <a class="order-btn" href="https://wa.me/923188002906?text=I%20want%20Oud%20of%20Honour" target="_blank">Order on WhatsApp</a>
-    </div>
-
+  <div class="about-content">
+    <h2>About Our Fragrances</h2>
+    <p>We believe fragrance is more than a scent — it’s a signature of the soul...</p>
   </div>
 </section>
 
+<!-- Products Section -->
+<section class="products" id="products">
+  <h2>Our Collection</h2>
+  <div class="products-grid" id="productsGrid">
+    <div class="product-card">
+      <img src="romance-king.jpg" alt="Romance King Perfume" />
+      <h3>Romance King</h3>
+      <p><strong>For Men</strong></p>
+      <p>Notes: Patchouli, Musk, Amber, Coffee</p>
+      <p>Rs. 2500</p>
+      <a class="order-btn" href="https://wa.me/923188002906?text=I%20want%20to%20order%20Romance%20King" target="_blank">Order on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
 <section class="contact" id="contact">
-  <h2>Contact Us</h2>
-  <p><strong>Address:</strong> Airport Road, Quetta, Pakistan</p>
-  <p><strong>WhatsApp:</strong> <a href="https://wa.me/923188002906">+92 318 8002906</a></p>
-  <p><strong>Email:</strong> info@shahrose.com</p>
+  <div class="contact-content">
+    <h2>Contact Us</h2>
+    <p><strong>Address:</strong> Airport Road, Quetta, Pakistan</p>
+    <p><strong>WhatsApp:</strong> <a href="https://wa.me/923188002906" target="_blank">+92 318 8002906</a></p>
+    <p><strong>Email:</strong> info@shahrose.com</p>
+  </div>
 </section>
 
 <script>
@@ -168,7 +237,8 @@
     const cards = document.querySelectorAll('.product-card');
     cards.forEach(card => {
       const title = card.querySelector('h3').innerText.toLowerCase();
-      card.style.display = title.includes(input) ? '' : 'none';
+      if(title.includes(input)) { card.style.display = ''; }
+      else { card.style.display = 'none'; }
     });
   }
 </script>
