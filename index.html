@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ✅ SEO PRIMARY -->
+  <!-- SEO PRIMARY -->
   <title>SR Shahrose Fragrance | Luxury Perfumes in Pakistan</title>
   <meta name="description" content="Buy premium luxury perfumes in Pakistan from SR Shahrose Fragrance. Explore Romance King, Aura, Black Coat, Oud of Honour & Laila perfumes." />
   <meta name="keywords" content="Luxury perfumes Pakistan, SR Shahrose Fragrance, oud perfume, men's perfume, women's fragrance" />
@@ -12,186 +12,153 @@
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://srfragrance.com/" />
 
-  <!-- ✅ SOCIAL MEDIA SEO -->
+  <!-- SOCIAL MEDIA SEO -->
   <meta property="og:title" content="SR Shahrose Fragrance | Luxury Perfumes in Pakistan" />
-  <meta property="og:description" content="Discover premium quality perfumes for men & women from SR Shahrose Fragrance Pakistan." />
+  <meta property="og:description" content="Discover premium quality perfumes for men & women. Order now from SR Shahrose Fragrance Pakistan." />
   <meta property="og:image" content="https://srfragrance.com/logo.jpg" />
   <meta property="og:url" content="https://srfragrance.com/" />
   <meta property="og:type" content="website" />
-
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="SR Shahrose Fragrance | Luxury Perfumes in Pakistan" />
   <meta name="twitter:description" content="Luxury perfumes with long lasting fragrance in Pakistan – SR Shahrose Fragrance." />
   <meta name="twitter:image" content="https://srfragrance.com/logo.jpg" />
 
-  <!-- ✅ FAVICON -->
+  <!-- FAVICON -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- ✅ FONTS -->
+  <!-- FONTS -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@400;500;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- ✅ STYLES -->
+  <!-- STYLES -->
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: 'Montserrat', sans-serif; background:#ffffff; color:#111; }
-
-    header {
-      background: #000;
-      padding: 3rem 1rem 2rem;
-      text-align: center;
-      color: white;
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:'Montserrat',sans-serif;
+      background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(200,155,60,0.6));
+      color:#fff;
     }
 
-    header img {
-      height: 120px;
-      margin-bottom: 10px;
-      border-radius: 12px;
+    header{
+      background: rgba(0,0,0,0.6);
+      padding: 2rem 1rem 1rem;
+      text-align:center;
     }
-
-    nav a {
-      font-weight: 500;
+    header img{height:100px;margin-bottom:8px;border-radius:12px;}
+    nav a{
+      font-weight:500;
       color:white;
-      margin:0 1rem;
+      margin:0 0.6rem;
       text-decoration:none;
-      font-size:1.1rem;
+      font-size:0.9rem;
+      text-transform:uppercase;
       transition:color .3s;
-      text-transform: uppercase;
     }
-
-    nav a:hover { color:#c89b3c; }
-
-    .search-bar { max-width:500px; margin:1rem auto 0; }
-
-    .search-bar input {
+    nav a:hover{color:#c89b3c;}
+    .search-bar{
+      max-width:400px;
+      margin:0.8rem auto 0;
+    }
+    .search-bar input{
       width:100%;
-      padding:.8rem 1rem;
-      border-radius:8px;
+      padding:0.6rem 1rem;
+      border-radius:6px;
       border:none;
+      font-size:0.9rem;
     }
 
-    .hero {
-      height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+    /* Hero Slider */
+    .hero-slider{
+      position:relative;
+      width:100%;
+      height:80vh;
+      overflow:hidden;
     }
-
-    .hero video {
+    .hero-slider .slides img{
       position:absolute;
       width:100%;
       height:100%;
       object-fit:cover;
-      z-index:-1;
+      top:0;left:0;
+      opacity:0;
+      transition: opacity 1s ease-in-out;
     }
+    .hero-slider .slides img.active{opacity:1;}
 
-    .about, .products, .contact {
-      padding:4rem 2rem;
+    /* Arrows */
+    .hero-slider .arrow{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:2rem;
+      color:white;
+      padding:0.3rem 0.5rem;
+      background: rgba(0,0,0,0.5);
+      cursor:pointer;
+      border-radius:5px;
+      z-index:10;
+      user-select:none;
+    }
+    .hero-slider .arrow.prev{left:10px;}
+    .hero-slider .arrow.next{right:10px;}
+
+    /* Dots */
+    .hero-slider .dots{
+      position:absolute;
+      bottom:15px;
+      width:100%;
       text-align:center;
     }
-
-    .products-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:3rem;
-      padding:2rem;
-    }
-
-    .product-card {
-      background:#f7e7b4;
-      border-radius:28px;
-      padding:2.2rem;
-      box-shadow:0 10px 40px rgba(0,0,0,.18);
-      transition:.4s;
-      border:1px solid #c9992d;
-    }
-
-    .product-card:hover {
-      transform:translateY(-10px) scale(1.03);
-      box-shadow:0 12px 35px rgba(0,0,0,.25);
-    }
-
-    .product-card img {
-      width:100%;
-      height:420px;
-      object-fit:cover;
-      border-radius:22px;
-      border:3px solid #d4b06a;
-    }
-
-    /* ✅ FIXED HEADING STYLE */
-    .product-card h3 {
-      font-size:1.9rem;
-      font-family:'Playfair Display', serif;
-      font-weight:700;
-      margin-bottom:.6rem;
-      text-transform:uppercase;
-    }
-
-    .order-btn {
+    .hero-slider .dots .dot{
       display:inline-block;
-      margin-top:1.5rem;
-      padding:.9rem 1.7rem;
-      background:#25D366;
-      color:white;
-      border-radius:8px;
-      font-weight:600;
-      text-decoration:none;
+      width:12px;
+      height:12px;
+      margin:0 5px;
+      background: rgba(255,255,255,0.5);
+      border-radius:50%;
+      cursor:pointer;
     }
+    .hero-slider .dots .dot.active{background:#fff;}
 
-    /* ✅ MOBILE NAVIGATION FONT FIX */
-    @media (max-width: 600px) {
-      nav a {
-        font-size: 0.8rem;
-        margin: 0 0.4rem;
-      }
-      header img { height: 85px; }
-      .search-bar input {
-        font-size: 0.85rem;
-        padding: 0.6rem 0.7rem;
-      }
-    }
+    /* Sections */
+    section{padding:3rem 1.5rem; text-align:center; background: rgba(0,0,0,0.4); margin:10px 0; border-radius:12px;}
+    .products-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; padding:1rem;}
+    .product-card{background: rgba(255,255,255,0.1); border-radius:22px; padding:1.8rem; box-shadow:0 10px 25px rgba(0,0,0,.5); border:1px solid #c9992d; transition:.4s;}
+    .product-card:hover{transform:translateY(-8px) scale(1.03); box-shadow:0 12px 30px rgba(0,0,0,.7);}
+    .product-card img{width:100%; height:320px; object-fit:cover; border-radius:18px; border:2px solid #d4b06a;}
+    .product-card h3{font-size:1.6rem; font-family:'Playfair Display', serif; font-weight:700; margin-bottom:0.5rem; text-transform:uppercase;}
+    .order-btn{display:inline-block;margin-top:1rem;padding:0.8rem 1.5rem;background:#25D366;color:white;border-radius:6px;font-weight:600;text-decoration:none;font-size:0.9rem;}
 
-    @media (max-width: 400px) {
-      nav a { font-size: 0.7rem; }
+    @media(max-width:600px){
+      header img{height:80px;}
+      nav a{font-size:0.8rem;margin:0 0.4rem;}
+      .search-bar input{font-size:0.8rem;padding:0.5rem 0.8rem;}
+      .hero-slider{height:50vh;}
+      .hero-slider .arrow{font-size:1.5rem;padding:0.2rem 0.4rem;}
+      .hero-slider .dots .dot{width:10px;height:10px;margin:0 4px;}
+      .product-card img{height:220px;}
+      .product-card h3{font-size:1.3rem;}
+      .order-btn{font-size:0.8rem;padding:0.6rem 1.2rem;}
     }
   </style>
 
-  <!-- ✅ BRAND SCHEMA FOR GOOGLE -->
+  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "PerfumeStore",
-    "name": "SR Shahrose Fragrance",
-    "alternateName": "SR Fragrance",
-    "url": "https://srfragrance.com",
-    "logo": "https://srfragrance.com/logo.jpg",
-    "image": "https://srfragrance.com/logo.jpg",
-    "description": "Luxury perfume brand in Pakistan offering premium fragrances for men and women.",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Airport Road",
-      "addressLocality": "Quetta",
-      "addressCountry": "PK"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+92-318-8002906",
-      "contactType": "customer service",
-      "availableLanguage": ["English","Urdu"]
-    },
-    "sameAs": [
-      "https://wa.me/923188002906"
-    ]
+    "@context":"https://schema.org",
+    "@type":"Brand",
+    "name":"SR Shahrose Fragrance",
+    "url":"https://srfragrance.com",
+    "logo":"https://srfragrance.com/logo.jpg",
+    "sameAs":["https://wa.me/923188002906"]
   }
   </script>
-
 </head>
-
 <body>
 
+<!-- Header -->
 <header>
   <img src="logo.jpg" alt="SR Shahrose Fragrance Logo" />
   <nav>
@@ -205,22 +172,32 @@
   </div>
 </header>
 
-<section class="hero" id="home">
-  <video autoplay muted loop playsinline preload="none">
-    <source src="hero-video.mp4" type="video/mp4">
-  </video>
+<!-- Hero Slider -->
+<section class="hero-slider" id="home">
+  <div class="slides">
+    <img src="slide1.jpg" class="slide active" alt="Luxury Perfume 1">
+    <img src="slide2.jpg" class="slide" alt="Luxury Perfume 2">
+    <img src="slide3.jpg" class="slide" alt="Luxury Perfume 3">
+  </div>
+  <div class="arrow prev">&#10094;</div>
+  <div class="arrow next">&#10095;</div>
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
 </section>
 
+<!-- About -->
 <section class="about" id="about">
   <h2>Luxury Perfumes by SR Shahrose Fragrance</h2>
   <p>SR Shahrose Fragrance is a premium perfume store in Pakistan offering long lasting fragrances crafted for elegance.</p>
 </section>
 
+<!-- Products -->
 <section class="products" id="products">
   <h2>Our Collection</h2>
-
   <div class="products-grid" id="productsGrid">
-
     <div class="product-card">
       <img src="romance-king.jpg" alt="Romance King Perfume for Men" />
       <h3>Romance King</h3>
@@ -228,7 +205,6 @@
       <p>Rs. 2500</p>
       <a class="order-btn" href="https://wa.me/923188002906?text=I%20want%20Romance%20King" target="_blank">Order Now</a>
     </div>
-
     <div class="product-card">
       <img src="aura.jpg" alt="Aura Perfume Unisex" />
       <h3>Aura</h3>
@@ -236,7 +212,6 @@
       <p>Rs. 2600</p>
       <a class="order-btn" href="https://wa.me/923188002906?text=I%20want%20Aura" target="_blank">Order Now</a>
     </div>
-
     <div class="product-card">
       <img src="black-coat.jpg" alt="Black Coat Perfume for Men" />
       <h3>Black Coat</h3>
@@ -244,7 +219,6 @@
       <p>Rs. 2700</p>
       <a class="order-btn" href="https://wa.me/923188002906?text=I%20want%20Black%20Coat" target="_blank">Order Now</a>
     </div>
-
     <div class="product-card">
       <img src="laila.jpg" alt="Laila Perfume for Women" />
       <h3>Laila</h3>
@@ -252,7 +226,6 @@
       <p>Rs. 2400</p>
       <a class="order-btn" href="https://wa.me/923188002906?text=I%20want%20Laila" target="_blank">Order Now</a>
     </div>
-
     <div class="product-card">
       <img src="oud-of-honour.jpg" alt="Oud of Honour Premium Perfume" />
       <h3>Oud of Honour</h3>
@@ -260,10 +233,10 @@
       <p>Rs. 3500</p>
       <a class="order-btn" href="https://wa.me/923188002906?text=I%20want%20Oud%20of%20Honour" target="_blank">Order Now</a>
     </div>
-
   </div>
 </section>
 
+<!-- Contact -->
 <section class="contact" id="contact">
   <h2>Contact Us</h2>
   <p>Airport Road, Quetta, Pakistan</p>
@@ -271,13 +244,46 @@
   <p>Email: info@shahrose.com</p>
 </section>
 
+<!-- JS -->
 <script>
-function filterProducts() {
-  const input = document.getElementById('searchInput').value.toLowerCase();
-  document.querySelectorAll('.product-card').forEach(card => {
-    card.style.display = card.innerText.toLowerCase().includes(input) ? '' : 'none';
+function filterProducts(){
+  const input=document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.product-card').forEach(card=>{
+    card.style.display=card.innerText.toLowerCase().includes(input)?'':'none';
   });
 }
+
+// Hero slider with touch support
+const slides=document.querySelectorAll('.hero-slider .slide');
+const dots=document.querySelectorAll('.hero-slider .dot');
+const prev=document.querySelector('.hero-slider .prev');
+const next=document.querySelector('.hero-slider .next');
+let currentSlide=0;
+
+function showSlide(index){
+  slides.forEach(s=>s.classList.remove('active'));
+  dots.forEach(d=>d.classList.remove('active'));
+  slides[index].classList.add('active');
+  dots[index].classList.add('active');
+  currentSlide=index;
+}
+function nextSlide(){showSlide((currentSlide+1)%slides.length);}
+function prevSlide(){showSlide((currentSlide-1+slides.length)%slides.length);}
+dots.forEach((d,i)=>{d.addEventListener('click',()=>showSlide(i))});
+next.addEventListener('click',nextSlide);
+prev.addEventListener('click',prevSlide);
+setInterval(nextSlide,3000);
+
+// Touch swipe for mobile
+let startX=0;
+let endX=0;
+const slider=document.querySelector('.hero-slider');
+slider.addEventListener('touchstart', e=>{startX=e.touches[0].clientX;});
+slider.addEventListener('touchend', e=>{
+  endX=e.changedTouches[0].clientX;
+  if(startX-endX>50) nextSlide();
+  else if(endX-startX>50) prevSlide();
+});
 </script>
 
 </body>
