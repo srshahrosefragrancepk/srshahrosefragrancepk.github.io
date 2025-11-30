@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,10 +20,11 @@
 }
 </script>
 
-<!-- Favicon -->
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<!-- ✅ Favicon -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 
 <!-- Fonts -->
@@ -196,127 +195,3 @@ section{padding:3rem 2rem; text-align:center;}
   .hero-slider{height:50vh;}
 }
 </style>
-</head>
-<body>
-
-<header>
-  <img src="logo.jpg" alt="SR Shahrose Fragrance Logo" />
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#products">Collection</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search Perfumes..." onkeyup="filterProducts()" />
-  </div>
-</header>
-
-<!-- Hero Slider -->
-<section class="hero-slider" id="home">
-  <div class="slides">
-    <img src="slide1.jpg" class="slide active" alt="Luxury Perfume 1">
-    <img src="slide2.jpg" class="slide" alt="Luxury Perfume 2">
-    <img src="slide3.jpg" class="slide" alt="Luxury Perfume 3">
-  </div>
-  <div class="arrow prev">&#10094;</div>
-  <div class="arrow next">&#10095;</div>
-  <div class="dots">
-    <span class="dot active"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-  </div>
-</section>
-
-<section class="about" id="about">
-  <h2>Luxury Perfumes by SR Shahrose Fragrance</h2>
-  <p>SR Shahrose Fragrance is a premium perfume store in Pakistan offering long lasting fragrances crafted for elegance.</p>
-</section>
-
-<section class="products" id="products">
-  <h2>Our Collection</h2>
-  <div class="products-grid" id="productsGrid">
-    <div class="product-card">
-      <img src="romance-king.jpg" alt="Romance King Perfume for Men" />
-      <h3>Romance King</h3>
-      <p>For Men | Patchouli, Musk, Amber, Coffee</p>
-      <p>Rs. 2500</p>
-      <a class="order-btn" href="https://wa.me/923188002906?text=I%20want%20Romance%20King" target="_blank">Order Now</a>
-    </div>
-    <div class="product-card">
-      <img src="aura.jpg" alt="Aura Perfume Unisex" />
-      <h3>Aura</h3>
-      <p>Unisex | Jasmine, Vanilla, Musk</p>
-      <p>Rs. 2600</p>
-      <a class="order-btn" href="https://wa.me/923188002906?text=I%20want%20Aura" target="_blank">Order Now</a>
-    </div>
-    <div class="product-card">
-      <img src="black-coat.jpg" alt="Black Coat Perfume for Men" />
-      <h3>Black Coat</h3>
-      <p>For Men | Leather, Oud, Amber</p>
-      <p>Rs. 2700</p>
-      <a class="order-btn" href="https://wa.me/923188002906?text=I%20want%20Black%20Coat" target="_blank">Order Now</a>
-    </div>
-    <div class="product-card">
-      <img src="laila.jpg" alt="Laila Perfume for Women" />
-      <h3>Laila</h3>
-      <p>For Women | Rose, Vanilla, Soft Musk</p>
-      <p>Rs. 2400</p>
-      <a class="order-btn" href="https://wa.me/923188002906?text=I%20want%20Laila" target="_blank">Order Now</a>
-    </div>
-    <div class="product-card">
-      <img src="oud-of-honour.jpg" alt="Oud of Honour Premium Perfume" />
-      <h3>Oud of Honour</h3>
-      <p>Unisex | Oud, Amber, Saffron</p>
-      <p>Rs. 3500</p>
-      <a class="order-btn" href="https://wa.me/923188002906?text=I%20want%20Oud%20of%20Honour" target="_blank">Order Now</a>
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <h2>Contact Us</h2>
-  <p>Airport Road, Quetta, Pakistan</p>
-  <p><a href="https://wa.me/923188002906">+92 318 8002906</a></p>
-  <p>Email: info@shahrose.com</p>
-</section>
-
-<script>
-// Product search
-function filterProducts() {
-  const input = document.getElementById('searchInput').value.toLowerCase();
-  document.querySelectorAll('.product-card').forEach(card => {
-    card.style.display = card.innerText.toLowerCase().includes(input) ? '' : 'none';
-  });
-}
-
-// Hero slider
-let currentSlide = 0;
-const slides = document.querySelectorAll('.hero-slider .slide');
-const dots = document.querySelectorAll('.hero-slider .dot');
-
-function showSlide(index){
-  slides.forEach(s=>s.classList.remove('active'));
-  dots.forEach(d=>d.classList.remove('active'));
-  slides[index].classList.add('active');
-  dots[index].classList.add('active');
-}
-
-document.querySelector('.hero-slider .next').addEventListener('click', ()=>{
-  currentSlide = (currentSlide+1)%slides.length;
-  showSlide(currentSlide);
-});
-
-document.querySelector('.hero-slider .prev').addEventListener('click', ()=>{
-  currentSlide = (currentSlide-1+slides.length)%slides.length;
-  showSlide(currentSlide);
-});
-
-dots.forEach((dot,i)=>{ dot.addEventListener('click', ()=>{ currentSlide=i; showSlide(currentSlide); }); });
-
-// Auto slide
-setInterval(()=>{ currentSlide = (currentSlide+1)%slides.length; showSlide(currentSlide); },5000);
-</script>
-
-</body>
-</html>
