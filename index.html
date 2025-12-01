@@ -1,40 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SR Shahrose Fragrance | Luxury Perfumes in Pakistan</title>
-<meta name="description" content="Buy premium luxury perfumes in Pakistan from SR Shahrose Fragrance. Explore Romance King, Aura, Black Coat, Oud of Honour & Laila perfumes." />
-<meta name="keywords" content="Luxury perfumes Pakistan, SR Shahrose Fragrance, oud perfume, men's perfume, women's fragrance" />
-<meta name="author" content="SR Shahrose Fragrance" />
-<meta name="robots" content="index, follow" />
-
-<link rel="icon" href="favicon-32x32.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-
+<link rel="icon" href="favicon-32x32.png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:black;color:white;font-family:Montserrat,sans-serif}
+body{font-family:Montserrat,sans-serif;background:#000;color:white;}
 
 /* HEADER */
-header{background:black;padding:1rem;text-align:center;position:sticky;top:0;z-index:100}
-header img{height:95px}
-
-/* NAV */
-nav a{font-size:.75rem;margin:0 12px;color:white;text-decoration:none;text-transform:uppercase}
+header{background:black;padding:1rem;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between}
+header img{height:75px}
+nav a{margin:0 12px;color:white;text-decoration:none;text-transform:uppercase;font-size:0.75rem}
 nav a:hover{color:#c89b3c}
 
-/* SEARCH */
-.search-bar{max-width:350px;margin:10px auto}
-.search-bar input{width:100%;border-radius:25px;padding:10px;border:none}
+/* CHART ICON */
+#cartIcon{font-size:24px;cursor:pointer;position:fixed;top:15px;right:15px;z-index:200}
 
 /* SLIDER */
-.hero-slider{width:90%;height:60vh;margin:2rem auto;border-radius:20px;overflow:hidden;position:relative}
+.hero-slider{width:90%;height:50vh;margin:2rem auto;border-radius:20px;overflow:hidden;position:relative}
 .slide{width:100%;height:100%;object-fit:cover;position:absolute;opacity:0;transition:1s}
 .slide.active{opacity:1}
-
-/* DOTS */
 .dots{position:absolute;bottom:15px;left:50%;transform:translateX(-50%)}
 .dot{height:10px;width:10px;background:#777;border-radius:50%;display:inline-block;margin:0 6px;cursor:pointer}
 .dot.active{background:gold}
@@ -47,13 +35,18 @@ h2{margin-bottom:1rem}
 .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem}
 .product-card{background:rgba(255,255,255,.1);padding:12px;border-radius:15px;text-align:center;position:relative}
 .product-card img{width:100%;height:200px;object-fit:cover;border-radius:10px}
-.order-btn{display:inline-block;margin:5px 5px;padding:6px 12px;border-radius:20px;text-decoration:none;color:white;font-size:12px;cursor:pointer;background:gold}
+.product-card h3{margin:5px 0}
+.order-btn,.addCart{margin:5px 5px;padding:6px 12px;border-radius:20px;text-decoration:none;color:white;font-size:12px;cursor:pointer;background:gold;display:inline-block}
 
-/* MODAL */
-.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);justify-content:center;align-items:center;z-index:200}
-.modal-content{background:white;color:black;padding:20px;border-radius:15px;max-width:400px;width:90%;position:relative}
-.modal-content input, .modal-content textarea{width:100%;padding:8px;margin:5px 0;border-radius:6px;border:1px solid #ccc}
-.modal-content button{margin-top:10px;padding:8px 15px;background:gold;border:none;color:black;border-radius:15px;cursor:pointer}
+/* CART MODAL */
+.cart-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);justify-content:center;align-items:flex-start;overflow-y:auto;z-index:300;padding:30px}
+.cart-content{background:white;color:black;padding:20px;border-radius:15px;max-width:500px;width:90%;margin:auto;position:relative}
+.cart-content h3{margin-bottom:10px}
+.cart-content input, .cart-content select, .cart-content textarea{width:100%;padding:8px;margin:5px 0;border-radius:6px;border:1px solid #ccc}
+.cart-content .product-summary{display:flex;align-items:center;margin-bottom:10px}
+.cart-content .product-summary img{width:50px;height:50px;object-fit:cover;margin-right:10px;border-radius:5px}
+.cart-content .summary-line{display:flex;justify-content:space-between;margin:5px 0}
+.cart-content button{margin-top:10px;padding:10px 15px;background:gold;border:none;color:black;border-radius:15px;cursor:pointer}
 .close{position:absolute;top:10px;right:15px;font-size:20px;font-weight:bold;cursor:pointer}
 
 /* SCROLL ANIMATION */
@@ -62,9 +55,8 @@ h2{margin-bottom:1rem}
 
 /* MOBILE */
 @media(max-width:768px){
-.hero-slider{height:45vh}
-header img{height:75px}
 .products-grid{grid-template-columns:repeat(2,1fr)}
+.hero-slider{height:40vh}
 }
 </style>
 </head>
@@ -73,14 +65,10 @@ header img{height:75px}
 <header>
 <img src="logo.jpg">
 <nav>
-<a href="#home">Home</a>
 <a href="#perfumes">Our Perfumes</a>
 <a href="#about">About</a>
 </nav>
-
-<div class="search-bar">
-<input type="text" placeholder="Search Perfumes..." onkeyup="filterProducts()" id="searchInput">
-</div>
+<div id="cartIcon" onclick="openCart()">🛒</div>
 </header>
 
 <!-- SLIDER -->
@@ -88,7 +76,6 @@ header img{height:75px}
 <img src="slide1.jpg" class="slide active">
 <img src="slide2.jpg" class="slide">
 <img src="slide3.jpg" class="slide">
-
 <div class="dots">
 <span class="dot active" onclick="move(0)"></span>
 <span class="dot" onclick="move(1)"></span>
@@ -101,29 +88,29 @@ header img{height:75px}
 <h2>Our Perfumes</h2>
 <div class="products-grid">
 
-<div class="product-card">
+<div class="product-card" data-price="2600">
 <img src="aura.jpg"><h3>Aura</h3><p>Rs.2600</p>
-<button class="order-btn" onclick="openModal('Aura')">Order</button>
+<button class="addCart" onclick="addToCart('Aura', 'aura.jpg', 2600)">Add to Cart</button>
 </div>
 
-<div class="product-card">
+<div class="product-card" data-price="2500">
 <img src="romance-king.jpg"><h3>Romance King</h3><p>Rs.2500</p>
-<button class="order-btn" onclick="openModal('Romance King')">Order</button>
+<button class="addCart" onclick="addToCart('Romance King', 'romance-king.jpg', 2500)">Add to Cart</button>
 </div>
 
-<div class="product-card">
+<div class="product-card" data-price="2700">
 <img src="black-coat.jpg"><h3>Black Coat</h3><p>Rs.2700</p>
-<button class="order-btn" onclick="openModal('Black Coat')">Order</button>
+<button class="addCart" onclick="addToCart('Black Coat', 'black-coat.jpg', 2700)">Add to Cart</button>
 </div>
 
-<div class="product-card">
+<div class="product-card" data-price="3500">
 <img src="oud-of-honour.jpg"><h3>Oud of Honour</h3><p>Rs.3500</p>
-<button class="order-btn" onclick="openModal('Oud of Honour')">Order</button>
+<button class="addCart" onclick="addToCart('Oud of Honour', 'oud-of-honour.jpg', 3500)">Add to Cart</button>
 </div>
 
-<div class="product-card">
+<div class="product-card" data-price="2400">
 <img src="laila.jpg"><h3>Laila</h3><p>Rs.2400</p>
-<button class="order-btn" onclick="openModal('Laila')">Order</button>
+<button class="addCart" onclick="addToCart('Laila', 'laila.jpg', 2400)">Add to Cart</button>
 </div>
 
 </div>
@@ -138,18 +125,40 @@ header img{height:75px}
 <p class="animate"><b>Vision:</b> Make every moment unforgettable.</p>
 </section>
 
-<!-- ORDER FORM MODAL -->
-<div class="modal" id="orderModal">
-<div class="modal-content">
-<span class="close" onclick="closeModal()">&times;</span>
-<h3>Order <span id="modalProduct"></span></h3>
-<form action="https://formsubmit.co/srshahrosefragrance@gmail.com" method="POST">
-<input type="hidden" name="Product" id="productInput">
-<input type="text" name="name" placeholder="Full Name" required>
-<input type="email" name="email" placeholder="Email" required>
-<input type="tel" name="phone" placeholder="Phone Number" required>
-<input type="number" name="quantity" placeholder="Quantity" min="1" value="1" required>
-<textarea name="message" placeholder="Additional Notes"></textarea>
+<!-- CART MODAL -->
+<div class="cart-modal" id="cartModal">
+<div class="cart-content">
+<span class="close" onclick="closeCart()">&times;</span>
+<h3>Checkout</h3>
+<form action="https://formsubmit.co/srshahrosefragrance@gmail.com" method="POST" id="checkoutForm">
+<!-- Contact Info -->
+<h4>Contact Information</h4>
+<input type="text" name="contactName" placeholder="Full Name" required>
+<input type="email" name="contactEmail" placeholder="Email" required>
+<input type="tel" name="contactPhone" placeholder="Phone Number" required>
+
+<!-- Shipping Address -->
+<h4>Shipping Address</h4>
+<input type="text" name="shipName" placeholder="Full Name" required>
+<input type="text" name="shipCountry" placeholder="Country / Region" required>
+<input type="text" name="shipStreet" placeholder="Street Address" required>
+<input type="tel" name="shipPhone" placeholder="Phone Number" required>
+
+<!-- Shipping Option -->
+<h4>Shipping Option</h4>
+<label><input type="radio" name="shipping" value="200" checked> Standard Shipping - Rs.200</label>
+
+<!-- Payment Option -->
+<h4>Payment Option</h4>
+<label><input type="radio" name="payment" value="COD" checked> Cash on Delivery</label>
+
+<!-- Order Summary -->
+<h4>Order Summary</h4>
+<div id="cartItems"></div>
+<div class="summary-line"><span>Subtotal:</span><span id="subtotal">0</span></div>
+<div class="summary-line"><span>Shipping:</span><span id="shippingCost">200</span></div>
+<div class="summary-line"><b>Total:</b><b id="total">0</b></div>
+
 <button type="submit">Place Order</button>
 </form>
 </div>
@@ -164,24 +173,48 @@ function show(){slides.forEach(s=>s.classList.remove("active"));dots.forEach(d=>
 function move(i){index=i;show()}
 setInterval(()=>{index=(index+1)%slides.length;show()},5000);
 
-/* SEARCH */
-function filterProducts(){
-let val=document.getElementById("searchInput").value.toLowerCase();
-document.querySelectorAll(".product-card").forEach(c=>{c.style.display=c.innerText.toLowerCase().includes(val)?"":"none";});
-}
-
 /* SCROLL ANIMATION */
 let items=document.querySelectorAll(".animate");
 window.addEventListener("scroll",()=>{items.forEach(i=>{let pos=i.getBoundingClientRect().top;if(pos<window.innerHeight-100){i.classList.add("show")}});});
 
-/* MODAL */
-function openModal(product){
-document.getElementById("orderModal").style.display="flex";
-document.getElementById("modalProduct").innerText=product;
-document.getElementById("productInput").value=product;
+/* CART FUNCTIONALITY */
+let cart=[];
+function openCart(){document.getElementById('cartModal').style.display='flex';updateCart();}
+function closeCart(){document.getElementById('cartModal').style.display='none';}
+
+function addToCart(name,img,price){
+cart.push({name,img,price,qty:1});
+openCart();
 }
-function closeModal(){document.getElementById("orderModal").style.display="none";}
-window.onclick=function(e){if(e.target==document.getElementById("orderModal")){closeModal()}}
+
+function updateCart(){
+let cartDiv=document.getElementById('cartItems');
+cartDiv.innerHTML="";
+let subtotal=0;
+cart.forEach((item,index)=>{
+subtotal+=item.price*item.qty;
+cartDiv.innerHTML+=`<div class="product-summary">
+<img src="${item.img}">
+<div>
+<p>${item.name} x${item.qty}</p>
+<p>Rs.${item.price}</p>
+</div>
+</div>`;
+});
+document.getElementById('subtotal').innerText="Rs."+subtotal;
+let shipping=200;
+document.getElementById('total').innerText="Rs."+(subtotal+shipping);
+}
+
+/* CHECKOUT FORM - ADD PRODUCTS INFO */
+document.getElementById('checkoutForm').addEventListener('submit',function(){
+let prodList=cart.map(i=>`${i.name} x${i.qty} Rs.${i.price}`).join(", ");
+let input=document.createElement("input");
+input.type="hidden";
+input.name="Products";
+input.value=prodList;
+this.appendChild(input);
+});
 </script>
 
 </body>
