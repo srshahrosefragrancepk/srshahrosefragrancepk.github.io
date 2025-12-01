@@ -10,141 +10,61 @@
 <meta name="author" content="SR Shahrose Fragrance" />
 <meta name="robots" content="index, follow" />
 
-<!-- JSON-LD -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Brand",
-  "name": "SR Shahrose Fragrance",
-  "url": "https://srfragrance.com",
-  "logo": "https://srfragrance.com/logo.jpg",
-  "sameAs": ["https://wa.me/923188002906"]
-}
-</script>
-
-<!-- Favicon -->
 <link rel="icon" href="favicon-32x32.png">
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@400;500;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:black;color:white;font-family:Montserrat,sans-serif}
 
-/* Global */
-*{margin:0; padding:0; box-sizing:border-box;}
-body{font-family:Montserrat,sans-serif; background:#000; color:white;}
+/* HEADER */
+header{background:black;padding:1rem;text-align:center;position:sticky;top:0;z-index:100}
+header img{height:95px}
 
-/* Header */
-header{
-  background:black;
-  padding:1rem;
-  text-align:center;
-  position:sticky;
-  top:0;
-  z-index:100;
-}
-header img{height:95px; margin-bottom:8px;}
+/* NAV */
+nav a{font-size:.75rem;margin:0 12px;color:white;text-decoration:none;text-transform:uppercase}
+nav a:hover{color:#c89b3c}
 
-/* NAV SMALLER FONT */
-nav a{
-  font-size:0.75rem;
-  margin:0 12px;
-  color:white;
-  text-decoration:none;
-  text-transform:uppercase;
-  letter-spacing:1px;
-}
-nav a:hover{color:#c89b3c;}
+/* SEARCH */
+.search-bar{max-width:350px;margin:10px auto}
+.search-bar input{width:100%;border-radius:25px;padding:10px;border:none}
 
-/* Search */
-.search-bar{
-  max-width:350px;
-  margin:10px auto;
-}
-.search-bar input{
-  width:100%;
-  border-radius:25px;
-  border:none;
-  padding:10px 15px;
-}
+/* SLIDER */
+.hero-slider{width:90%;height:60vh;margin:2rem auto;border-radius:20px;overflow:hidden;position:relative}
+.slide{width:100%;height:100%;object-fit:cover;position:absolute;opacity:0;transition:1s}
+.slide.active{opacity:1}
 
-/* Slider */
-.hero-slider{
-  width:90%;
-  height:60vh;
-  margin:2rem auto;
-  border-radius:20px;
-  overflow:hidden;
-  position:relative;
-}
-.slide{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  position:absolute;
-  opacity:0;
-  transition:1s;
-}
-.slide.active{opacity:1;}
+/* DOTS */
+.dots{position:absolute;bottom:15px;left:50%;transform:translateX(-50%)}
+.dot{height:10px;width:10px;background:#777;border-radius:50%;display:inline-block;margin:0 6px;cursor:pointer}
+.dot.active{background:gold}
 
-.arrow{
-  position:absolute;
-  top:50%;
-  padding:10px;
-  font-size:25px;
-  background:black;
-  cursor:pointer;
-}
-.prev{left:10px;}
-.next{right:10px;}
+/* ABOUT ANIMATION */
+.animate{opacity:0;transform:translateX(-50px);transition:1s}
+.animate.show{opacity:1;transform:translateX(0)}
 
-/* Sections */
-section{
-  margin:2rem auto;
-  padding:2rem;
-  max-width:1200px;
-  background:rgba(255, 215, 0, 0.05);
-  border-radius:20px;
-}
+/* SECTION */
+section{margin:2rem auto;padding:2rem;max-width:1200px;background:rgba(255,215,0,.05);border-radius:20px}
 
-/* Products */
-.products-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:1.5rem;
-}
-.product-card{
-  background:rgba(255,255,255,0.1);
-  padding:15px;
-  border-radius:18px;
-}
-.product-card img{
-  width:100%;
-  height:300px;
-  object-fit:cover;
-  border-radius:15px;
-}
-.product-card h3{
-  font-family:'Playfair Display',serif;
-  margin-top:10px;
-}
-.order-btn{
-  display:inline-block;
-  margin-top:8px;
-  padding:8px 18px;
-  background:#25D366;
-  border-radius:25px;
-  color:white;
-  text-decoration:none;
-}
+/* PRODUCTS */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem}
+.product-card{background:rgba(255,255,255,.1);padding:12px;border-radius:15px;text-align:center}
+.product-card img{width:100%;height:200px;object-fit:cover;border-radius:10px}
+.card-btn,.order-btn{display:inline-block;margin:5px 5px;padding:8px 14px;border-radius:20px;text-decoration:none;color:white;font-size:13px}
+.order-btn{background:#25D366}
+.card-btn{background:#c89b3c}
 
-/* Mobile */
+/* FORM */
+form{display:grid;gap:10px}
+input,textarea{padding:10px;border-radius:8px;border:none}
+
+/* MOBILE */
 @media(max-width:768px){
- nav a{font-size:0.65rem;}
- header img{height:75px;}
- .hero-slider{height:45vh;}
+.hero-slider{height:45vh}
+header img{height:75px}
+.products-grid{grid-template-columns:repeat(2,1fr)}
 }
-
 </style>
 </head>
 
@@ -169,68 +89,52 @@ section{
 <img src="slide1.jpg" class="slide active">
 <img src="slide2.jpg" class="slide">
 <img src="slide3.jpg" class="slide">
-<div class="arrow prev" onclick="prev()">❮</div>
-<div class="arrow next" onclick="next()">❯</div>
+
+<div class="dots">
+<span class="dot active" onclick="move(0)"></span>
+<span class="dot" onclick="move(1)"></span>
+<span class="dot" onclick="move(2)"></span>
+</div>
 </div>
 
 <!-- ABOUT -->
 <section id="about">
 <h2>About SR Shahrose Fragrance</h2><br>
-
-<p>A fragrance is more than just a scent; it is a memory, an emotion, and an essential part of your identity. At SR Shahrose Fragrance, we believe in this philosophy deeply.</p><br>
-
-<p><b>Our Heritage:</b> Our journey began with years of passion, expertise, and the pursuit of excellence. We bring together the world’s finest ingredients to create perfumes that tell a story with every spritz.</p><br>
-
-<p><b>Our Commitment to Quality:</b> We are dedicated to crafting only premium and long-lasting fragrances that make you feel unique and confident on every special occasion.</p><br>
-
-<p><b>Our Vision:</b> Our goal is not just to be a perfume brand, but to become an aromatic part of your everyday experience. With SR Shahrose Fragrance, make every moment unforgettable.</p>
-
+<p class="animate">A fragrance is more than just a scent; it is memory and emotion.</p><br>
+<p class="animate"><b>Our Heritage:</b> Luxury blended with passion.</p><br>
+<p class="animate"><b>Quality:</b> Premium long-lasting perfumes.</p><br>
+<p class="animate"><b>Vision:</b> Make every moment unforgettable.</p>
 </section>
 
 <!-- PRODUCTS -->
 <section id="products">
-<h2>Our Collection</h2>
-
-<div class="products-grid" id="productsGrid">
+<h2>Our Collection</h2><br>
+<div class="products-grid">
 
 <div class="product-card">
-<img src="romance-king.jpg">
-<h3>Romance King</h3>
-<p>For Men | Patchouli, Musk, Amber, Coffee</p>
-<p>Rs.2500</p>
-<a class="order-btn" href="https://wa.me/923188002906">Order</a>
+<img src="aura.jpg"><h3>Aura</h3><p>Rs.2600</p>
+<a class="order-btn" href="https://wa.me/923188002906">WhatsApp</a>
+<a class="card-btn" href="#">Add to Cart</a>
 </div>
 
 <div class="product-card">
-<img src="aura.jpg">
-<h3>Aura</h3>
-<p>Unisex | Jasmine, Vanilla, Musk</p>
-<p>Rs.2600</p>
-<a class="order-btn" href="https://wa.me/923188002906">Order</a>
+<img src="romance-king.jpg"><h3>Romance King</h3><p>Rs.2500</p>
+<a class="order-btn" href="#">WhatsApp</a><a class="card-btn" href="#">Add</a>
 </div>
 
 <div class="product-card">
-<img src="black-coat.jpg">
-<h3>Black Coat</h3>
-<p>For Men | Leather, Oud, Amber</p>
-<p>Rs.2700</p>
-<a class="order-btn" href="https://wa.me/923188002906">Order</a>
+<img src="black-coat.jpg"><h3>Black Coat</h3><p>Rs.2700</p>
+<a class="order-btn" href="#">WhatsApp</a><a class="card-btn" href="#">Add</a>
 </div>
 
 <div class="product-card">
-<img src="laila.jpg">
-<h3>Laila</h3>
-<p>For Women | Rose, Vanilla, Musk</p>
-<p>Rs.2400</p>
-<a class="order-btn" href="https://wa.me/923188002906">Order</a>
+<img src="oud-of-honour.jpg"><h3>Oud of Honour</h3><p>Rs.3500</p>
+<a class="order-btn" href="#">WhatsApp</a><a class="card-btn" href="#">Add</a>
 </div>
 
 <div class="product-card">
-<img src="oud-of-honour.jpg">
-<h3>Oud of Honour</h3>
-<p>Unisex | Oud, Amber, Saffron</p>
-<p>Rs.3500</p>
-<a class="order-btn" href="https://wa.me/923188002906">Order</a>
+<img src="laila.jpg"><h3>Laila</h3><p>Rs.2400</p>
+<a class="order-btn" href="#">WhatsApp</a><a class="card-btn" href="#">Add</a>
 </div>
 
 </div>
@@ -238,40 +142,45 @@ section{
 
 <!-- CONTACT -->
 <section id="contact">
-<h2>Contact Us</h2>
-<p>Airport Road, Quetta</p>
-<p>+92-318-8002906</p>
-<p>info@shahrose.com</p>
+<h2>Order / Contact</h2><br>
+<form action="https://formsubmit.co/YOUR-EMAIL@gmail.com" method="POST">
+<input type="text" name="name" placeholder="Full Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<textarea name="message" placeholder="Order Details"></textarea>
+<button type="submit" class="card-btn">Send Order</button>
+</form>
 </section>
 
 <script>
-
-function filterProducts(){
- let val = document.getElementById("searchInput").value.toLowerCase();
- document.querySelectorAll(".product-card").forEach(c=>{
-  c.style.display = c.innerText.toLowerCase().includes(val) ? "" : "none";
- });
-}
-
 let slides=document.querySelectorAll(".slide");
+let dots=document.querySelectorAll(".dot");
 let index=0;
 
 function show(){
- slides.forEach(s=>s.classList.remove("active"));
- slides[index].classList.add("active");
+slides.forEach(s=>s.classList.remove("active"));
+dots.forEach(d=>d.classList.remove("active"));
+slides[index].classList.add("active");
+dots[index].classList.add("active");
+}
+function move(i){index=i;show()}
+setInterval(()=>{index=(index+1)%slides.length;show()},5000);
+
+/* SEARCH */
+function filterProducts(){
+let val=document.getElementById("searchInput").value.toLowerCase();
+document.querySelectorAll(".product-card").forEach(c=>{
+c.style.display=c.innerText.toLowerCase().includes(val)?"":"none";
+});
 }
 
-function next(){
- index=(index+1)%slides.length;
- show();
-}
-function prev(){
- index=(index-1+slides.length)%slides.length;
- show();
-}
-
-setInterval(next,5000);
-
+/* SCROLL ANIMATION */
+let items=document.querySelectorAll(".animate");
+window.addEventListener("scroll",()=>{
+items.forEach(i=>{
+let pos=i.getBoundingClientRect().top;
+if(pos<window.innerHeight-100){i.classList.add("show")}
+});
+});
 </script>
 
 </body>
