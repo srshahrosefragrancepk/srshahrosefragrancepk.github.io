@@ -47,13 +47,15 @@ h2{margin-bottom:1rem}
 .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem}
 .product-card{background:rgba(255,255,255,.1);padding:12px;border-radius:15px;text-align:center;position:relative}
 .product-card img{width:100%;height:200px;object-fit:cover;border-radius:10px}
-.order-btn{display:inline-block;margin:5px 5px;padding:6px 12px;border-radius:20px;text-decoration:none;color:white;font-size:12px;cursor:pointer;background:#25D366}
+.card-btn,.order-btn{display:inline-block;margin:5px 5px;padding:6px 12px;border-radius:20px;text-decoration:none;color:white;font-size:12px;cursor:pointer}
+.order-btn{background:#25D366}
+.card-btn{background:#c89b3c}
 
 /* MODAL */
 .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);justify-content:center;align-items:center;z-index:200}
 .modal-content{background:white;color:black;padding:20px;border-radius:15px;max-width:400px;width:90%;position:relative}
 .modal-content input, .modal-content textarea{width:100%;padding:8px;margin:5px 0;border-radius:6px;border:1px solid #ccc}
-.modal-content button{margin-top:10px;padding:8px 15px;background:#25D366;border:none;color:white;border-radius:15px;cursor:pointer}
+.modal-content button{margin-top:10px;padding:8px 15px;background:gold;border:none;color:black;border-radius:15px;cursor:pointer}
 .close{position:absolute;top:10px;right:15px;font-size:20px;font-weight:bold;cursor:pointer}
 
 /* SCROLL ANIMATION */
@@ -76,6 +78,7 @@ header img{height:75px}
 <a href="#home">Home</a>
 <a href="#perfumes">Our Perfumes</a>
 <a href="#about">About</a>
+<a href="#contact">Contact</a>
 </nav>
 
 <div class="search-bar">
@@ -138,16 +141,18 @@ header img{height:75px}
 <p class="animate"><b>Vision:</b> Make every moment unforgettable.</p>
 </section>
 
-<!-- MODAL -->
+<!-- CONTACT / MODAL -->
 <div class="modal" id="orderModal">
 <div class="modal-content">
 <span class="close" onclick="closeModal()">&times;</span>
 <h3>Order <span id="modalProduct"></span></h3>
-<input type="text" id="custName" placeholder="Your Name" required>
-<input type="tel" id="custPhone" placeholder="Phone Number" required>
-<input type="number" id="custQty" placeholder="Quantity" min="1" value="1" required>
-<textarea id="custMsg" placeholder="Message / Notes"></textarea>
-<button onclick="sendWhatsApp()">Send via WhatsApp</button>
+<form action="https://formsubmit.co/YOUR-EMAIL@gmail.com" method="POST">
+<input type="hidden" name="Product" id="productInput">
+<input type="text" name="name" placeholder="Full Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<textarea name="message" placeholder="Order Details / Quantity" required></textarea>
+<button type="submit">Send Order</button>
+</form>
 </div>
 </div>
 
@@ -174,30 +179,10 @@ window.addEventListener("scroll",()=>{items.forEach(i=>{let pos=i.getBoundingCli
 function openModal(product){
 document.getElementById("orderModal").style.display="flex";
 document.getElementById("modalProduct").innerText=product;
-document.getElementById("custQty").value=1;
-document.getElementById("custName").value="";
-document.getElementById("custPhone").value="";
-document.getElementById("custMsg").value="";
+document.getElementById("productInput").value=product;
 }
 function closeModal(){document.getElementById("orderModal").style.display="none";}
 window.onclick=function(e){if(e.target==document.getElementById("orderModal")){closeModal()}}
-
-/* WHATSAPP SEND */
-function sendWhatsApp(){
-let product=document.getElementById("modalProduct").innerText;
-let name=document.getElementById("custName").value;
-let phone=document.getElementById("custPhone").value;
-let qty=document.getElementById("custQty").value;
-let msg=document.getElementById("custMsg").value;
-
-if(!name || !phone || !qty){alert("Please fill all required fields!"); return;}
-
-let text=`Hello, I would like to order:\nProduct: ${product}\nName: ${name}\nPhone: ${phone}\nQuantity: ${qty}\nMessage: ${msg}`;
-let waNumber="923188002906"; // Change to your WhatsApp number
-let url=`https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
-window.open(url,'_blank');
-closeModal();
-}
 </script>
 
 </body>
