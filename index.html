@@ -21,7 +21,7 @@ header{
   justify-content:space-between;
   box-shadow:0 4px 8px rgba(0,0,0,0.5);
 }
-header img.logo{height:60px;order:1;margin:auto;}
+header img.logo{height:60px;}
 .hamburger{display:none;font-size:28px;cursor:pointer;color:white;}
 nav{display:flex;align-items:center;gap:15px;}
 nav a{color:white;text-decoration:none;text-transform:uppercase;font-size:0.8rem;}
@@ -34,25 +34,24 @@ nav a:hover{color:#c89b3c;transition:0.3s;}
   nav.show{display:flex;}
   nav a{padding:10px 15px;border-top:1px solid rgba(255,255,255,0.1);}
   .hamburger{display:block;}
-  img.logo{order:0;margin:auto;}
 }
 
 /* SEARCH BAR */
-header .search-bar{flex:1;margin:0 20px}
-header .search-bar input{width:100%;padding:8px 15px;border-radius:25px;border:none}
+.search-bar{width:90%;margin:15px auto;}
+.search-bar input{width:100%;padding:8px 15px;border-radius:25px;border:none}
 
 /* SLIDER */
-.hero-slider{width:90%;height:50vh;margin:2rem auto;border-radius:20px;overflow:hidden;position:relative;box-shadow:0 4px 12px rgba(0,0,0,0.7);}
+.hero-slider{width:90%;height:50vh;margin:1.5rem auto;border-radius:20px;overflow:hidden;position:relative;box-shadow:0 4px 12px rgba(0,0,0,0.7);}
 .slide{width:100%;height:100%;object-fit:cover;position:absolute;opacity:0;transition:1s}
 .slide.active{opacity:1}
 
 /* SECTIONS */
 section{margin:2rem auto;padding:2rem;max-width:1200px;background:rgba(255,215,0,.05);border-radius:20px}
-h2{margin-bottom:1rem;color:gold;letter-spacing:1px}
+h2{margin-bottom:1rem;color:gold;letter-spacing:1px;text-align:center;}
 
-/* ABOUT 3-PARAGRAPH */
+/* ABOUT */
 .about-container{display:flex;gap:20px;justify-content:space-between;text-align:center;}
-.about-container div{flex:1;background:rgba(255,255,255,0.05);padding:15px;border-radius:15px;transition:0.3s}
+.about-container div{flex:1;background:rgba(255,255,255,0.05);padding:15px;border-radius:15px;transition:0.3s;}
 .about-container div:hover{background:rgba(255,215,0,0.1);}
 
 /* PRODUCTS */
@@ -83,20 +82,16 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px}
 .close{position:absolute;top:10px;right:15px;font-size:24px;font-weight:bold;cursor:pointer;}
 
 /* FLOATING BUTTONS */
-#cartIcon{
-  position:fixed;bottom:90px;right:20px;width:50px;height:50px;background:gold;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:500;box-shadow:0 4px 12px rgba(0,0,0,0.5);transition:0.3s;
-}
+#cartIcon{position:fixed;bottom:90px;right:20px;width:50px;height:50px;background:gold;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:500;box-shadow:0 4px 12px rgba(0,0,0,0.5);transition:0.3s;}
 #cartIcon:hover{background:#c89b3c;}
 #cartCount{position:absolute;top:-5px;right:-5px;background:red;color:white;font-size:12px;border-radius:50%;padding:2px 5px;}
-
-#whatsappBtn{
-  position:fixed;bottom:20px;right:20px;width:50px;height:50px;z-index:500;}
+#whatsappBtn{position:fixed;bottom:20px;right:20px;width:50px;height:50px;z-index:500;}
 #whatsappBtn img{width:100%;height:100%;object-fit:contain;border-radius:50%;box-shadow:0 4px 12px rgba(0,0,0,0.5);transition:0.3s;}
 #whatsappBtn:hover img{transform:scale(1.1);}
 
 /* MOBILE */
 @media(max-width:1024px){.about-container{flex-direction:column;}.products-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){header{flex-direction:column;align-items:flex-start}.products-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.products-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -113,7 +108,7 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px}
   </nav>
 </header>
 
-<div class="search-bar" style="width:90%;margin:20px auto;">
+<div class="search-bar">
   <input type="text" placeholder="Search Perfumes..." id="searchInput" onkeyup="filterProducts()">
 </div>
 
@@ -230,6 +225,12 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px}
 <a href="https://wa.me/03368441232" target="_blank" id="whatsappBtn">
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </a>
+
+<!-- FLOATING CART -->
+<div id="cartIcon" onclick="openCart()">
+<img src="cart-official.png" alt="Cart" style="width:28px;height:28px;">
+<span id="cartCount">0</span>
+</div>
 
 <script>
 /* HAMBURGER MENU */
