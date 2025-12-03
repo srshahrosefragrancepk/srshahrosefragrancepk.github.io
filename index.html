@@ -6,15 +6,7 @@
 <title>SR Shahrose Fragrance | Luxury Perfumes in Pakistan</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 <link rel="icon" href="favicon-32x32.png">
-<style>@media (max-width:768px){
-  header{flex-direction:column;align-items:center;gap:8px}
-  header img{height:60px}
-  header .search-bar{width:100%;margin:5px 0}
-  header .search-bar input{width:100%}
-  nav{width:100%;justify-content:space-around;flex-wrap:wrap}
-  #cartIcon{position:absolute;top:12px;right:15px;font-size:26px}
-}
-
+<style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:Montserrat,sans-serif;background:#000;color:white;}
 
@@ -30,14 +22,12 @@ header{
   justify-content:space-between;
   box-shadow:0 4px 8px rgba(0,0,0,0.5);
 }
-header img{height:75px;}
+header img{height:75px; display:block; margin:auto;}
+.search-bar{flex:1;margin:0 20px;}
+.search-bar input{width:100%;padding:8px 15px;border-radius:25px;border:none}
 nav{display:flex;align-items:center;gap:20px}
 nav a{color:white;text-decoration:none;text-transform:uppercase;font-size:0.75rem}
 nav a:hover{color:#c89b3c;transition:0.3s}
-header .search-bar{flex:1;margin:0 20px}
-header .search-bar input{width:100%;padding:8px 15px;border-radius:25px;border:none}
-
-/* CART ICON */
 #cartIcon{font-size:28px;cursor:pointer;transition:0.3s;color:gold}
 #cartIcon:hover{color:white}
 
@@ -53,8 +43,8 @@ header .search-bar input{width:100%;padding:8px 15px;border-radius:25px;border:n
 section{margin:2rem auto;padding:2rem;max-width:1200px;background:rgba(255,215,0,.05);border-radius:20px}
 h2{margin-bottom:1rem;color:gold;letter-spacing:1px}
 
-/* ABOUT 3-PARAGRAPH */
-.about-container{display:flex;gap:20px;justify-content:space-between;text-align:center;}
+/* ABOUT */
+.about-container{display:flex;gap:20px;text-align:center;}
 .about-container div{flex:1;background:rgba(255,255,255,0.05);padding:15px;border-radius:15px;transition:0.3s}
 .about-container div:hover{background:rgba(255,215,0,0.1);}
 
@@ -88,7 +78,15 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px}
 
 /* MOBILE */
 @media(max-width:1024px){.about-container{flex-direction:column;}.products-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){header{flex-direction:column;align-items:flex-start}.header .search-bar{margin:10px 0;width:100%}.products-grid{grid-template-columns:1fr}}
+@media(max-width:768px){
+header{flex-direction:column;align-items:center;gap:8px}
+header img{height:60px}
+header .search-bar{width:100%;margin:5px 0}
+header .search-bar input{width:100%}
+nav{width:100%;justify-content:space-around;flex-wrap:wrap}
+#cartIcon{position:absolute;top:12px;right:15px;font-size:26px}
+}
+@media(max-width:480px){.products-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -137,31 +135,31 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px}
 <div class="product-card" data-price="2600">
 <img src="aura.jpg"><h3>Aura</h3><p>Rs.2600</p>
 <button class="addCart" onclick="addToCart('Aura','aura.jpg',2600)">Add to Cart</button>
-<a href="https://wa.me/03368441232?text=Hi,%20I%20want%20Aura" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:24px;height:24px;vertical-align:middle;margin-left:5px;"></a>
+<a href="https://wa.me/03368441232?text=Hi,%20I%20want%20Aura" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:24px;height:24px;vertical-align:middle;margin-left:5px;"></a>
 </div>
 
 <div class="product-card" data-price="2500">
 <img src="romance-king.jpg"><h3>Romance King</h3><p>Rs.2500</p>
 <button class="addCart" onclick="addToCart('Romance King','romance-king.jpg',2500)">Add to Cart</button>
-<a href="https://wa.me/03368441232?text=Hi,%20I%20want%20Romance%20King" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:24px;height:24px;vertical-align:middle;margin-left:5px;"></a>
+<a href="https://wa.me/03368441232?text=Hi,%20I%20want%20Romance%20King" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:24px;height:24px;vertical-align:middle;margin-left:5px;"></a>
 </div>
 
 <div class="product-card" data-price="2700">
 <img src="black-coat.jpg"><h3>Black Coat</h3><p>Rs.2700</p>
 <button class="addCart" onclick="addToCart('Black Coat','black-coat.jpg',2700)">Add to Cart</button>
-<a href="https://wa.me/03368441232?text=Hi,%20I%20want%20Black%20Coat" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:24px;height:24px;vertical-align:middle;margin-left:5px;"></a>
+<a href="https://wa.me/03368441232?text=Hi,%20I%20want%20Black%20Coat" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:24px;height:24px;vertical-align:middle;margin-left:5px;"></a>
 </div>
 
 <div class="product-card" data-price="3500">
 <img src="oud-of-honour.jpg"><h3>Oud of Honour</h3><p>Rs.3500</p>
 <button class="addCart" onclick="addToCart('Oud of Honour','oud-of-honour.jpg',3500)">Add to Cart</button>
-<a href="https://wa.me/03368441232?text=Hi,%20I%20want%20Oud%20of%20Honour" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:24px;height:24px;vertical-align:middle;margin-left:5px;"></a>
+<a href="https://wa.me/03368441232?text=Hi,%20I%20want%20Oud%20of%20Honour" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:24px;height:24px;vertical-align:middle;margin-left:5px;"></a>
 </div>
 
 <div class="product-card" data-price="2400">
 <img src="laila.jpg"><h3>Laila</h3><p>Rs.2400</p>
 <button class="addCart" onclick="addToCart('Laila','laila.jpg',2400)">Add to Cart</button>
-<a href="https://wa.me/03368441232?text=Hi,%20I%20want%20Laila" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:24px;height:24px;vertical-align:middle;margin-left:5px;"></a>
+<a href="https://wa.me/03368441232?text=Hi,%20I%20want%20Laila" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:24px;height:24px;vertical-align:middle;margin-left:5px;"></a>
 </div>
 
 </div>
@@ -222,10 +220,6 @@ let index=0;
 function show(){slides.forEach(s=>s.classList.remove("active"));dots.forEach(d=>d.classList.remove("active"));slides[index].classList.add("active");dots[index].classList.add("active");}
 function move(i){index=i;show()}
 setInterval(()=>{index=(index+1)%slides.length;show()},5000);
-
-/* SCROLL ANIMATION */
-let items=document.querySelectorAll(".animate");
-window.addEventListener("scroll",()=>{items.forEach(i=>{let pos=i.getBoundingClientRect().top;if(pos<window.innerHeight-100){i.classList.add("show")}});});
 
 /* CART FUNCTIONALITY */
 let cart=[];
