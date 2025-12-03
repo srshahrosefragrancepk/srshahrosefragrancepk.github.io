@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,6 +56,10 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px;text-align:center;}
 #whatsappBtn:hover img{transform:scale(1.1);}
 @media(max-width:1024px){.about-container{flex-direction:column;}.products-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.products-grid{grid-template-columns:1fr}}
+
+/* New Perfumes Slider CSS */
+.perfumes-slider img{width:100%;height:100%;object-fit:cover;position:absolute;opacity:0;transition:1s;}
+.perfumes-slider img.active{opacity:1;}
 </style>
 </head>
 <body>
@@ -119,6 +122,14 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px;text-align:center;}
 
 </div>
 </section>
+
+<!-- New Perfumes Slider Start -->
+<div class="perfumes-slider">
+  <img src="slide4.jpg" class="perf-slide active">
+  <img src="slide5.jpg" class="perf-slide">
+  <img src="slide6.jpg" class="perf-slide">
+</div>
+<!-- New Perfumes Slider End -->
 
 <section id="testers">
 <h2>Testers</h2>
@@ -235,6 +246,14 @@ function filterProducts(){
  c.style.display=c.innerText.toLowerCase().includes(val)?"":"none";
  });
 }
+
+// New Perfumes Slider Functionality
+let perfSlides=document.querySelectorAll(".perf-slide"), perfIndex=0;
+function showPerfSlides(){
+  perfSlides.forEach(s=>s.classList.remove("active"));
+  perfSlides[perfIndex].classList.add("active");
+}
+setInterval(()=>{perfIndex=(perfIndex+1)%perfSlides.length;showPerfSlides()},5000);
 </script>
 </body>
 </html>
