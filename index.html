@@ -9,42 +9,24 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:Montserrat,sans-serif;background:#000;color:white;}
-
-/* HEADER */
-header{
-  background:black;padding:1rem;position:sticky;top:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  box-shadow:0 4px 8px rgba(0,0,0,0.5);
-}
+header{background:black;padding:1rem;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 8px rgba(0,0,0,0.5);}
 header img{height:70px;}
-nav{display:flex;align-items:center;gap:15px}
+nav{display:flex;align-items:center;gap:15px;flex-wrap:wrap;}
 nav a{color:white;text-decoration:none;text-transform:uppercase;font-size:0.75rem}
 nav a:hover{color:#c89b3c;transition:0.3s}
 header .search-bar{flex:1;margin:0 15px}
 header .search-bar input{width:100%;padding:6px 12px;border-radius:25px;border:none}
-
-/* CART ICON */
-#cartIcon{font-size:28px;cursor:pointer;transition:0.3s;color:gold}
-#cartIcon:hover{color:white}
-
-/* SLIDER */
+#cartIcon{font-size:28px;cursor:pointer;transition:0.3s;color:gold;position:relative;}
+#cartCount{position:absolute;top:-8px;right:-8px;background:red;color:white;font-size:12px;border-radius:50%;padding:2px 5px;}
 .hero-slider{width:90%;height:50vh;margin:2rem auto;border-radius:20px;overflow:hidden;position:relative;box-shadow:0 4px 12px rgba(0,0,0,0.7);}
 .slide{width:100%;height:100%;object-fit:cover;position:absolute;opacity:0;transition:1s}
 .slide.active{opacity:1}
-
-/* SECTIONS */
 section{margin:2rem auto;padding:2rem;max-width:1200px;border-radius:20px;}
 h2{margin-bottom:1rem;color:gold;letter-spacing:1px;text-align:center}
-
-/* ABOUT */
 .about-container{display:flex;gap:20px;justify-content:space-between;text-align:center;}
 .about-container div{flex:1;background:rgba(255,255,255,0.05);padding:15px;border-radius:15px;transition:0.3s}
 .about-container div:hover{background:rgba(255,215,0,0.1);}
-
-/* PRODUCTS & TESTERS */
 .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem}
-
-/* PRODUCT CARD */
 .product-card{background:rgba(255,255,255,0.1);padding:12px;border-radius:15px;text-align:center;position:relative;transition:0.4s;box-shadow:0 4px 8px rgba(0,0,0,0.5);}
 .product-card:hover{background:rgba(255,215,0,0.1);box-shadow:0 8px 16px rgba(255,215,0,0.3);}
 .product-card img{width:100%;height:200px;object-fit:cover;border-radius:10px;transition:transform 0.3s;}
@@ -56,12 +38,9 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px;text-align:center}
 .qty-controls input{width:45px;text-align:center;border-radius:5px;border:1px solid #ccc;}
 .addCart{margin-top:10px;padding:6px 12px;border-radius:20px;text-decoration:none;color:white;font-size:12px;cursor:pointer;background:gold;transition:0.3s;}
 .addCart:hover{background:#c89b3c;color:black;}
-
-/* TESTERS WHITE CARD */
 #testers .product-card{background:white;color:black;box-shadow:0 4px 12px rgba(0,0,0,0.2);}
 #testers .product-card:hover{box-shadow:0 6px 18px rgba(0,0,0,0.3);}
-
-/* CART MODAL */
+#testers .product-card img{height:180px;}
 .cart-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);justify-content:center;align-items:flex-start;overflow-y:auto;z-index:300;padding:20px;}
 .cart-content{background:white;color:black;padding:25px;border-radius:20px;max-width:550px;width:95%;margin:auto;position:relative;box-shadow:0 8px 25px rgba(0,0,0,0.3);transition:all 0.3s ease;}
 .cart-content h3{color:#c89b3c;margin-bottom:15px;}
@@ -71,21 +50,24 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px;text-align:center}
 .product-summary img{width:60px;height:60px;object-fit:cover;border-radius:10px;margin-right:10px;}
 .product-info{flex:1;}
 .product-info p{margin:3px 0;font-weight:bold;}
-.qty-controls button{padding:4px 10px;border:none;background:#c89b3c;color:white;border-radius:5px;cursor:pointer;font-weight:bold;}
-.qty-controls input{width:45px;text-align:center;border-radius:5px;border:1px solid #ccc;}
 .removeItem{color:red;cursor:pointer;font-weight:bold;margin-left:8px;font-size:18px;}
 .summary-line{display:flex;justify-content:space-between;margin:8px 0;font-weight:bold;font-size:1rem;}
 .cart-content button[type="submit"]{width:100%;margin-top:15px;background:#c89b3c;color:white;padding:10px;font-weight:bold;border:none;border-radius:12px;cursor:pointer;transition:0.3s;}
 .cart-content button[type="submit"]:hover{background:#a17d2d;}
-
-/* CONTACT */
 .contact-info p{margin:5px 0}
 .contact-info a{color:gold;text-decoration:none}
 .contact-info a:hover{text-decoration:underline}
 
-/* MOBILE */
-@media(max-width:1024px){.about-container{flex-direction:column;}.products-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){header{flex-direction:column;align-items:flex-start}.header .search-bar{margin:10px 0;width:100%}.products-grid{grid-template-columns:1fr}}
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .about-container{flex-direction:column;}
+  .products-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:480px){
+  header{flex-direction:column;align-items:flex-start}
+  header .search-bar{margin:10px 0;width:100%}
+  .products-grid{grid-template-columns:repeat(2,1fr)}
+}
 </style>
 </head>
 <body>
@@ -105,14 +87,12 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px;text-align:center}
   <div id="cartIcon" onclick="openCart()">🛒<span id="cartCount">0</span></div>
 </header>
 
-<!-- SLIDER -->
 <div class="hero-slider" id="home">
 <img src="slide1.jpg" class="slide active">
 <img src="slide2.jpg" class="slide">
 <img src="slide3.jpg" class="slide">
 </div>
 
-<!-- ABOUT -->
 <section id="about">
 <h2>About SR Shahrose Fragrance</h2>
 <div class="about-container">
@@ -122,63 +102,73 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px;text-align:center}
 </div>
 </section>
 
-<!-- PERFUMES -->
 <section id="perfumes">
 <h2>Our Perfumes</h2>
 <div class="products-grid">
-
-<div class="product-card" data-price="2600">
-<img src="aura.jpg"><h3>Aura</h3><p>Rs.2600</p>
+<!-- Perfume cards -->
+<div class="product-card" data-price="3200">
+<img src="aura.jpg"><h3>Aura</h3><p>Rs.3200</p>
 <div class="qty-controls">
   <button onclick="changeLocalQty(this,-1)">-</button>
   <input type="number" value="1" class="perfume-qty" readonly>
   <button onclick="changeLocalQty(this,1)">+</button>
 </div>
-<button class="addCart" onclick="addPerfumeToCart('Aura','aura.jpg',2600)">Add to Cart</button>
+<button class="addCart" onclick="addPerfumeToCart('Aura','aura.jpg',3200)">Add to Cart</button>
 </div>
-
-<div class="product-card" data-price="2500">
-<img src="romance-king.jpg"><h3>Romance King</h3><p>Rs.2500</p>
+<div class="product-card" data-price="2200">
+<img src="black-coat.jpg"><h3>Black Coat</h3><p>Rs.2200</p>
 <div class="qty-controls">
   <button onclick="changeLocalQty(this,-1)">-</button>
   <input type="number" value="1" class="perfume-qty" readonly>
   <button onclick="changeLocalQty(this,1)">+</button>
 </div>
-<button class="addCart" onclick="addPerfumeToCart('Romance King','romance-king.jpg',2500)">Add to Cart</button>
+<button class="addCart" onclick="addPerfumeToCart('Black Coat','black-coat.jpg',2200)">Add to Cart</button>
 </div>
-
+<div class="product-card" data-price="2200">
+<img src="laila.jpg"><h3>Laila</h3><p>Rs.2200</p>
+<div class="qty-controls">
+  <button onclick="changeLocalQty(this,-1)">-</button>
+  <input type="number" value="1" class="perfume-qty" readonly>
+  <button onclick="changeLocalQty(this,1)">+</button>
+</div>
+<button class="addCart" onclick="addPerfumeToCart('Laila','laila.jpg',2200)">Add to Cart</button>
+</div>
+<div class="product-card" data-price="2200">
+<img src="oud-of-honour.jpg"><h3>Oud of Honour</h3><p>Rs.2200</p>
+<div class="qty-controls">
+  <button onclick="changeLocalQty(this,-1)">-</button>
+  <input type="number" value="1" class="perfume-qty" readonly>
+  <button onclick="changeLocalQty(this,1)">+</button>
+</div>
+<button class="addCart" onclick="addPerfumeToCart('Oud of Honour','oud-of-honour.jpg',2200)">Add to Cart</button>
+</div>
 </div>
 </section>
 
-<!-- TESTERS -->
 <section id="testers">
 <h2>Testers</h2>
 <div class="products-grid">
-
+<div class="product-card" data-price="1100">
+<img src="premium-tester.jpg"><h3>Premium</h3><p>Rs.1100</p>
+<div class="qty-controls">
+  <button onclick="changeLocalQty(this,-1)">-</button>
+  <input type="number" value="1" class="tester-qty" readonly>
+  <button onclick="changeLocalQty(this,1)">+</button>
+</div>
+<button class="addCart" onclick="addTesterToCart('Premium Tester','premium-tester.jpg',1100)">Add to Cart</button>
+</div>
 <div class="product-card" data-price="800">
-<img src="premium-tester.jpg"><h3>Premium</h3><p>Rs.800</p>
+<img src="budget-tester.jpg"><h3>Budget Friendly</h3><p>Rs.800</p>
 <div class="qty-controls">
   <button onclick="changeLocalQty(this,-1)">-</button>
   <input type="number" value="1" class="tester-qty" readonly>
   <button onclick="changeLocalQty(this,1)">+</button>
 </div>
-<button class="addCart" onclick="addTesterToCart('Premium Tester','premium-tester.jpg',800)">Add to Cart</button>
+<button class="addCart" onclick="addTesterToCart('Budget Tester','budget-tester.jpg',800)">Add to Cart</button>
 </div>
-
-<div class="product-card" data-price="400">
-<img src="budget-tester.jpg"><h3>Budget Friendly</h3><p>Rs.400</p>
-<div class="qty-controls">
-  <button onclick="changeLocalQty(this,-1)">-</button>
-  <input type="number" value="1" class="tester-qty" readonly>
-  <button onclick="changeLocalQty(this,1)">+</button>
-</div>
-<button class="addCart" onclick="addTesterToCart('Budget Tester','budget-tester.jpg',400)">Add to Cart</button>
-</div>
-
 </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
 <h2>Contact Us</h2>
 <div class="contact-info">
@@ -189,7 +179,6 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px;text-align:center}
 </div>
 </section>
 
-<!-- CART MODAL -->
 <div class="cart-modal" id="cartModal">
   <div class="cart-content">
     <span class="close" onclick="closeCart()">&times;</span>
@@ -203,7 +192,6 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px;text-align:center}
       <input type="text" name="contactName" placeholder="Full Name" required>
       <input type="email" name="contactEmail" placeholder="Email" required>
       <input type="tel" name="contactPhone" placeholder="Phone Number" required>
-
       <h4>Shipping Address</h4>
       <input type="text" name="shipName" placeholder="Full Name" required>
       <input type="text" name="shipCountry" placeholder="Country" required>
@@ -211,32 +199,25 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px;text-align:center}
       <input type="text" name="shipCity" placeholder="City" required>
       <input type="text" name="shipStreet" placeholder="Street Address" required>
       <input type="tel" name="shipPhone" placeholder="Phone Number" required>
-
       <h4>Shipping Option</h4>
       <label><input type="radio" name="shipping" value="200" checked> Standard Shipping - Rs.200</label>
-
       <h4>Payment Option</h4>
       <label><input type="radio" name="payment" value="COD" checked> Cash on Delivery</label>
-
       <input type="hidden" name="Products" id="formProducts">
-
       <button type="submit">Place Order</button>
     </form>
   </div>
 </div>
 
 <script>
-/* SLIDER */
 let slides=document.querySelectorAll(".slide");
 let index=0;
 function show(){slides.forEach(s=>s.classList.remove("active"));slides[index].classList.add("active");}
 setInterval(()=>{index=(index+1)%slides.length;show()},5000);
 
-/* CART */
 let cart=[];
 function openCart(){document.getElementById('cartModal').style.display='flex';updateCart();}
 function closeCart(){document.getElementById('cartModal').style.display='none';}
-
 function updateCart(){
   let cartDiv=document.getElementById('cartItems'); cartDiv.innerHTML=""; let subtotal=0;
   cart.forEach((item,index)=>{
@@ -261,28 +242,12 @@ function updateCart(){
   document.getElementById('formProducts').value = cart.map(i=>`${i.name} x${i.qty} Rs.${i.price}`).join(", ");
   document.getElementById('cartCount').innerText = cart.reduce((a,b)=>a+b.qty,0);
 }
-
 function changeQty(index,delta){cart[index].qty+=delta;if(cart[index].qty<1)cart[index].qty=1;updateCart();}
 function removeItem(index){cart.splice(index,1);updateCart();}
 function changeLocalQty(button, delta){let input=button.parentElement.querySelector('input'); let val=parseInt(input.value)+delta;if(val<1) val=1; input.value=val;}
-
-// Add to cart with animation
-function addPerfumeToCart(name,img,price){
-  let card=event.target.closest('.product-card'); let qty=parseInt(card.querySelector('.perfume-qty').value);
-  cart.push({name,img,price,qty}); updateCart();
-  card.style.transform="scale(1.05)"; card.style.transition="0.2s"; setTimeout(()=>{card.style.transform="scale(1)";},200); openCart();
-}
-function addTesterToCart(name,img,price){
-  let card=event.target.closest('.product-card'); let qty=parseInt(card.querySelector('.tester-qty').value||1);
-  cart.push({name,img,price,qty}); updateCart();
-  card.style.transform="scale(1.05)"; card.style.transition="0.2s"; setTimeout(()=>{card.style.transform="scale(1)";},200); openCart();
-}
-
-/* SEARCH FILTER */
-function filterProducts(){
- let val=document.getElementById("searchInput").value.toLowerCase();
- document.querySelectorAll(".product-card").forEach(c=>{c.style.display=c.innerText.toLowerCase().includes(val)?"":"none";});
-}
+function addPerfumeToCart(name,img,price){let card=event.target.closest('.product-card'); let qty=parseInt(card.querySelector('.perfume-qty').value); cart.push({name,img,price,qty}); updateCart(); card.style.transform="scale(1.05)"; card.style.transition="0.2s"; setTimeout(()=>{card.style.transform="scale(1)";},200); openCart();}
+function addTesterToCart(name,img,price){let card=event.target.closest('.product-card'); let qty=parseInt(card.querySelector('.tester-qty').value||1); cart.push({name,img,price,qty}); updateCart(); card.style.transform="scale(1.05)"; card.style.transition="0.2s"; setTimeout(()=>{card.style.transform="scale(1)";},200); openCart();}
+function filterProducts(){ let val=document.getElementById("searchInput").value.toLowerCase(); document.querySelectorAll(".product-card").forEach(c=>{c.style.display=c.innerText.toLowerCase().includes(val)?"":"none";});}
 </script>
 
 </body>
