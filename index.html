@@ -28,16 +28,55 @@ header img{height:75px; display:block; margin:auto;}
 nav{display:flex;align-items:center;gap:20px}
 nav a{color:white;text-decoration:none;text-transform:uppercase;font-size:0.75rem}
 nav a:hover{color:#c89b3c;transition:0.3s}
-#cartIcon{font-size:28px;cursor:pointer;transition:0.3s;color:gold}
+
+/* HAMBURGER */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  cursor:pointer;
+}
+.hamburger span{
+  width:25px;
+  height:3px;
+  background:white;
+  margin:4px 0;
+  transition:0.3s;
+}
+nav.mobile-active{
+  display:flex;
+  flex-direction:column;
+  position:absolute;
+  top:70px;
+  left:0;
+  width:100%;
+  background:black;
+  padding:10px 0;
+  gap:10px;
+}
+nav.mobile-active a{text-align:center;}
+
+/* CART ICON */
+#cartIcon{font-size:28px;cursor:pointer;transition:0.3s;color:gold;position:relative}
 #cartIcon:hover{color:white}
+#cartCount{
+  position:absolute;
+  top:-8px;
+  right:-8px;
+  background:red;
+  color:white;
+  font-size:12px;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
 
 /* HERO SLIDER */
 .hero-slider{width:90%;height:50vh;margin:2rem auto;border-radius:20px;overflow:hidden;position:relative;box-shadow:0 4px 12px rgba(0,0,0,0.7);}
 .slide{width:100%;height:100%;object-fit:cover;position:absolute;opacity:0;transition:1s}
 .slide.active{opacity:1}
-.dots{position:absolute;bottom:15px;left:50%;transform:translateX(-50%)}
-.dot{height:10px;width:10px;background:#777;border-radius:50%;display:inline-block;margin:0 6px;cursor:pointer}
-.dot.active{background:gold}
 
 /* SECTIONS */
 section{margin:2rem auto;padding:2rem;max-width:1200px;background:rgba(255,215,0,.05);border-radius:20px}
@@ -57,20 +96,50 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px}
 .product-card h3{margin:5px 0;color:white;font-family:'Playfair Display',serif;}
 .addCart{margin:5px 5px;padding:6px 12px;border-radius:20px;text-decoration:none;color:white;font-size:12px;cursor:pointer;background:gold;transition:0.3s;}
 .addCart:hover{background:#c89b3c;color:black;}
+.perfume-qty{width:50px;padding:5px;margin-bottom:10px;border-radius:6px;border:1px solid #ccc;text-align:center;}
 
-/* FULL-WIDTH PROMO SLIDER */
-#promo{margin:2rem 0;padding:0;border-radius:0;background:none;}
-.promo-slider{width:100%;height:60vh;position:relative;overflow:hidden;}
-.promo-slide{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;opacity:0;transition:1s;}
-.promo-slide.active{opacity:1;}
+/* TESTERS */
+.testers-grid{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:2rem;
+}
+.tester-card{
+  flex:1;
+  max-width:250px;
+  background:white;
+  color:black;
+  padding:15px;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:0 4px 12px rgba(0,0,0,0.2);
+  transition:0.3s;
+}
+.tester-card:hover{box-shadow:0 8px 16px rgba(0,0,0,0.3);}
+.tester-card h3{margin-bottom:10px;font-family:'Playfair Display',serif;}
+.tester-card p{font-size:0.9rem;margin-bottom:10px;}
+.tester-qty{width:50px;padding:5px;margin-bottom:10px;border-radius:6px;border:1px solid #ccc;text-align:center;}
+.addCartTester{background:gold;color:black;padding:6px 12px;border:none;border-radius:15px;cursor:pointer;font-weight:bold;transition:0.3s;}
+.addCartTester:hover{background:#c89b3c;color:black;}
 
 /* CART MODAL */
 .cart-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);justify-content:center;align-items:flex-start;overflow-y:auto;z-index:300;padding:30px}
-.cart-content{background:black;color:white;padding:20px;border-radius:15px;max-width:500px;width:90%;margin:auto;position:relative;box-shadow:0 0 15px gold;}
-.cart-content h3{margin-bottom:10px;color:gold;}
-.cart-content input, .cart-content select, .cart-content textarea{width:100%;padding:8px;margin:5px 0;border-radius:6px;border:1px solid #ccc;background:#111;color:white;}
-.cart-content input:focus, .cart-content textarea:focus{outline:none;border-color:gold;}
-.cart-content .product-summary{display:flex;align-items:center;margin-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:5px;justify-content:space-between}
+.cart-content{
+  background:white;
+  color:black;
+  padding:20px;
+  border-radius:15px;
+  max-width:500px;
+  width:90%;
+  margin:auto;
+  position:relative;
+  box-shadow:0 0 15px gold;
+}
+.cart-content h3{color:gold;}
+.cart-content input, .cart-content select, .cart-content textarea{background:#f9f9f9;color:black;border:1px solid #ccc;}
+.cart-content .product-summary{display:flex;align-items:center;margin-bottom:10px;border-bottom:1px solid rgba(0,0,0,0.2);padding-bottom:5px;justify-content:space-between}
 .cart-content .product-summary img{width:50px;height:50px;object-fit:cover;margin-right:10px;border-radius:5px}
 .cart-content .summary-line{display:flex;justify-content:space-between;margin:5px 0;font-weight:bold}
 .cart-content button{margin-top:10px;padding:10px 15px;background:gold;border:none;color:black;border-radius:15px;cursor:pointer;transition:0.3s;font-weight:bold;}
@@ -82,16 +151,17 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px}
 .contact-info a{color:gold;text-decoration:none}
 .contact-info a:hover{text-decoration:underline}
 
-/* MOBILE RESPONSIVE */
+/* MOBILE */
 @media(max-width:1024px){.about-container{flex-direction:column;}.products-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:768px){
-header{flex-direction:column;align-items:center;gap:8px}
+header{flex-direction:row;align-items:center;gap:8px;position:relative}
 header img{height:60px}
-header .search-bar{width:100%;margin:5px 0}
-header .search-bar input{width:100%}
-nav{width:100%;justify-content:space-around;flex-wrap:wrap}
-#cartIcon{position:absolute;top:12px;right:15px;font-size:26px}
+header .search-bar{width:60%}
+nav{display:none}
+nav.mobile-active{display:flex;}
+.hamburger{display:flex}
 .products-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+.testers-grid{flex-direction:column;align-items:center;}
 }
 @media(max-width:480px){.products-grid{grid-template-columns:repeat(2,1fr);gap:8px}}
 </style>
@@ -103,13 +173,18 @@ nav{width:100%;justify-content:space-around;flex-wrap:wrap}
   <div class="search-bar">
     <input type="text" placeholder="Search Perfumes..." id="searchInput" onkeyup="filterProducts()">
   </div>
-  <nav>
+  <nav id="navLinks">
     <a href="#home">Home</a>
     <a href="#perfumes">Our Perfumes</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </nav>
-  <div id="cartIcon" onclick="openCart()">🛒</div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div id="cartIcon" onclick="openCart()">🛒<div id="cartCount">0</div></div>
 </header>
 
 <!-- HERO SLIDER -->
@@ -117,22 +192,7 @@ nav{width:100%;justify-content:space-around;flex-wrap:wrap}
 <img src="slide1.jpg" class="slide active">
 <img src="slide2.jpg" class="slide">
 <img src="slide3.jpg" class="slide">
-<div class="dots">
-<span class="dot active" onclick="move(0)"></span>
-<span class="dot" onclick="move(1)"></span>
-<span class="dot" onclick="move(2)"></span>
 </div>
-</div>
-
-<!-- ABOUT -->
-<section id="about">
-<h2>About SR Shahrose Fragrance</h2>
-<div class="about-container">
-<div><p>A fragrance is more than a scent; it is a memory and emotion that defines you.</p></div>
-<div><p>Our Heritage: Years of passion and luxury blended with finest ingredients.</p></div>
-<div><p>Our Commitment: Premium, long-lasting fragrances that create unforgettable moments.</p></div>
-</div>
-</section>
 
 <!-- PERFUMES -->
 <section id="perfumes">
@@ -141,44 +201,46 @@ nav{width:100%;justify-content:space-around;flex-wrap:wrap}
 
 <div class="product-card" data-price="2600">
 <img src="aura.jpg"><h3>Aura</h3><p>Rs.2600</p>
-<button class="addCart" onclick="addToCart('Aura','aura.jpg',2600)">Add to Cart</button>
-<a href="https://wa.me/03368441232?text=Hi,%20I%20want%20Aura" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:24px;height:24px;vertical-align:middle;margin-left:5px;"></a>
+<input type="number" min="1" value="1" class="perfume-qty">
+<button class="addCart" onclick="addPerfumeToCart('Aura','aura.jpg',2600)">Add to Cart</button>
 </div>
 
 <div class="product-card" data-price="2500">
 <img src="romance-king.jpg"><h3>Romance King</h3><p>Rs.2500</p>
-<button class="addCart" onclick="addToCart('Romance King','romance-king.jpg',2500)">Add to Cart</button>
-<a href="https://wa.me/03368441232?text=Hi,%20I%20want%20Romance%20King" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:24px;height:24px;vertical-align:middle;margin-left:5px;"></a>
-</div>
-
-<div class="product-card" data-price="2700">
-<img src="black-coat.jpg"><h3>Black Coat</h3><p>Rs.2700</p>
-<button class="addCart" onclick="addToCart('Black Coat','black-coat.jpg',2700)">Add to Cart</button>
-<a href="https://wa.me/03368441232?text=Hi,%20I%20want%20Black%20Coat" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:24px;height:24px;vertical-align:middle;margin-left:5px;"></a>
-</div>
-
-<div class="product-card" data-price="3500">
-<img src="oud-of-honour.jpg"><h3>Oud of Honour</h3><p>Rs.3500</p>
-<button class="addCart" onclick="addToCart('Oud of Honour','oud-of-honour.jpg',3500)">Add to Cart</button>
-<a href="https://wa.me/03368441232?text=Hi,%20I%20want%20Oud%20of%20Honour" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:24px;height:24px;vertical-align:middle;margin-left:5px;"></a>
-</div>
-
-<div class="product-card" data-price="2400">
-<img src="laila.jpg"><h3>Laila</h3><p>Rs.2400</p>
-<button class="addCart" onclick="addToCart('Laila','laila.jpg',2400)">Add to Cart</button>
-<a href="https://wa.me/03368441232?text=Hi,%20I%20want%20Laila" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:24px;height:24px;vertical-align:middle;margin-left:5px;"></a>
+<input type="number" min="1" value="1" class="perfume-qty">
+<button class="addCart" onclick="addPerfumeToCart('Romance King','romance-king.jpg',2500)">Add to Cart</button>
 </div>
 
 </div>
 </section>
 
-<!-- FULL WIDTH PROMO SLIDER -->
-<section id="promo">
-  <div class="promo-slider">
-    <img src="promo1.jpg" class="promo-slide active">
-    <img src="promo2.jpg" class="promo-slide">
-    <img src="promo3.jpg" class="promo-slide">
+<!-- ABOUT -->
+<section id="about">
+<h2>About SR Shahrose Fragrance</h2>
+<div class="about-container">
+  <div><p>A fragrance is more than a scent; it is a memory and emotion that defines you.</p></div>
+  <div><p>Our Heritage: Years of passion and luxury blended with finest ingredients.</p></div>
+  <div><p>Our Commitment: Premium, long-lasting fragrances that create unforgettable moments.</p></div>
+</div>
+</section>
+
+<!-- TESTERS -->
+<section id="testers">
+<h2>Try Our Testers</h2>
+<div class="testers-grid">
+  <div class="tester-card">
+    <h3>Premium Tester</h3>
+    <p>Experience luxury in a small bottle.</p>
+    <input type="number" min="1" value="1" class="tester-qty">
+    <button class="addCartTester" onclick="addTesterToCart('Premium Tester', 'premium.jpg', 800)">Add to Cart</button>
   </div>
+  <div class="tester-card">
+    <h3>Budget Friendly Tester</h3>
+    <p>Affordable scent for everyday use.</p>
+    <input type="number" min="1" value="1" class="tester-qty">
+    <button class="addCartTester" onclick="addTesterToCart('Budget Tester', 'budget.jpg', 400)">Add to Cart</button>
+  </div>
+</div>
 </section>
 
 <!-- CONTACT -->
@@ -231,34 +293,51 @@ nav{width:100%;justify-content:space-around;flex-wrap:wrap}
 <script>
 /* HERO SLIDER */
 let slides=document.querySelectorAll(".slide");
-let dots=document.querySelectorAll(".dot");
 let index=0;
-function show(){slides.forEach(s=>s.classList.remove("active"));dots.forEach(d=>d.classList.remove("active"));slides[index].classList.add("active");dots[index].classList.add("active");}
-function move(i){index=i;show()}
+function show(){slides.forEach(s=>s.classList.remove("active"));slides[index].classList.add("active");}
 setInterval(()=>{index=(index+1)%slides.length;show()},5000);
 
-/* FULL-WIDTH PROMO SLIDER */
-let promoSlides=document.querySelectorAll(".promo-slide");
-let promoIndex=0;
-function promoShow(){ promoSlides.forEach(s=>s.classList.remove("active")); promoSlides[promoIndex].classList.add("active");}
-setInterval(()=>{promoIndex=(promoIndex+1)%promoSlides.length; promoShow();},5000);
+/* HAMBURGER MENU */
+function toggleMenu(){
+  document.getElementById('navLinks').classList.toggle('mobile-active');
+}
 
 /* CART FUNCTIONALITY */
 let cart=[];
 function openCart(){document.getElementById('cartModal').style.display='flex';updateCart();}
 function closeCart(){document.getElementById('cartModal').style.display='none';}
-function addToCart(name,img,price){cart.push({name,img,price,qty:1});openCart();}
+
+/* Add Perfume */
+function addPerfumeToCart(name,img,price){
+  let qty = event.target.parentElement.querySelector('.perfume-qty').value;
+  cart.push({name,img,price,qty:parseInt(qty)});
+  openCart();
+  updateCartCount();
+}
+
+/* Add Tester */
+function addTesterToCart(name,img,price){
+  let qty = event.target.parentElement.querySelector('.tester-qty').value;
+  cart.push({name,img,price,qty:parseInt(qty)});
+  openCart();
+  updateCartCount();
+}
+
 function updateCart(){
 let cartDiv=document.getElementById('cartItems');
 cartDiv.innerHTML="";
 let subtotal=0;
 cart.forEach((item,index)=>{
 subtotal+=item.price*item.qty;
-cartDiv.innerHTML+=`<div class="product-summary"><img src="${item.img}"><div><p>${item.name} x${item.qty}</p><p>Rs.${item.price}</p></div><a href="https://wa.me/03368441232?text=Hi, I want ${item.name}" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:24px;height:24px;"></a></div>`;
+cartDiv.innerHTML+=`<div class="product-summary"><img src="${item.img}"><div><p>${item.name} x${item.qty}</p><p>Rs.${item.price}</p></div></div>`;
 });
 document.getElementById('subtotal').innerText="Rs."+subtotal;
 let shipping=200;
 document.getElementById('total').innerText="Rs."+(subtotal+shipping);
+}
+
+function updateCartCount(){
+  document.getElementById('cartCount').innerText=cart.length;
 }
 
 /* FORM - ADD PRODUCTS INFO */
