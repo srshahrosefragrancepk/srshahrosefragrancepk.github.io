@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SR Shahrose Fragrance | Luxury Perfumes in Pakistan</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:Montserrat,sans-serif;background:#000;color:white;}
@@ -85,7 +86,7 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px;text-align:center;}
 #cartIcon{position:fixed;bottom:90px;right:20px;width:50px;height:50px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:500;box-shadow:0 4px 12px rgba(0,0,0,0.5);transition:0.3s;}
 #cartIcon:hover{background:#f0f0f0;}
 #cartCount{position:absolute;top:-5px;right:-5px;background:red;color:white;font-size:12px;border-radius:50%;padding:2px 5px;}
-#cartIcon img{width:28px;height:28px;}
+#cartIcon i{font-size:28px;color:black;}
 #whatsappBtn{position:fixed;bottom:20px;right:20px;width:50px;height:50px;z-index:500;}
 #whatsappBtn img{width:100%;height:100%;object-fit:contain;border-radius:50%;box-shadow:0 4px 12px rgba(0,0,0,0.5);transition:0.3s;}
 #whatsappBtn:hover img{transform:scale(1.1);}
@@ -227,9 +228,9 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px;text-align:center;}
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </a>
 
-<!-- FLOATING CART WITH OFFICIAL LOGO -->
+<!-- FLOATING CART WITH FONT AWESOME -->
 <div id="cartIcon" onclick="openCart()">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Shopping_cart_icon.svg" alt="Cart">
+  <i class="fas fa-shopping-cart"></i>
   <span id="cartCount">0</span>
 </div>
 
