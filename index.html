@@ -31,7 +31,7 @@ nav a:hover{color:#c89b3c;transition:0.3s}
 #cartIcon{font-size:28px;cursor:pointer;transition:0.3s;color:gold}
 #cartIcon:hover{color:white}
 
-/* SLIDER */
+/* HERO SLIDER */
 .hero-slider{width:90%;height:50vh;margin:2rem auto;border-radius:20px;overflow:hidden;position:relative;box-shadow:0 4px 12px rgba(0,0,0,0.7);}
 .slide{width:100%;height:100%;object-fit:cover;position:absolute;opacity:0;transition:1s}
 .slide.active{opacity:1}
@@ -57,6 +57,12 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px}
 .product-card h3{margin:5px 0;color:white;font-family:'Playfair Display',serif;}
 .addCart{margin:5px 5px;padding:6px 12px;border-radius:20px;text-decoration:none;color:white;font-size:12px;cursor:pointer;background:gold;transition:0.3s;}
 .addCart:hover{background:#c89b3c;color:black;}
+
+/* FULL-WIDTH PROMO SLIDER */
+#promo{margin:2rem 0;padding:0;border-radius:0;background:none;}
+.promo-slider{width:100%;height:60vh;position:relative;overflow:hidden;}
+.promo-slide{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;opacity:0;transition:1s;}
+.promo-slide.active{opacity:1;}
 
 /* CART MODAL */
 .cart-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);justify-content:center;align-items:flex-start;overflow-y:auto;z-index:300;padding:30px}
@@ -106,7 +112,7 @@ nav{width:100%;justify-content:space-around;flex-wrap:wrap}
   <div id="cartIcon" onclick="openCart()">🛒</div>
 </header>
 
-<!-- SLIDER -->
+<!-- HERO SLIDER -->
 <div class="hero-slider" id="home">
 <img src="slide1.jpg" class="slide active">
 <img src="slide2.jpg" class="slide">
@@ -166,6 +172,15 @@ nav{width:100%;justify-content:space-around;flex-wrap:wrap}
 </div>
 </section>
 
+<!-- FULL WIDTH PROMO SLIDER -->
+<section id="promo">
+  <div class="promo-slider">
+    <img src="promo1.jpg" class="promo-slide active">
+    <img src="promo2.jpg" class="promo-slide">
+    <img src="promo3.jpg" class="promo-slide">
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
 <h2>Contact Us</h2>
@@ -214,7 +229,7 @@ nav{width:100%;justify-content:space-around;flex-wrap:wrap}
 </div>
 
 <script>
-/* SLIDER */
+/* HERO SLIDER */
 let slides=document.querySelectorAll(".slide");
 let dots=document.querySelectorAll(".dot");
 let index=0;
@@ -222,16 +237,17 @@ function show(){slides.forEach(s=>s.classList.remove("active"));dots.forEach(d=>
 function move(i){index=i;show()}
 setInterval(()=>{index=(index+1)%slides.length;show()},5000);
 
+/* FULL-WIDTH PROMO SLIDER */
+let promoSlides=document.querySelectorAll(".promo-slide");
+let promoIndex=0;
+function promoShow(){ promoSlides.forEach(s=>s.classList.remove("active")); promoSlides[promoIndex].classList.add("active");}
+setInterval(()=>{promoIndex=(promoIndex+1)%promoSlides.length; promoShow();},5000);
+
 /* CART FUNCTIONALITY */
 let cart=[];
 function openCart(){document.getElementById('cartModal').style.display='flex';updateCart();}
 function closeCart(){document.getElementById('cartModal').style.display='none';}
-
-function addToCart(name,img,price){
-cart.push({name,img,price,qty:1});
-openCart();
-}
-
+function addToCart(name,img,price){cart.push({name,img,price,qty:1});openCart();}
 function updateCart(){
 let cartDiv=document.getElementById('cartItems');
 cartDiv.innerHTML="";
