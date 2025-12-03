@@ -105,42 +105,54 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px;text-align:center}
 <section id="perfumes">
 <h2>Our Perfumes</h2>
 <div class="products-grid">
-<!-- Perfume cards -->
 <div class="product-card" data-price="3200">
 <img src="aura.jpg"><h3>Aura</h3><p>Rs.3200</p>
 <div class="qty-controls">
-  <button onclick="changeLocalQty(this,-1)">-</button>
-  <input type="number" value="1" class="perfume-qty" readonly>
-  <button onclick="changeLocalQty(this,1)">+</button>
+<button onclick="changeLocalQty(this,-1)">-</button>
+<input type="number" value="1" class="perfume-qty" readonly>
+<button onclick="changeLocalQty(this,1)">+</button>
 </div>
 <button class="addCart" onclick="addPerfumeToCart('Aura','aura.jpg',3200)">Add to Cart</button>
 </div>
+
 <div class="product-card" data-price="2200">
 <img src="black-coat.jpg"><h3>Black Coat</h3><p>Rs.2200</p>
 <div class="qty-controls">
-  <button onclick="changeLocalQty(this,-1)">-</button>
-  <input type="number" value="1" class="perfume-qty" readonly>
-  <button onclick="changeLocalQty(this,1)">+</button>
+<button onclick="changeLocalQty(this,-1)">-</button>
+<input type="number" value="1" class="perfume-qty" readonly>
+<button onclick="changeLocalQty(this,1)">+</button>
 </div>
 <button class="addCart" onclick="addPerfumeToCart('Black Coat','black-coat.jpg',2200)">Add to Cart</button>
 </div>
+
 <div class="product-card" data-price="2200">
 <img src="laila.jpg"><h3>Laila</h3><p>Rs.2200</p>
 <div class="qty-controls">
-  <button onclick="changeLocalQty(this,-1)">-</button>
-  <input type="number" value="1" class="perfume-qty" readonly>
-  <button onclick="changeLocalQty(this,1)">+</button>
+<button onclick="changeLocalQty(this,-1)">-</button>
+<input type="number" value="1" class="perfume-qty" readonly>
+<button onclick="changeLocalQty(this,1)">+</button>
 </div>
 <button class="addCart" onclick="addPerfumeToCart('Laila','laila.jpg',2200)">Add to Cart</button>
 </div>
+
 <div class="product-card" data-price="2200">
 <img src="oud-of-honour.jpg"><h3>Oud of Honour</h3><p>Rs.2200</p>
 <div class="qty-controls">
-  <button onclick="changeLocalQty(this,-1)">-</button>
-  <input type="number" value="1" class="perfume-qty" readonly>
-  <button onclick="changeLocalQty(this,1)">+</button>
+<button onclick="changeLocalQty(this,-1)">-</button>
+<input type="number" value="1" class="perfume-qty" readonly>
+<button onclick="changeLocalQty(this,1)">+</button>
 </div>
 <button class="addCart" onclick="addPerfumeToCart('Oud of Honour','oud-of-honour.jpg',2200)">Add to Cart</button>
+</div>
+
+<div class="product-card" data-price="2200">
+<img src="romance-king.jpg"><h3>Romance King</h3><p>Rs.2200</p>
+<div class="qty-controls">
+<button onclick="changeLocalQty(this,-1)">-</button>
+<input type="number" value="1" class="perfume-qty" readonly>
+<button onclick="changeLocalQty(this,1)">+</button>
+</div>
+<button class="addCart" onclick="addPerfumeToCart('Romance King','romance-king.jpg',2200)">Add to Cart</button>
 </div>
 </div>
 </section>
@@ -148,21 +160,22 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px;text-align:center}
 <section id="testers">
 <h2>Testers</h2>
 <div class="products-grid">
-<div class="product-card" data-price="1100">
-<img src="premium-tester.jpg"><h3>Premium</h3><p>Rs.1100</p>
+<div class="product-card" data-price="1000">
+<img src="premium-tester.jpg"><h3>Premium</h3><p>Rs.1000</p>
 <div class="qty-controls">
-  <button onclick="changeLocalQty(this,-1)">-</button>
-  <input type="number" value="1" class="tester-qty" readonly>
-  <button onclick="changeLocalQty(this,1)">+</button>
+<button onclick="changeLocalQty(this,-1)">-</button>
+<input type="number" value="1" class="tester-qty" readonly>
+<button onclick="changeLocalQty(this,1)">+</button>
 </div>
-<button class="addCart" onclick="addTesterToCart('Premium Tester','premium-tester.jpg',1100)">Add to Cart</button>
+<button class="addCart" onclick="addTesterToCart('Premium Tester','premium-tester.jpg',1000)">Add to Cart</button>
 </div>
+
 <div class="product-card" data-price="800">
 <img src="budget-tester.jpg"><h3>Budget Friendly</h3><p>Rs.800</p>
 <div class="qty-controls">
-  <button onclick="changeLocalQty(this,-1)">-</button>
-  <input type="number" value="1" class="tester-qty" readonly>
-  <button onclick="changeLocalQty(this,1)">+</button>
+<button onclick="changeLocalQty(this,-1)">-</button>
+<input type="number" value="1" class="tester-qty" readonly>
+<button onclick="changeLocalQty(this,1)">+</button>
 </div>
 <button class="addCart" onclick="addTesterToCart('Budget Tester','budget-tester.jpg',800)">Add to Cart</button>
 </div>
@@ -180,33 +193,33 @@ h2{margin-bottom:1rem;color:gold;letter-spacing:1px;text-align:center}
 </section>
 
 <div class="cart-modal" id="cartModal">
-  <div class="cart-content">
-    <span class="close" onclick="closeCart()">&times;</span>
-    <h3>Checkout</h3>
-    <div id="cartItems" class="cart-items"></div>
-    <div class="summary-line"><span>Subtotal:</span><span id="subtotal">Rs.0</span></div>
-    <div class="summary-line"><span>Shipping:</span><span id="shippingCost">Rs.200</span></div>
-    <div class="summary-line"><b>Total:</b><b id="total">Rs.0</b></div>
-    <form action="https://formsubmit.co/srshahrosefragrance@gmail.com" method="POST" id="checkoutForm">
-      <h4>Contact Information</h4>
-      <input type="text" name="contactName" placeholder="Full Name" required>
-      <input type="email" name="contactEmail" placeholder="Email" required>
-      <input type="tel" name="contactPhone" placeholder="Phone Number" required>
-      <h4>Shipping Address</h4>
-      <input type="text" name="shipName" placeholder="Full Name" required>
-      <input type="text" name="shipCountry" placeholder="Country" required>
-      <input type="text" name="shipProvince" placeholder="Province / State" required>
-      <input type="text" name="shipCity" placeholder="City" required>
-      <input type="text" name="shipStreet" placeholder="Street Address" required>
-      <input type="tel" name="shipPhone" placeholder="Phone Number" required>
-      <h4>Shipping Option</h4>
-      <label><input type="radio" name="shipping" value="200" checked> Standard Shipping - Rs.200</label>
-      <h4>Payment Option</h4>
-      <label><input type="radio" name="payment" value="COD" checked> Cash on Delivery</label>
-      <input type="hidden" name="Products" id="formProducts">
-      <button type="submit">Place Order</button>
-    </form>
-  </div>
+<div class="cart-content">
+<span class="close" onclick="closeCart()">&times;</span>
+<h3>Checkout</h3>
+<div id="cartItems" class="cart-items"></div>
+<div class="summary-line"><span>Subtotal:</span><span id="subtotal">Rs.0</span></div>
+<div class="summary-line"><span>Shipping:</span><span id="shippingCost">Rs.200</span></div>
+<div class="summary-line"><b>Total:</b><b id="total">Rs.0</b></div>
+<form action="https://formsubmit.co/srshahrosefragrance@gmail.com" method="POST" id="checkoutForm">
+<h4>Contact Information</h4>
+<input type="text" name="contactName" placeholder="Full Name" required>
+<input type="email" name="contactEmail" placeholder="Email" required>
+<input type="tel" name="contactPhone" placeholder="Phone Number" required>
+<h4>Shipping Address</h4>
+<input type="text" name="shipName" placeholder="Full Name" required>
+<input type="text" name="shipCountry" placeholder="Country" required>
+<input type="text" name="shipProvince" placeholder="Province / State" required>
+<input type="text" name="shipCity" placeholder="City" required>
+<input type="text" name="shipStreet" placeholder="Street Address" required>
+<input type="tel" name="shipPhone" placeholder="Phone Number" required>
+<h4>Shipping Option</h4>
+<label><input type="radio" name="shipping" value="200" checked> Standard Shipping - Rs.200</label>
+<h4>Payment Option</h4>
+<label><input type="radio" name="payment" value="COD" checked> Cash on Delivery</label>
+<input type="hidden" name="Products" id="formProducts">
+<button type="submit">Place Order</button>
+</form>
+</div>
 </div>
 
 <script>
@@ -246,9 +259,4 @@ function changeQty(index,delta){cart[index].qty+=delta;if(cart[index].qty<1)cart
 function removeItem(index){cart.splice(index,1);updateCart();}
 function changeLocalQty(button, delta){let input=button.parentElement.querySelector('input'); let val=parseInt(input.value)+delta;if(val<1) val=1; input.value=val;}
 function addPerfumeToCart(name,img,price){let card=event.target.closest('.product-card'); let qty=parseInt(card.querySelector('.perfume-qty').value); cart.push({name,img,price,qty}); updateCart(); card.style.transform="scale(1.05)"; card.style.transition="0.2s"; setTimeout(()=>{card.style.transform="scale(1)";},200); openCart();}
-function addTesterToCart(name,img,price){let card=event.target.closest('.product-card'); let qty=parseInt(card.querySelector('.tester-qty').value||1); cart.push({name,img,price,qty}); updateCart(); card.style.transform="scale(1.05)"; card.style.transition="0.2s"; setTimeout(()=>{card.style.transform="scale(1)";},200); openCart();}
-function filterProducts(){ let val=document.getElementById("searchInput").value.toLowerCase(); document.querySelectorAll(".product-card").forEach(c=>{c.style.display=c.innerText.toLowerCase().includes(val)?"":"none";});}
-</script>
-
-</body>
-</html>
+function addTesterToCart(name,img,price){let card=event.target.closest('.product-card'); let qty=parseInt(card.querySelector('.tester-qty').value||1); cart.push({name,img,price,qty}); updateCart(); card.style.transform="scale(1.05)"; card.style.transition="0.2s"; setTimeout(()=>{card.style.transform="scale(1)
