@@ -2,146 +2,176 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SR Shahrose Fragrance</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SR Shahrose Fragrance | Luxury Perfumes in Pakistan</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-body {margin:0;font-family:Montserrat;background:black;color:white;}
-header {display:flex;justify-content:space-between;align-items:center;padding:15px;background:#000;position:sticky;top:0;z-index:999;}
-.logo {font-size:22px;font-weight:600;}
-nav a {color:white;margin:0 10px;text-decoration:none;font-size:14px;}
-section {padding:30px;}
-.products {display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;}
-.card {
-  background:#111;
-  border-radius:15px;
-  padding:15px;
-  text-align:center;
-}
-.card img {width:100%;height:200px;object-fit:cover;border-radius:10px;}
-.card button {background:gold;border:none;padding:8px;border-radius:20px;margin-top:10px;cursor:pointer;}
-.size {font-size:13px;color:#ccc}
-#cartIcon {
-  position:fixed;bottom:20px;right:20px;
-  background:gold;padding:12px;border-radius:50%;
-}
-#cartIcon img {width:30px}
-#cartBox {
-  position:fixed;right:10px;bottom:90px;
-  background:white;color:black;
-  width:280px;padding:15px;
-  display:none;border-radius:15px;
-}
-.cart-item {display:flex;justify-content:space-between;font-size:14px}
+body{margin:0;font-family:Montserrat,sans-serif;background:#000;color:white;}
+header{display:flex;justify-content:space-between;align-items:center;padding:15px;background:#000;position:sticky;top:0;z-index:999;}
+.logo{font-size:22px;font-weight:600;}
+nav a{color:white;margin:0 10px;text-decoration:none;font-size:14px;}
+nav a:hover{color:#c89b3c;}
+.hamburger{display:none;font-size:28px;cursor:pointer;color:white;}
+@media(max-width:768px){.hamburger{display:block;} nav{display:none;flex-direction:column;width:100%;margin-top:10px;} nav.show{display:flex;} nav a{padding:10px 15px;border-top:1px solid rgba(255,255,255,0.1);}}
+section{padding:30px;}
+h2{text-align:center;color:gold;margin-bottom:20px;}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;}
+.card{background:#111;border-radius:15px;padding:15px;text-align:center;transition:0.3s;box-shadow:0 4px 8px rgba(0,0,0,0.5);}
+.card:hover{box-shadow:0 8px 16px rgba(255,215,0,0.3);}
+.card img{width:100%;height:200px;object-fit:cover;border-radius:10px;}
+.card button{background:gold;border:none;padding:8px;border-radius:20px;margin-top:10px;cursor:pointer;transition:0.3s;}
+.card button:hover{background:#c89b3c;color:black;}
+.size{font-size:13px;color:#ccc;margin-top:5px;}
+.testers-grid{display:flex;gap:20px;justify-content:center;margin-top:20px;}
+.tester-card{flex:1;background:white;color:black;text-align:center;padding:15px;border-radius:15px;cursor:pointer;transition:0.3s;}
+.tester-card:hover{background:gold;color:black;}
+#cartIcon{position:fixed;bottom:90px;right:20px;width:50px;height:50px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:500;box-shadow:0 4px 12px rgba(0,0,0,0.5);}
+#cartIcon:hover{background:#f0f0f0;}
+#cartBox{position:fixed;right:10px;bottom:150px;background:white;color:black;width:300px;padding:15px;border-radius:15px;display:none;z-index:600;overflow-y:auto;}
+.cart-item{display:flex;justify-content:space-between;font-size:14px;margin-bottom:8px;}
+#whatsappBtn{position:fixed;bottom:20px;right:20px;width:50px;height:50px;z-index:500;}
+#whatsappBtn img{width:100%;height:100%;object-fit:contain;border-radius:50%;box-shadow:0 4px 12px rgba(0,0,0,0.5);transition:0.3s;}
+#whatsappBtn:hover img{transform:scale(1.1);}
+.hero-slider{width:100%;height:300px;margin:20px 0;overflow:hidden;position:relative;}
+.hero-slide{width:100%;height:100%;object-fit:cover;position:absolute;opacity:0;transition:1s;}
+.hero-slide.active{opacity:1;}
+@media(max-width:1024px){.products-grid{grid-template-columns:repeat(2,1fr);}.testers-grid{flex-direction:column;}}
+@media(max-width:480px){.products-grid{grid-template-columns:1fr;}}
 </style>
 </head>
-
 <body>
 
 <header>
-<div class="logo">SR Shahrose</div>
-<nav>
-  <a href="#">Home</a>
-  <a href="#">Perfumes</a>
-  <a href="#">Testers</a>
-  <a href="#">Contact</a>
-</nav>
+  <div class="logo">SR Shahrose</div>
+  <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+  <nav id="navLinks">
+    <a href="#perfumes">Perfumes</a>
+    <a href="#testers">Testers</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
-<section>
-<h2>Perfumes (50ml)</h2>
-<div class="products">
+<!-- Hero Slider -->
+<div class="hero-slider" id="home">
+<img src="slide1.jpg" class="hero-slide active">
+<img src="slide2.jpg" class="hero-slide">
+<img src="slide3.jpg" class="hero-slide">
+</div>
 
+<!-- Perfumes Section -->
+<section id="perfumes">
+<h2>Our Perfumes (50ml)</h2>
+<div class="products-grid">
 <div class="card">
-<img src="p1.jpg">
+<img src="aura.jpg">
 <h3>Aura</h3>
 <p>Rs 3200</p>
 <p class="size">Size: 50ml</p>
 <button onclick="add('Aura',3200)">Add to Cart</button>
 </div>
-
 <div class="card">
-<img src="p2.jpg">
+<img src="romance-king.jpg">
 <h3>Romance King</h3>
 <p>Rs 2200</p>
 <p class="size">Size: 50ml</p>
 <button onclick="add('Romance King',2200)">Add to Cart</button>
 </div>
-
 <div class="card">
-<img src="p3.jpg">
+<img src="black-coat.jpg">
 <h3>Black Coat</h3>
 <p>Rs 2200</p>
 <p class="size">Size: 50ml</p>
 <button onclick="add('Black Coat',2200)">Add to Cart</button>
 </div>
-
 <div class="card">
-<img src="p4.jpg">
+<img src="laila.jpg">
 <h3>Laila</h3>
 <p>Rs 2200</p>
 <p class="size">Size: 50ml</p>
 <button onclick="add('Laila',2200)">Add to Cart</button>
 </div>
-
 <div class="card">
-<img src="p5.jpg">
+<img src="oud-of-honour.jpg">
 <h3>Oud Of Honor</h3>
 <p>Rs 2200</p>
 <p class="size">Size: 50ml</p>
 <button onclick="add('Oud Of Honor',2200)">Add to Cart</button>
 </div>
-
 </div>
 </section>
 
-<section>
+<!-- Testers Section -->
+<section id="testers">
 <h2>Testers</h2>
-<div class="products">
-
-<div class="card">
-<img src="t1.jpg">
-<h3>Premium Tester</h3>
-<p>Rs 1000</p>
-<button onclick="add('Premium Tester',1000)">Add to Cart</button>
-</div>
-
-<div class="card">
-<img src="t2.jpg">
-<h3>Budget Friendly Tester</h3>
-<p>Rs 800</p>
-<button onclick="add('Budget Tester',800)">Add to Cart</button>
-</div>
-
+<div class="testers-grid">
+<div class="tester-card" onclick="add('Premium Tester',1000)">Premium Tester - Rs 1000</div>
+<div class="tester-card" onclick="add('Budget Friendly Tester',800)">Budget Friendly Tester - Rs 800</div>
 </div>
 </section>
 
-<!-- CART -->
+<!-- About Section -->
+<section id="about">
+<h2>About SR Shahrose Fragrance</h2>
+<p>A fragrance is more than a scent; it is a memory and emotion that defines you. Our Heritage: Years of passion and luxury blended with finest ingredients. Our Commitment: Premium, long-lasting fragrances that create unforgettable moments.</p>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+<h2>Contact Us</h2>
+<p>Airport Road, Quetta, Pakistan</p>
+<p>WhatsApp: <a href="https://wa.me/03368441232" target="_blank">03368441232</a></p>
+</section>
+
+<!-- Cart Icon -->
 <div id="cartIcon" onclick="toggleCart()">
-<img src="https://cdn-icons-png.flaticon.com/512/263/263142.png">
+<i class="fas fa-shopping-cart"></i>
 </div>
 
+<!-- Cart Box -->
 <div id="cartBox">
 <h3>Cart</h3>
 <div id="items"></div>
 <p><b>Total:</b> Rs <span id="total">0</span></p>
 </div>
 
+<!-- WhatsApp Button -->
+<a href="https://wa.me/03368441232" target="_blank" id="whatsappBtn">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
 <script>
-let total=0;
+// Mobile Menu
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('show');}
+
+// Hero Slider
+let slides=document.querySelectorAll('.hero-slide'); let index=0;
+function showSlide(){slides.forEach(s=>s.classList.remove('active'));slides[index].classList.add('active');}
+setInterval(()=>{index=(index+1)%slides.length;showSlide();},4000);
+
+// Cart Function
+let total=0; let cart=[];
 function add(name,price){
-  let div=document.createElement("div");
-  div.className="cart-item";
-  div.innerHTML=name+" <b>Rs "+price+"</b>";
-  document.getElementById("items").appendChild(div);
+  cart.push({name,price});
   total+=price;
-  document.getElementById("total").innerText=total;
+  updateCart();
 }
 function toggleCart(){
-  let cart=document.getElementById("cartBox");
-  cart.style.display = cart.style.display=="block" ? "none" : "block";
+  let box=document.getElementById('cartBox');
+  box.style.display=(box.style.display=='block')?'none':'block';
 }
+function updateCart(){
+  let itemsDiv=document.getElementById('items');
+  itemsDiv.innerHTML="";
+  total=0;
+  cart.forEach((item,i)=>{
+    total+=item.price;
+    itemsDiv.innerHTML+=`<div class="cart-item">${item.name} Rs ${item.price} <button onclick="removeItem(${i})">Remove</button></div>`;
+  });
+  document.getElementById('total').innerText=total;
+}
+function removeItem(i){cart.splice(i,1);updateCart();}
 </script>
 
 </body>
