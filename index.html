@@ -1,4 +1,248 @@
-<!-- Only the cart & script part changed, rest stays same -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SR Shahrose Fragrance | Luxury Perfumes in Pakistan</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Montserrat,sans-serif;background:#000;color:white;}
+header{background:black;padding:10px 15px;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 8px rgba(0,0,0,0.5);}
+.logo{height:60px}
+.hamburger{display:none;font-size:28px;cursor:pointer}
+nav{display:flex;gap:15px}
+nav a{color:white;text-decoration:none;font-size:0.8rem;text-transform:uppercase}
+nav a:hover{color:gold}
+
+@media(max-width:768px){
+nav{display:none;flex-direction:column;width:100%;background:black;margin-top:10px}
+nav.show{display:flex}
+.hamburger{display:block}
+}
+
+.search-bar{width:90%;margin:15px auto}
+.search-bar input{width:100%;padding:10px;border-radius:20px;border:none}
+
+.hero-slider{width:90%;height:50vh;margin:1.5rem auto;border-radius:20px;overflow:hidden;position:relative}
+.slide{width:100%;height:100%;object-fit:cover;position:absolute;opacity:0;transition:1s}
+.slide.active{opacity:1}
+
+section{margin:2rem auto;padding:2rem;max-width:1200px;border-radius:20px}
+h2{text-align:center;color:gold;margin-bottom:1rem}
+
+.about-container{display:flex;gap:15px;text-align:center}
+.about-container div{flex:1;background:rgba(255,255,255,0.9);color:black;padding:20px;border-radius:15px;font-size:0.95rem;line-height:1.5;}
+
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem}
+.product-card{background:rgba(255,255,255,.1);padding:12px;border-radius:15px;text-align:center}
+.product-card img{width:100%;height:200px;object-fit:cover;border-radius:10px}
+.product-card input{width:50px;padding:5px;border:none;border-radius:5px;text-align:center}
+.addCart{background:gold;border:none;border-radius:20px;padding:6px 15px;cursor:pointer}
+
+.testers-grid{display:flex;gap:20px;justify-content:center}
+.tester-card{background:white;color:black;padding:15px;border-radius:15px;text-align:center;cursor:pointer}
+.tester-card img{width:120px;border-radius:12px;margin-bottom:8px}
+
+.cart-modal{position:fixed;top:0;right:-100%;width:400px;max-width:95%;height:100%;background:white;color:black;padding:20px;overflow:auto;transition:.4s;z-index:999}
+.cart-modal.open{right:0}
+.product-summary{display:flex;align-items:center;gap:10px;border-bottom:1px solid #ccc;margin-bottom:8px;padding-bottom:5px}
+.product-summary img{width:45px;height:45px;border-radius:5px}
+.qty-controls{display:flex;align-items:center;gap:5px;margin-left:auto}
+.qty-controls button{padding:2px 8px;cursor:pointer;background:gold;border:none;border-radius:5px;color:black;font-weight:bold}
+.qty-controls input{width:40px;text-align:center;border-radius:5px;border:1px solid #ccc;padding:2px}
+
+.summary-line{display:flex;justify-content:space-between;margin-top:8px;font-weight:bold}
+.close{position:absolute;top:10px;right:15px;cursor:pointer;font-size:22px}
+
+#cartIcon{
+  position:fixed;
+  bottom:90px;
+  right:20px;
+  width:60px;
+  height:60px;
+  background:gold;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  box-shadow:0 4px 8px rgba(0,0,0,0.3);
+  z-index:1000;
+}
+#cartIcon i{color:black;font-size:28px}
+#cartCount{
+  position:absolute;
+  top:-5px;
+  right:-5px;
+  background:red;
+  color:white;
+  border-radius:50%;
+  padding:3px 6px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+#whatsappBtn{position:fixed;bottom:20px;right:20px;width:50px}
+#whatsappBtn img{width:100%}
+
+.promo-slider, .about-slider{width:90%;height:200px;margin:2rem auto;border-radius:15px;overflow:hidden;position:relative}
+.promo-slide, .about-slide{position:absolute;width:100%;height:100%;object-fit:cover;opacity:0;transition:1s}
+.promo-slide.active, .about-slide.active{opacity:1}
+
+.follow-section{text-align:center;padding:20px;background:black}
+.social a{color:white;font-size:25px;margin:0 10px}
+.social a:hover{color:gold}
+
+@media(max-width:768px){
+.about-container,.testers-grid{flex-direction:column}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<img src="logo.jpg" class="logo">
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+<nav id="navLinks">
+<a href="#home">Home</a>
+<a href="#perfumes">Our Perfumes</a>
+<a href="#testers">Testers</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<div class="search-bar">
+<input type="text" placeholder="Search Perfumes..." id="searchInput" onkeyup="filterProducts()">
+</div>
+
+<div class="hero-slider" id="home">
+<img src="slide1.jpg" class="slide active">
+<img src="slide2.jpg" class="slide">
+<img src="slide3.jpg" class="slide">
+</div>
+
+<section id="perfumes">
+<h2>Our Perfumes</h2>
+<div class="products-grid">
+
+<div class="product-card">
+<img src="aura.jpg">
+<h3>Aura</h3>
+<p>Rs.3200</p>
+<input type="number" value="1" min="1" id="qtyAura">
+<button class="addCart" onclick="addToCart('Aura','aura.jpg',3200,'qtyAura')">Add to Cart</button>
+</div>
+
+<div class="product-card">
+<img src="romance-king.jpg">
+<h3>Romance King</h3>
+<p>Rs.2200</p>
+<input type="number" value="1" min="1" id="qtyRomance">
+<button class="addCart" onclick="addToCart('Romance King','romance-king.jpg',2200,'qtyRomance')">Add to Cart</button>
+</div>
+
+<div class="product-card">
+<img src="black-coat.jpg">
+<h3>Black Coat</h3>
+<p>Rs.2200</p>
+<input type="number" value="1" min="1" id="qtyBlack">
+<button class="addCart" onclick="addToCart('Black Coat','black-coat.jpg',2200,'qtyBlack')">Add to Cart</button>
+</div>
+
+<div class="product-card">
+<img src="laila.jpg">
+<h3>Laila</h3>
+<p>Rs.2200</p>
+<input type="number" value="1" min="1" id="qtyLaila">
+<button class="addCart" onclick="addToCart('Laila','laila.jpg',2200,'qtyLaila')">Add to Cart</button>
+</div>
+
+<div class="product-card">
+<img src="oud-of-honour.jpg">
+<h3>Oud Of Honor</h3>
+<p>Rs.2200</p>
+<input type="number" value="1" min="1" id="qtyOud">
+<button class="addCart" onclick="addToCart('Oud Of Honor','oud-of-honour.jpg',2200,'qtyOud')">Add to Cart</button>
+</div>
+
+</div>
+</section>
+
+<div class="promo-slider">
+<img src="promo1.jpg" class="promo-slide active">
+<img src="promo2.jpg" class="promo-slide">
+<img src="promo3.jpg" class="promo-slide">
+</div>
+
+<section id="testers">
+<h2>Testers</h2>
+<div class="testers-grid">
+
+<div class="tester-card" onclick="addToCart('Premium Tester','premium.jpg',1000,1)">
+<img src="premium.jpg">
+<b>Premium Tester</b><br>Rs.1000
+</div>
+
+<div class="tester-card" onclick="addToCart('Budget Tester','budget.jpg',800,1)">
+<img src="budget.jpg">
+<b>Budget Tester</b><br>Rs.800
+</div>
+
+</div>
+</section>
+
+<section id="about" style="background:white;color:black">
+<h2>About SR Shahrose Fragrance</h2>
+<div class="about-container">
+<div>
+Luxury Perfumes crafted with passion and precision. Our fragrances are made using the finest ingredients and essential oils, ensuring a long-lasting and elegant scent. Each perfume is designed to boost your confidence and leave a memorable impression. 
+</div>
+<div>
+We offer a variety of perfumes to suit every mood and occasion. From subtle, refreshing scents to bold and captivating aromas, our collection caters to every personality. Our testers allow you to experience the true essence before purchasing.
+</div>
+<div>
+Committed to excellence, SR Shahrose Fragrance combines tradition with modern perfumery techniques. Every bottle represents luxury, quality, and sophistication. Experience fragrance that speaks your style and identity.
+</div>
+</div>
+</section>
+
+<div class="about-slider">
+<img src="promo1.jpg" class="about-slide active">
+<img src="promo2.jpg" class="about-slide">
+<img src="promo3.jpg" class="about-slide">
+</div>
+
+<section id="contact">
+<h2>Contact</h2>
+<p style="text-align:center">Airport Road, Quetta</p>
+<p style="text-align:center">Whatsapp: 03368441232</p>
+</section>
+
+<div class="follow-section">
+<h2>Follow Us</h2>
+<div class="social">
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-tiktok"></i></a>
+</div>
+</div>
+
+<div id="cartIcon" onclick="openCart()">
+  <i class="fas fa-shopping-cart"></i>
+  <span id="cartCount">0</span>
+</div>
+
+<a href="https://wa.me/03368441232" id="whatsappBtn">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+</a>
+
+<!-- Cart Modal -->
 <div class="cart-modal" id="cartModal">
 <span class="close" onclick="closeCart()">&times;</span>
 <h3>Checkout</h3>
@@ -37,6 +281,17 @@
 </div>
 
 <script>
+function toggleMenu(){document.getElementById("navLinks").classList.toggle("show")}
+
+let slides=document.querySelectorAll(".slide"),i=0;
+setInterval(()=>{slides.forEach(s=>s.classList.remove("active"));i=(i+1)%slides.length;slides[i].classList.add("active")},5000)
+
+let promo=document.querySelectorAll(".promo-slide"),p=0;
+setInterval(()=>{promo.forEach(s=>s.classList.remove("active"));p=(p+1)%promo.length;promo[p].classList.add("active")},4000)
+
+let aboutSlider=document.querySelectorAll(".about-slide"),a=0;
+setInterval(()=>{aboutSlider.forEach(s=>s.classList.remove("active"));a=(a+1)%aboutSlider.length;aboutSlider[a].classList.add("active")},4000)
+
 let cart=[];
 function addToCart(name,img,price,qtyId){
 let qty=typeof qtyId==="number"?qtyId:document.getElementById(qtyId).value;
@@ -93,4 +348,14 @@ let input=document.createElement("input");
 input.type="hidden";input.name="Products";input.value=list;
 this.appendChild(input);
 });
+
+function filterProducts(){
+let val=document.getElementById("searchInput").value.toLowerCase();
+document.querySelectorAll(".product-card").forEach(c=>{
+c.style.display=c.innerText.toLowerCase().includes(val)?"":"none";
+});
+}
 </script>
+
+</body>
+</html>
