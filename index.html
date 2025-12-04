@@ -342,11 +342,30 @@ cart.splice(index,1);
 updateCart();
 }
 
-document.getElementById("checkoutForm").addEventListener("submit",function(){
-let list=cart.map(i=>`${i.name} x${i.qty}`).join(", ");
-let input=document.createElement("input");
-input.type="hidden";input.name="Products";input.value=list;
-this.appendChild(input);
+document.getElementById("checkoutForm").addEventListener("submit", function(e){
+  // Generate unique order number
+  const now = new Date();
+  const orderNumber = 'ORD-' + now.getFullYear() 
+                      + String(now.getMonth()+1).padStart(2,'0') 
+                      + String(now.getDate()).padStart(2,'0') + '-' 
+                      + String(now.getHours()).padStart(2,'0') 
+                      + String(now.getMinutes()).padStart(2,'0') 
+                      + String(now.getSeconds()).padStart(2,'0') 
+                      + '-' + Math.floor(Math.random()*9000+1000);
+
+  let orderInput = document.createElement("input");
+  orderInput.type = "hidden";
+  orderInput.name = "OrderNumber";
+  orderInput.value = orderNumber;
+  this.appendChild(orderInput);
+
+  // Add products
+  let list = cart.map(i => `${i.name} x${i.qty}`).join(", ");
+  let input = document.createElement("input");
+  input.type = "hidden";
+  input.name = "Products";
+  input.value = list;
+  this.appendChild(input);
 });
 
 function filterProducts(){
