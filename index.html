@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -242,13 +243,12 @@ Committed to excellence, SR Shahrose Fragrance combines tradition with modern pe
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </a>
 
+<!-- Cart Modal -->
 <div class="cart-modal" id="cartModal">
 <span class="close" onclick="closeCart()">&times;</span>
 <h3>Checkout</h3>
 
 <form action="https://formsubmit.co/srshahrosefragrance@gmail.com" method="POST" id="checkoutForm">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
 
 <input type="text" name="Name" placeholder="Full Name" required>
 <input type="email" name="Email" placeholder="Email" required>
@@ -343,28 +343,11 @@ cart.splice(index,1);
 updateCart();
 }
 
-document.getElementById("checkoutForm").addEventListener("submit", function(e){
-  const now = new Date();
-  const orderNumber = 'ORD-' + now.getFullYear() 
-                      + String(now.getMonth()+1).padStart(2,'0') 
-                      + String(now.getDate()).padStart(2,'0') + '-' 
-                      + String(now.getHours()).padStart(2,'0') 
-                      + String(now.getMinutes()).padStart(2,'0') 
-                      + String(now.getSeconds()).padStart(2,'0') 
-                      + '-' + Math.floor(Math.random()*9000+1000);
-
-  let orderInput = document.createElement("input");
-  orderInput.type = "hidden";
-  orderInput.name = "OrderNumber";
-  orderInput.value = orderNumber;
-  this.appendChild(orderInput);
-
-  let list = cart.map(i => `${i.name} x${i.qty}`).join(", ");
-  let input = document.createElement("input");
-  input.type = "hidden";
-  input.name = "Products";
-  input.value = list;
-  this.appendChild(input);
+document.getElementById("checkoutForm").addEventListener("submit",function(){
+let list=cart.map(i=>`${i.name} x${i.qty}`).join(", ");
+let input=document.createElement("input");
+input.type="hidden";input.name="Products";input.value=list;
+this.appendChild(input);
 });
 
 function filterProducts(){
