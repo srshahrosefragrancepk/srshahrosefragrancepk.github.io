@@ -54,8 +54,33 @@ h2{text-align:center;color:gold;margin-bottom:1rem}
 .summary-line{display:flex;justify-content:space-between;margin-top:8px;font-weight:bold}
 .close{position:absolute;top:10px;right:15px;cursor:pointer;font-size:22px}
 
-#cartIcon{position:fixed;bottom:90px;right:20px;width:50px;height:50px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center}
-#cartCount{position:absolute;top:-5px;right:-5px;background:red;color:white;border-radius:50%;padding:2px 6px}
+#cartIcon{
+  position:fixed;
+  bottom:90px;
+  right:20px;
+  width:60px;
+  height:60px;
+  background:gold;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  box-shadow:0 4px 8px rgba(0,0,0,0.3);
+  z-index:1000;
+}
+#cartIcon i{color:black;font-size:28px}
+#cartCount{
+  position:absolute;
+  top:-5px;
+  right:-5px;
+  background:red;
+  color:white;
+  border-radius:50%;
+  padding:3px 6px;
+  font-size:12px;
+  font-weight:bold;
+}
 
 #whatsappBtn{position:fixed;bottom:20px;right:20px;width:50px}
 #whatsappBtn img{width:100%}
@@ -193,8 +218,8 @@ h2{text-align:center;color:gold;margin-bottom:1rem}
 </div>
 
 <div id="cartIcon" onclick="openCart()">
-<i class="fas fa-shopping-cart"></i>
-<span id="cartCount">0</span>
+  <i class="fas fa-shopping-cart"></i>
+  <span id="cartCount">0</span>
 </div>
 
 <a href="https://wa.me/03368441232" id="whatsappBtn">
