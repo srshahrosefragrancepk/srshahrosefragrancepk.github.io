@@ -31,11 +31,11 @@ nav.show{display:flex}
 .slide{width:100%;height:100%;object-fit:cover;position:absolute;opacity:0;transition:1s}
 .slide.active{opacity:1}
 
-section{margin:2rem auto;padding:2rem;max-width:1200px;background:rgba(255,215,0,.05);border-radius:20px}
+section{margin:2rem auto;padding:2rem;max-width:1200px;border-radius:20px}
 h2{text-align:center;color:gold;margin-bottom:1rem}
 
 .about-container{display:flex;gap:15px;text-align:center}
-.about-container div{flex:1;background:rgba(255,255,255,.08);padding:15px;border-radius:15px}
+.about-container div{flex:1;background:rgba(255,255,255,0.9);color:black;padding:20px;border-radius:15px;font-size:0.95rem;line-height:1.5;}
 
 .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem}
 .product-card{background:rgba(255,255,255,.1);padding:12px;border-radius:15px;text-align:center}
@@ -85,9 +85,9 @@ h2{text-align:center;color:gold;margin-bottom:1rem}
 #whatsappBtn{position:fixed;bottom:20px;right:20px;width:50px}
 #whatsappBtn img{width:100%}
 
-.promo-slider{width:90%;height:200px;margin:2rem auto;border-radius:15px;overflow:hidden;position:relative}
-.promo-slide{position:absolute;width:100%;height:100%;object-fit:cover;opacity:0;transition:1s}
-.promo-slide.active{opacity:1}
+.promo-slider, .about-slider{width:90%;height:200px;margin:2rem auto;border-radius:15px;overflow:hidden;position:relative}
+.promo-slide, .about-slide{position:absolute;width:100%;height:100%;object-fit:cover;opacity:0;transition:1s}
+.promo-slide.active, .about-slide.active{opacity:1}
 
 .follow-section{text-align:center;padding:20px;background:black}
 .social a{color:white;font-size:25px;margin:0 10px}
@@ -193,14 +193,28 @@ h2{text-align:center;color:gold;margin-bottom:1rem}
 </div>
 </section>
 
-<section id="about">
+<!-- Updated About Section with White Background -->
+<section id="about" style="background:white;color:black">
 <h2>About SR Shahrose Fragrance</h2>
 <div class="about-container">
-<div>Luxury Perfumes with top quality oils</div>
-<div>Long lasting fragrance experience</div>
-<div>Confidence in every spray</div>
+<div>
+Luxury Perfumes crafted with passion and precision. Our fragrances are made using the finest ingredients and essential oils, ensuring a long-lasting and elegant scent. Each perfume is designed to boost your confidence and leave a memorable impression. 
+</div>
+<div>
+We offer a variety of perfumes to suit every mood and occasion. From subtle, refreshing scents to bold and captivating aromas, our collection caters to every personality. Our testers allow you to experience the true essence before purchasing.
+</div>
+<div>
+Committed to excellence, SR Shahrose Fragrance combines tradition with modern perfumery techniques. Every bottle represents luxury, quality, and sophistication. Experience fragrance that speaks your style and identity.
+</div>
 </div>
 </section>
+
+<!-- New Slider between About and Contact -->
+<div class="about-slider">
+<img src="promo1.jpg" class="about-slide active">
+<img src="promo2.jpg" class="about-slide">
+<img src="promo3.jpg" class="about-slide">
+</div>
 
 <section id="contact">
 <h2>Contact</h2>
@@ -261,6 +275,9 @@ setInterval(()=>{slides.forEach(s=>s.classList.remove("active"));i=(i+1)%slides.
 
 let promo=document.querySelectorAll(".promo-slide"),p=0;
 setInterval(()=>{promo.forEach(s=>s.classList.remove("active"));p=(p+1)%promo.length;promo[p].classList.add("active")},4000)
+
+let aboutSlider=document.querySelectorAll(".about-slide"),a=0;
+setInterval(()=>{aboutSlider.forEach(s=>s.classList.remove("active"));a=(a+1)%aboutSlider.length;aboutSlider[a].classList.add("active")},4000)
 
 let cart=[];
 function addToCart(name,img,price,qtyId){
