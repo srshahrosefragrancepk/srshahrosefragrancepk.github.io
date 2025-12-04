@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -343,11 +342,22 @@ cart.splice(index,1);
 updateCart();
 }
 
-document.getElementById("checkoutForm").addEventListener("submit",function(){
+// Generate unique order number
+function generateOrderNumber() {
+    return 'ORD-' + Math.floor(100000 + Math.random() * 900000);
+}
+
+// Add order number and products to form before submit
+document.getElementById("checkoutForm").addEventListener("submit", function(e){
 let list=cart.map(i=>`${i.name} x${i.qty}`).join(", ");
 let input=document.createElement("input");
 input.type="hidden";input.name="Products";input.value=list;
 this.appendChild(input);
+
+let orderInput=document.createElement("input");
+orderInput.type="hidden";orderInput.name="Order Number";
+orderInput.value=generateOrderNumber();
+this.appendChild(orderInput);
 });
 
 function filterProducts(){
