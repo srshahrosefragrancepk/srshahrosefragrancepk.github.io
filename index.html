@@ -47,10 +47,14 @@ h2{text-align:center;color:gold;margin-bottom:1rem}
 .tester-card{background:white;color:black;padding:15px;border-radius:15px;text-align:center;cursor:pointer}
 .tester-card img{width:120px;border-radius:12px;margin-bottom:8px}
 
-.cart-modal{position:fixed;top:0;right:-100%;width:380px;max-width:95%;height:100%;background:white;color:black;padding:20px;overflow:auto;transition:.4s;z-index:999}
+.cart-modal{position:fixed;top:0;right:-100%;width:400px;max-width:95%;height:100%;background:white;color:black;padding:20px;overflow:auto;transition:.4s;z-index:999}
 .cart-modal.open{right:0}
-.product-summary{display:flex;gap:10px;border-bottom:1px solid #ccc;margin-bottom:8px;padding-bottom:5px}
-.product-summary img{width:40px;height:40px;border-radius:5px}
+.product-summary{display:flex;align-items:center;gap:10px;border-bottom:1px solid #ccc;margin-bottom:8px;padding-bottom:5px}
+.product-summary img{width:45px;height:45px;border-radius:5px}
+.qty-controls{display:flex;align-items:center;gap:5px;margin-left:auto}
+.qty-controls button{padding:2px 8px;cursor:pointer;background:gold;border:none;border-radius:5px;color:black;font-weight:bold}
+.qty-controls input{width:40px;text-align:center;border-radius:5px;border:1px solid #ccc;padding:2px}
+
 .summary-line{display:flex;justify-content:space-between;margin-top:8px;font-weight:bold}
 .close{position:absolute;top:10px;right:15px;cursor:pointer;font-size:22px}
 
@@ -240,6 +244,7 @@ Committed to excellence, SR Shahrose Fragrance combines tradition with modern pe
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </a>
 
+<!-- Cart Modal with Quantity + Payment Options -->
 <div class="cart-modal" id="cartModal">
 <span class="close" onclick="closeCart()">&times;</span>
 <h3>Checkout</h3>
@@ -247,7 +252,7 @@ Committed to excellence, SR Shahrose Fragrance combines tradition with modern pe
 <form action="https://formsubmit.co/srshahrosefragrance@gmail.com" method="POST" id="checkoutForm">
 
 <input type="text" name="Name" placeholder="Full Name" required>
-<input type="email" name="Email" placeholder="Email">
+<input type="email" name="Email" placeholder="Email" required>
 <input type="tel" name="Phone" placeholder="Phone" required>
 
 <input type="text" name="Country" placeholder="Country" required>
@@ -262,8 +267,18 @@ Committed to excellence, SR Shahrose Fragrance combines tradition with modern pe
 <div class="summary-line"><span>Shipping</span><span>Rs.200</span></div>
 <div class="summary-line"><b>Total</b><b id="total">Rs.0</b></div>
 
-<button type="submit">Place Order</button>
+<h4>Payment Method</h4>
+<label><input type="radio" name="Payment" value="Cash on Delivery" checked> Cash on Delivery</label><br>
+<label><input type="radio" name="Payment" value="Easypaisa"> Easypaisa</label><br>
+<label><input type="radio" name="Payment" value="JazzCash"> JazzCash</label><br>
+<label><input type="radio" name="Payment" value="Bank Transfer"> Bank Transfer</label><br>
 
+<h4>Need Help?</h4>
+<a href="https://wa.me/03368441232" target="_blank" style="color:green;text-decoration:none;font-weight:bold">
+<i class="fab fa-whatsapp"></i> Contact us on WhatsApp
+</a>
+
+<button type="submit" style="margin-top:10px;padding:10px;border:none;background:gold;border-radius:10px;color:black;font-weight:bold;width:100%">Place Order</button>
 </form>
 </div>
 
@@ -298,16 +313,28 @@ function updateCart(){
 let items=document.getElementById("cartItems");
 items.innerHTML="";
 let subtotal=0;
-cart.forEach(i=>{
+cart.forEach((i,index)=>{
 subtotal+=i.price*i.qty;
-items.innerHTML+=`<div class="product-summary">
+items.innerHTML+=`
+<div class="product-summary">
 <img src="${i.img}">
-<div>${i.name} x${i.qty}</div>
+<div>${i.name}</div>
+<div class="qty-controls">
+<button onclick="changeQty(${index},-1)">-</button>
+<input type="text" value="${i.qty}" readonly>
+<button onclick="changeQty(${index},1)">+</button>
+</div>
 <div>Rs.${i.price}</div>
 </div>`;
 });
 document.getElementById("subtotal").innerText="Rs."+subtotal;
 document.getElementById("total").innerText="Rs."+(subtotal+200);
+}
+
+function changeQty(index,delta){
+cart[index].qty += delta;
+if(cart[index].qty<1) cart[index].qty=1;
+updateCart();
 }
 
 document.getElementById("checkoutForm").addEventListener("submit",function(){
