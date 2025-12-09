@@ -4,13 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SR Shahrose Fragrance | Luxury Perfumes in Pakistan</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:Montserrat,sans-serif;background:#000;color:white;}
-#discountBanner{background:white;color:black;text-align:center;padding:8px;font-weight:bold;font-size:0.9rem;position:sticky;top:0;z-index:101;border-bottom:2px solid #eee;}
-header{background:black;padding:10px 15px;position:sticky;top:40px;z-index:100;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 8px rgba(0,0,0,0.5);}
+#discountBanner{background:white;color:black;text-align:center;padding:8px;font-weight:bold;font-size:0.9rem;position:sticky;top:0;z-index:101;}
+header{background:black;padding:10px 15px;position:sticky;top:30px;z-index:100;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 8px rgba(0,0,0,0.5);}
 .logo{height:60px}
 .hamburger{display:none;font-size:28px;cursor:pointer}
 nav{display:flex;gap:15px}
@@ -48,19 +50,15 @@ h2{text-align:center;color:gold;margin-bottom:1rem}
 #cartIcon{position:fixed;bottom:90px;right:20px;width:60px;height:60px;background:gold;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 8px rgba(0,0,0,0.3);z-index:1000;}
 #cartIcon i{color:black;font-size:28px}
 #cartCount{position:absolute;top:-5px;right:-5px;background:red;color:white;border-radius:50%;padding:3px 6px;font-size:12px;font-weight:bold}
-#whatsappBtn{position:fixed;bottom:20px;right:20px;width:50px}
-#whatsappBtn img{width:100%}
+#whatsappBtn{position:fixed;bottom:20px;right:20px;width:50px}#whatsappBtn img{width:100%}
 .promo-slider, .about-slider{width:90%;height:200px;margin:2rem auto;border-radius:15px;overflow:hidden;position:relative}
 .promo-slide, .about-slide{position:absolute;width:100%;height:100%;object-fit:cover;opacity:0;transition:1s}
 .promo-slide.active, .about-slide.active{opacity:1}
 .follow-section{text-align:center;padding:20px;background:black}
 .social a{color:white;font-size:25px;margin:0 10px}
 .social a:hover{color:gold}
-.review-section{background:rgba(255,255,255,0.9);color:black;padding:20px;border-radius:15px;margin:2rem auto;max-width:1200px}
-.review-form input, .review-form textarea{width:100%;margin-bottom:10px;padding:8px;border-radius:5px;border:1px solid #ccc}
-.review-form button{background:gold;color:black;padding:8px 15px;border:none;border-radius:10px;cursor:pointer}
-.review-card{background:white;color:black;padding:10px;margin-bottom:10px;border-radius:10px;}
-.review-card .review-name{font-weight:bold}
+.review-section{background:rgba(255,255,255,0.1);padding:20px;border-radius:15px;margin:2rem 0}
+.review-card{background:rgba(255,255,255,0.2);padding:12px;margin:10px 0;border-radius:12px;}
 @media(max-width:768px){.about-container,.testers-grid{flex-direction:column}}
 </style>
 </head>
@@ -68,7 +66,7 @@ h2{text-align:center;color:gold;margin-bottom:1rem}
 
 <!-- Discount Banner -->
 <div id="discountBanner">
-🎉 All Perfumes 30% OFF | Testers 20% OFF – <span id="countdown" style="color:red;"></span> left! 🎉
+🎉 All Perfumes 30% OFF | Testers 20% OFF – <span id="countdown"></span> left! 🎉
 </div>
 
 <header>
@@ -97,7 +95,7 @@ h2{text-align:center;color:gold;margin-bottom:1rem}
 <section id="perfumes">
 <h2>Our Perfumes</h2>
 <div class="products-grid">
-<!-- Perfume Cards -->
+
 <div class="product-card">
 <span class="discount-badge">30% OFF</span>
 <img src="aura.jpg">
@@ -106,7 +104,43 @@ h2{text-align:center;color:gold;margin-bottom:1rem}
 <input type="number" value="1" min="1" id="qtyAura">
 <button class="addCart" onclick="addToCart('Aura','aura.jpg',2240,'qtyAura')">Add to Cart</button>
 </div>
-<!-- Add other 4 perfumes similarly with old price strikethrough -->
+
+<div class="product-card">
+<span class="discount-badge">30% OFF</span>
+<img src="romance-king.jpg">
+<h3>Romance King</h3>
+<p><span style="text-decoration:line-through;color:gray">Rs.2200</span> Rs.1540</p>
+<input type="number" value="1" min="1" id="qtyRomance">
+<button class="addCart" onclick="addToCart('Romance King','romance-king.jpg',1540,'qtyRomance')">Add to Cart</button>
+</div>
+
+<div class="product-card">
+<span class="discount-badge">30% OFF</span>
+<img src="black-coat.jpg">
+<h3>Black Coat</h3>
+<p><span style="text-decoration:line-through;color:gray">Rs.2200</span> Rs.1540</p>
+<input type="number" value="1" min="1" id="qtyBlack">
+<button class="addCart" onclick="addToCart('Black Coat','black-coat.jpg',1540,'qtyBlack')">Add to Cart</button>
+</div>
+
+<div class="product-card">
+<span class="discount-badge">30% OFF</span>
+<img src="laila.jpg">
+<h3>Laila</h3>
+<p><span style="text-decoration:line-through;color:gray">Rs.2200</span> Rs.1540</p>
+<input type="number" value="1" min="1" id="qtyLaila">
+<button class="addCart" onclick="addToCart('Laila','laila.jpg',1540,'qtyLaila')">Add to Cart</button>
+</div>
+
+<div class="product-card">
+<span class="discount-badge">30% OFF</span>
+<img src="oud-of-honour.jpg">
+<h3>Oud Of Honor</h3>
+<p><span style="text-decoration:line-through;color:gray">Rs.2200</span> Rs.1540</p>
+<input type="number" value="1" min="1" id="qtyOud">
+<button class="addCart" onclick="addToCart('Oud Of Honor','oud-of-honour.jpg',1540,'qtyOud')">Add to Cart</button>
+</div>
+
 </div>
 </section>
 
@@ -119,25 +153,19 @@ h2{text-align:center;color:gold;margin-bottom:1rem}
 <section id="testers">
 <h2>Testers</h2>
 <div class="testers-grid">
-<div class="tester-card" onclick="addToCart('Premium Tester','premium.jpg',800,1)">
-<span class="discount-badge">20% OFF</span>
-<img src="premium.jpg">
-<b>Premium Tester</b><br><span style="text-decoration:line-through;color:gray">Rs.1000</span> Rs.800
-</div>
-<div class="tester-card" onclick="addToCart('Budget Tester','budget.jpg',640,1)">
-<span class="discount-badge">20% OFF</span>
-<img src="budget.jpg">
-<b>Budget Tester</b><br><span style="text-decoration:line-through;color:gray">Rs.800</span> Rs.640
-</div>
+<div class="tester-card" onclick="addToCart('Premium Tester','premium.jpg',800,1)"><span class="discount-badge">20% OFF</span>
+<img src="premium.jpg"><b>Premium Tester</b><br><span style="text-decoration:line-through;color:gray">Rs.1000</span> Rs.800</div>
+<div class="tester-card" onclick="addToCart('Budget Tester','budget.jpg',640,1)"><span class="discount-badge">20% OFF</span>
+<img src="budget.jpg"><b>Budget Tester</b><br><span style="text-decoration:line-through;color:gray">Rs.800</span> Rs.640</div>
 </div>
 </section>
 
 <section id="about" style="background:white;color:black">
 <h2>About SR Shahrose Fragrance</h2>
 <div class="about-container">
-<div>Luxury Perfumes crafted with passion and precision...</div>
+<div>Luxury Perfumes crafted with passion...</div>
 <div>We offer a variety of perfumes to suit every mood...</div>
-<div>Committed to excellence, SR Shahrose Fragrance combines...</div>
+<div>Committed to excellence, SR Shahrose Fragrance combines tradition...</div>
 </div>
 </section>
 
@@ -153,6 +181,16 @@ h2{text-align:center;color:gold;margin-bottom:1rem}
 <p style="text-align:center">Whatsapp: 03368441232</p>
 </section>
 
+<section id="reviews">
+<h2>Reviews</h2>
+<div class="review-section" id="reviewSection"></div>
+<form id="reviewForm">
+<input type="text" id="reviewer" placeholder="Your Name" required>
+<textarea id="reviewText" placeholder="Your Review" required></textarea>
+<button type="submit" style="background:gold;color:black;padding:8px 15px;border:none;border-radius:8px;margin-top:5px">Submit Review</button>
+</form>
+</section>
+
 <div class="follow-section">
 <h2>Follow Us</h2>
 <div class="social">
@@ -162,79 +200,51 @@ h2{text-align:center;color:gold;margin-bottom:1rem}
 </div>
 </div>
 
-<!-- Review Section -->
-<section id="reviews" class="review-section">
-<h2>Customer Reviews</h2>
-<div id="reviewsContainer"></div>
-<h3>Submit Your Review</h3>
-<form class="review-form" id="reviewForm">
-<input type="text" id="reviewName" placeholder="Your Name" required>
-<textarea id="reviewText" rows="3" placeholder="Write your review" required></textarea>
-<button type="submit">Submit Review</button>
-</form>
-</section>
+<div id="cartIcon" onclick="openCart()">
+  <i class="fas fa-shopping-cart"></i>
+  <span id="cartCount">0</span>
+</div>
 
-<div id="cartIcon" onclick="openCart()"><i class="fas fa-shopping-cart"></i><span id="cartCount">0</span></div>
-<a href="https://wa.me/03368441232" id="whatsappBtn"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"></a>
+<a href="https://wa.me/03368441232" id="whatsappBtn">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+</a>
 
-<!-- Cart Modal (same as your previous code) -->
+<!-- Cart Modal -->
 <div class="cart-modal" id="cartModal">
 <span class="close" onclick="closeCart()">&times;</span>
 <h3>Checkout</h3>
-<!-- Checkout form here same as your code -->
+<form action="https://formsubmit.co/srshahrosefragrance@gmail.com" method="POST" id="checkoutForm">
+<!-- Form fields, hidden inputs and order summary here -->
+</form>
 </div>
 
 <script>
-// Countdown
-let endDate = new Date(); endDate.setDate(endDate.getDate()+6);
-function updateCountdown(){
-let now=new Date(); let diff=endDate-now;
-if(diff<=0){document.getElementById('countdown').innerText='Offer Ended';return;}
-let days=Math.floor(diff/(1000*60*60*24));
-let hrs=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-let mins=Math.floor((diff%(1000*60*60))/(1000*60));
-let secs=Math.floor((diff%(1000*60))/1000);
-document.getElementById('countdown').innerText=`${days}d ${hrs}h ${mins}m ${secs}s`;
-}
+// Discount Countdown
+let endDate=new Date();endDate.setDate(endDate.getDate()+6);
+function updateCountdown(){let now=new Date();let diff=endDate-now;if(diff<=0){document.getElementById('countdown').innerText='Offer Ended';return;}let d=Math.floor(diff/(1000*60*60*24));let h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));let m=Math.floor((diff%(1000*60*60))/(1000*60));let s=Math.floor((diff%(1000*60))/1000);document.getElementById('countdown').innerText=`${d}d ${h}h ${m}m ${s}s`}
 setInterval(updateCountdown,1000);
 
-// Hamburger Menu
-function toggleMenu(){document.getElementById('navLinks').classList.toggle('show')}
+// Navigation Toggle
+function toggleMenu(){document.getElementById("navLinks").classList.toggle("show")}
 
-// Sliders code same as before
+// Sliders
+let slides=document.querySelectorAll(".slide"),i=0;setInterval(()=>{slides.forEach(s=>s.classList.remove("active"));i=(i+1)%slides.length;slides[i].classList.add("active")},5000);
+let promo=document.querySelectorAll(".promo-slide"),p=0;setInterval(()=>{promo.forEach(s=>s.classList.remove("active"));p=(p+1)%promo.length;promo[p].classList.add("active")},4000);
+let aboutSlider=document.querySelectorAll(".about-slide"),a=0;setInterval(()=>{aboutSlider.forEach(s=>s.classList.remove("active"));a=(a+1)%aboutSlider.length;aboutSlider[a].classList.add("active")},4000);
 
-// Cart code same as before
+// Cart Functionality
+let cart=[];
+function addToCart(name,img,price,qtyId){let qty=typeof qtyId==='number'?qtyId:document.getElementById(qtyId).value;qty=parseInt(qty);let found=cart.find(i=>i.name===name);found?found.qty+=qty:cart.push({name,img,price,qty});document.getElementById('cartCount').innerText=cart.reduce((a,b)=>a+b.qty,0);openCart();updateCart();}
+function openCart(){document.getElementById('cartModal').classList.add('open');updateCart();}
+function closeCart(){document.getElementById('cartModal').classList.remove('open');}
+function updateCart(){let items=document.getElementById('cartItems');items.innerHTML='';let subtotal=0;cart.forEach((i,index)=>{subtotal+=i.price*i.qty;items.innerHTML+=`<div class="product-summary"><img src="${i.img}"><div>${i.name}</div><div class="qty-controls"><button onclick="changeQty(${index},-1)">-</button><input type="text" value="${i.qty}" readonly><button onclick="changeQty(${index},1)">+</button></div><div>Rs.${i.price}</div><button style="margin-left:auto;background:red;color:white;border:none;padding:3px 6px;border-radius:5px;cursor:pointer" onclick="removeItem(${index})">Remove</button></div>`});
+}
+function changeQty(index,delta){cart[index].qty+=delta;if(cart[index].qty<1)cart[index].qty=1;updateCart();}
+function removeItem(index){cart.splice(index,1);updateCart();}
 
 // Reviews
 let reviews=[
-{name:'Hamza Baloch',text:'Amazing perfume, very long lasting!',approved:true},
-{name:'Hania Ch',text:'Loved the fragrance, highly recommend.',approved:true},
-{name:'Hiba Batool',text:'Great quality, good packaging.',approved:true},
-{name:'Naseebullah Kakar',text:'Perfect for gifting.',approved:true},
-{name:'Riaz Ahmad',text:'Affordable and premium feel.',approved:true},
-{name:'Noor Khan',text:'Satisfied with my purchase.',approved:true}
-];
-
-function displayReviews(){
-let container=document.getElementById('reviewsContainer');
-container.innerHTML='';
-reviews.filter(r=>r.approved).forEach(r=>{
-let div=document.createElement('div');div.className='review-card';
-div.innerHTML=`<p class='review-name'>${r.name}</p><p>${r.text}</p>`;
-container.appendChild(div);
-});
-}
-displayReviews();
-
-document.getElementById('reviewForm').addEventListener('submit',function(e){
-e.preventDefault();
-let name=document.getElementById('reviewName').value;
-let text=document.getElementById('reviewText').value;
-reviews.push({name,text,approved:false});
-alert('Review submitted for approval');
-displayReviews();
-this.reset();
-});
-</script>
-</body>
-</html>
+{name:'Hamza Baloch',text:'Amazing fragrance!'},
+{name:'Hania Ch',text:'Love the scent!'},
+{name:'Hiba Batool',text:'Highly recommend!'},
+{name:'Naseebullah Kakar',text:'Great quality.'},
