@@ -28,8 +28,6 @@ nav.show{display:flex;}
 .slide.active{opacity:1;}
 section{margin:2rem auto;padding:2rem;max-width:1200px;border-radius:20px;}
 h2{text-align:center;color:gold;margin-bottom:1rem;}
-.about-container{display:flex;gap:15px;text-align:center;}
-.about-container div{flex:1;background:rgba(255,255,255,0.9);color:black;padding:20px;border-radius:15px;font-size:0.95rem;line-height:1.5;}
 .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;}
 .product-card{background:rgba(255,255,255,.1);padding:12px;border-radius:15px;text-align:center;position:relative;}
 .product-card img{width:100%;height:200px;object-fit:cover;border-radius:10px;}
@@ -38,46 +36,17 @@ h2{text-align:center;color:gold;margin-bottom:1rem;}
 .discount-badge{position:absolute;top:10px;left:10px;background:red;color:white;padding:5px 8px;border-radius:5px;font-size:0.8rem;font-weight:bold;}
 .old-price{text-decoration:line-through;color:gray;font-size:14px;margin-bottom:4px;}
 .new-price{color:#d60000;font-weight:bold;font-size:16px;}
-.testers-grid{display:flex;gap:20px;justify-content:center;}
-.tester-card{background:white;color:black;padding:15px;border-radius:15px;text-align:center;cursor:pointer;position:relative;}
-.tester-card img{width:120px;border-radius:12px;margin-bottom:8px;}
-.tester-card .discount-badge{background:blue;color:white;top:5px;left:5px;}
-.cart-modal{position:fixed;top:0;right:-100%;width:400px;max-width:95%;height:100%;background:white;color:black;padding:20px;overflow:auto;transition:.4s;z-index:999;}
-.cart-modal.open{right:0;}
-.product-summary{display:flex;align-items:center;gap:10px;border-bottom:1px solid #ccc;margin-bottom:8px;padding-bottom:5px;}
-.product-summary img{width:45px;height:45px;border-radius:5px;}
-.qty-controls{display:flex;align-items:center;gap:5px;margin-left:auto;}
-.qty-controls button{padding:2px 8px;cursor:pointer;background:gold;border:none;border-radius:5px;color:black;font-weight:bold;}
-.qty-controls input{width:40px;text-align:center;border-radius:5px;border:1px solid #ccc;padding:2px;}
-.summary-line{display:flex;justify-content:space-between;margin-top:8px;font-weight:bold;}
-.close{position:absolute;top:10px;right:15px;cursor:pointer;font-size:22px;}
-#cartIcon{position:fixed;bottom:90px;right:20px;width:60px;height:60px;background:gold;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 8px rgba(0,0,0,0.3);z-index:1000;}
-#cartIcon i{color:black;font-size:28px;}
-#cartCount{position:absolute;top:-5px;right:-5px;background:red;color:white;border-radius:50%;padding:3px 6px;font-size:12px;font-weight:bold;}
-#whatsappBtn{position:fixed;bottom:20px;right:20px;width:50px;}
-#whatsappBtn img{width:100%;}
-.promo-slider,.about-slider{width:90%;height:200px;margin:2rem auto;border-radius:15px;overflow:hidden;position:relative;}
-.promo-slide,.about-slide{position:absolute;width:100%;height:100%;object-fit:cover;opacity:0;transition:1s;}
-.promo-slide.active,.about-slide.active{opacity:1;}
-.follow-section{text-align:center;padding:20px;background:black;}
-.social a{color:white;font-size:25px;margin:0 10px;}
-.social a:hover{color:gold;}
-.reviews-container{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-top:20px;}
-.review-card{background:#222;padding:15px;border-radius:10px;width:250px;color:white;position:relative;}
-.review-card .stars{color:gold;margin-bottom:5px;}
-.review-card button{position:absolute;top:5px;right:5px;background:red;color:white;border:none;border-radius:5px;padding:2px 5px;cursor:pointer;}
-@media(max-width:768px){.about-container,.testers-grid{flex-direction:column;}}
+@media(max-width:768px){.products-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 
-<!-- Discount Banner -->
 <div id="discountBanner">
 🎉 30% OFF on Perfumes | 20% OFF on Testers — <span id="countdown"></span> left! 🎉
 </div>
 <script>
-let endDate = new Date(); endDate.setDate(endDate.getDate() + 6);
-function updateCountdown(){let now=new Date();let diff=endDate-now;if(diff<=0){document.getElementById('countdown').innerText="Offer Ended";return;}let days=Math.floor(diff/(1000*60*60*24));let hrs=Math.floor((diff%(1000*60*60*24))/(1000*60*60));let mins=Math.floor((diff%(1000*60*60))/(1000*60));let secs=Math.floor((diff%(1000*60))/1000);document.getElementById('countdown').innerText=`${days}d ${hrs}h ${mins}m ${secs}s`;}
+let endDate=new Date(); endDate.setDate(endDate.getDate()+6);
+function updateCountdown(){let now=new Date(); let diff=endDate-now; if(diff<=0){document.getElementById('countdown').innerText="Offer Ended"; return;} let days=Math.floor(diff/(1000*60*60*24)); let hrs=Math.floor((diff%(1000*60*60*24))/(1000*60*60)); let mins=Math.floor((diff%(1000*60*60))/(1000*60)); let secs=Math.floor((diff%(1000*60))/1000); document.getElementById('countdown').innerText=`${days}d ${hrs}h ${mins}m ${secs}s`;}
 setInterval(updateCountdown,1000);
 </script>
 
@@ -98,18 +67,16 @@ setInterval(updateCountdown,1000);
 <input type="text" placeholder="Search Perfumes..." id="searchInput" onkeyup="filterProducts()">
 </div>
 
-<!-- Hero Slider -->
 <div class="hero-slider" id="home">
 <img src="slide1.jpg" class="slide active">
 <img src="slide2.jpg" class="slide">
 <img src="slide3.jpg" class="slide">
 </div>
 
-<!-- Perfumes Section -->
 <section id="perfumes">
 <h2>Our Perfumes</h2>
 <div class="products-grid">
-<!-- Perfume 1 -->
+
 <div class="product-card">
 <span class="discount-badge">30% OFF</span>
 <img src="aura.jpg">
@@ -119,14 +86,60 @@ setInterval(updateCountdown,1000);
 <input type="number" value="1" min="1" id="qtyAura">
 <button class="addCart" onclick="addToCart('Aura','aura.jpg',2240,'qtyAura')">Add to Cart</button>
 </div>
-<!-- Repeat other 4 perfumes similarly -->
+
+<div class="product-card">
+<span class="discount-badge">30% OFF</span>
+<img src="romance-king.jpg">
+<h3>Romance King</h3>
+<p class="old-price">Rs.2200</p>
+<p class="new-price">Rs.1540</p>
+<input type="number" value="1" min="1" id="qtyRomance">
+<button class="addCart" onclick="addToCart('Romance King','romance-king.jpg',1540,'qtyRomance')">Add to Cart</button>
+</div>
+
+<div class="product-card">
+<span class="discount-badge">30% OFF</span>
+<img src="black-coat.jpg">
+<h3>Black Coat</h3>
+<p class="old-price">Rs.2200</p>
+<p class="new-price">Rs.1540</p>
+<input type="number" value="1" min="1" id="qtyBlack">
+<button class="addCart" onclick="addToCart('Black Coat','black-coat.jpg',1540,'qtyBlack')">Add to Cart</button>
+</div>
+
+<div class="product-card">
+<span class="discount-badge">30% OFF</span>
+<img src="laila.jpg">
+<h3>Laila</h3>
+<p class="old-price">Rs.2200</p>
+<p class="new-price">Rs.1540</p>
+<input type="number" value="1" min="1" id="qtyLaila">
+<button class="addCart" onclick="addToCart('Laila','laila.jpg',1540,'qtyLaila')">Add to Cart</button>
+</div>
+
+<div class="product-card">
+<span class="discount-badge">30% OFF</span>
+<img src="oud-of-honour.jpg">
+<h3>Oud Of Honor</h3>
+<p class="old-price">Rs.2200</p>
+<p class="new-price">Rs.1540</p>
+<input type="number" value="1" min="1" id="qtyOud">
+<button class="addCart" onclick="addToCart('Oud Of Honor','oud-of-honour.jpg',1540,'qtyOud')">Add to Cart</button>
+</div>
+
 </div>
 </section>
+  <!-- Promo Slider -->
+<div class="promo-slider">
+<img src="promo1.jpg" class="promo-slide active">
+<img src="promo2.jpg" class="promo-slide">
+<img src="promo3.jpg" class="promo-slide">
+</div>
 
-<!-- Testers Section -->
 <section id="testers">
 <h2>Testers</h2>
 <div class="testers-grid">
+
 <div class="tester-card" onclick="addToCart('Premium Tester','premium.jpg',800,1)">
 <span class="discount-badge">20% OFF</span>
 <img src="premium.jpg">
@@ -134,6 +147,7 @@ setInterval(updateCountdown,1000);
 <p class="old-price">Rs.1000</p>
 <p class="new-price">Rs.800</p>
 </div>
+
 <div class="tester-card" onclick="addToCart('Budget Tester','budget.jpg',640,1)">
 <span class="discount-badge">20% OFF</span>
 <img src="budget.jpg">
@@ -141,71 +155,148 @@ setInterval(updateCountdown,1000);
 <p class="old-price">Rs.800</p>
 <p class="new-price">Rs.640</p>
 </div>
+
 </div>
 </section>
 
-<!-- About Section -->
 <section id="about" style="background:white;color:black;">
 <h2>About SR Shahrose Fragrance</h2>
 <div class="about-container">
-<div>Luxury perfumes crafted with passion. Long-lasting and elegant scents.</div>
-<div>Variety for every mood. Testers to try before buying.</div>
-<div>Commitment to excellence and sophistication in every bottle.</div>
+<div>
+Luxury Perfumes crafted with passion and precision. Our fragrances are made using the finest ingredients and essential oils, ensuring a long-lasting and elegant scent. Each perfume is designed to boost your confidence and leave a memorable impression. 
+</div>
+<div>
+We offer a variety of perfumes to suit every mood and occasion. From subtle, refreshing scents to bold and captivating aromas, our collection caters to every personality. Our testers allow you to experience the true essence before purchasing.
+</div>
+<div>
+Committed to excellence, SR Shahrose Fragrance combines tradition with modern perfumery techniques. Every bottle represents luxury, quality, and sophistication. Experience fragrance that speaks your style and identity.
+</div>
 </div>
 </section>
 
+<!-- About Slider -->
+<div class="about-slider">
+<img src="promo1.jpg" class="about-slide active">
+<img src="promo2.jpg" class="about-slide">
+<img src="promo3.jpg" class="about-slide">
+</div>
+
+<script>
+// Hero slider
+let slides=document.querySelectorAll(".slide"),i=0;
+setInterval(()=>{slides.forEach(s=>s.classList.remove("active")); i=(i+1)%slides.length; slides[i].classList.add("active");},5000);
+
+// Promo slider
+let promo=document.querySelectorAll(".promo-slide"),p=0;
+setInterval(()=>{promo.forEach(s=>s.classList.remove("active")); p=(p+1)%promo.length; promo[p].classList.add("active");},4000);
+
+// About slider
+let aboutSlider=document.querySelectorAll(".about-slide"),a=0;
+setInterval(()=>{aboutSlider.forEach(s=>s.classList.remove("active")); a=(a+1)%aboutSlider.length; aboutSlider[a].classList.add("active");},4000);
+
+// Hamburger toggle
+function toggleMenu(){document.getElementById("navLinks").classList.toggle("show");}
+
+// Product search filter
+function filterProducts(){
+let val=document.getElementById("searchInput").value.toLowerCase();
+document.querySelectorAll(".product-card").forEach(c=>{c.style.display=c.innerText.toLowerCase().includes(val)?"":"none";});
+}
+</script>
 <!-- Reviews Section -->
-<section id="reviews">
-<h2>Customer Reviews</h2>
-<div class="reviews-container" id="reviewsContainer">
-<!-- Example reviews -->
-<div class="review-card">
-<div class="stars">★★★★★</div>
-<p>Very nice fragrance! – Hamza Baloch</p>
-<button onclick="removeReview(this)">X</button>
+<section id="reviews" style="background:#111;color:white;padding:2rem;">
+<h2 style="color:gold;text-align:center;">Customer Reviews</h2>
+<div class="reviews-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:20px;">
+
+<div class="review-card" style="background:#222;padding:15px;border-radius:15px;text-align:center;">
+<p>"Amazing fragrance! Loved it."</p>
+<p><b>Hamza Baloch</b></p>
+<p>⭐⭐⭐⭐⭐</p>
 </div>
-<div class="review-card">
-<div class="stars">★★★★★</div>
-<p>Love the scent. Highly recommended! – Hania Ch</p>
-<button onclick="removeReview(this)">X</button>
+
+<div class="review-card" style="background:#222;padding:15px;border-radius:15px;text-align:center;">
+<p>"Very elegant scent, lasts long."</p>
+<p><b>Hania Ch</b></p>
+<p>⭐⭐⭐⭐⭐</p>
 </div>
-<!-- New review form -->
-<div style="width:100%;text-align:center;margin-top:20px;">
-<input type="text" placeholder="Your Name" id="reviewName">
-<select id="reviewStars">
-<option value="1">★</option><option value="2">★★</option><option value="3">★★★</option><option value="4">★★★★</option><option value="5" selected>★★★★★</option>
-</select>
-<textarea id="reviewText" placeholder="Write your review"></textarea><br>
-<button onclick="addReview()">Submit Review</button>
+
+<div class="review-card" style="background:#222;padding:15px;border-radius:15px;text-align:center;">
+<p>"Affordable and luxurious."</p>
+<p><b>Hiba Batool</b></p>
+<p>⭐⭐⭐⭐⭐</p>
 </div>
+
+<div class="review-card" style="background:#222;padding:15px;border-radius:15px;text-align:center;">
+<p>"Perfumes are just wow!"</p>
+<p><b>Naseebullah Kakar</b></p>
+<p>⭐⭐⭐⭐⭐</p>
 </div>
+
+<div class="review-card" style="background:#222;padding:15px;border-radius:15px;text-align:center;">
+<p>"Highly recommended."</p>
+<p><b>Riaz Ahmad</b></p>
+<p>⭐⭐⭐⭐⭐</p>
+</div>
+
+<div class="review-card" style="background:#222;padding:15px;border-radius:15px;text-align:center;">
+<p>"Loved the tester option."</p>
+<p><b>Noor Khan</b></p>
+<p>⭐⭐⭐⭐⭐</p>
+</div>
+
+</div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" style="padding:2rem;background:#000;color:white;">
+<h2 style="text-align:center;color:gold;">Contact Us</h2>
+<p style="text-align:center;">Airport Road, Quetta</p>
+<p style="text-align:center;">Whatsapp: 03368441232</p>
 </section>
 
 <!-- Cart Icon -->
-<div id="cartIcon" onclick="openCart()"><i class="fas fa-shopping-cart"></i><span id="cartCount">0</span></div>
-<a href="https://wa.me/03368441232" id="whatsappBtn"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"></a>
+<div id="cartIcon" onclick="openCart()">
+  <i class="fas fa-shopping-cart"></i>
+  <span id="cartCount">0</span>
+</div>
 
-<!-- Cart Modal -->
+<!-- WhatsApp Button -->
+<a href="https://wa.me/03368441232" id="whatsappBtn" target="_blank" style="position:fixed;bottom:20px;right:20px;width:50px;">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:100%">
+</a>
+
+<!-- Cart Modal with Checkout Form -->
 <div class="cart-modal" id="cartModal">
 <span class="close" onclick="closeCart()">&times;</span>
 <h3>Checkout</h3>
+
 <form action="https://formsubmit.co/srshahrosefragrance@gmail.com" method="POST" id="checkoutForm">
+
 <input type="text" name="Name" placeholder="Full Name" required>
 <input type="email" name="Email" placeholder="Email" required>
 <input type="tel" name="Phone" placeholder="Phone" required>
+
 <input type="text" name="Country" placeholder="Country" required>
 <input type="text" name="Province" placeholder="Province" required>
 <input type="text" name="City" placeholder="City" required>
 <input type="text" name="Street" placeholder="Street Address" required>
+
 <input type="hidden" name="Order Number" id="orderNoField">
 <input type="hidden" name="Products" id="productsField">
 <input type="hidden" name="Total" id="totalField">
 
 <h4>Order Summary</h4>
 <div id="cartItems"></div>
-<div class="summary-line"><span>Subtotal</span><span id="subtotal">Rs.0</span></div>
-<div class="summary-line"><span>Shipping</span><span>Rs.200</span></div>
-<div class="summary-line"><b>Total</b><b id="total">Rs.0</b></div>
+
+<div class="summary-line" style="display:flex;justify-content:space-between;margin-top:5px;">
+<span>Subtotal</span><span id="subtotal">Rs.0</span>
+</div>
+<div class="summary-line" style="display:flex;justify-content:space-between;margin-top:5px;">
+<span>Shipping</span><span>Rs.200</span>
+</div>
+<div class="summary-line" style="display:flex;justify-content:space-between;margin-top:5px;font-weight:bold;">
+<span>Total</span><span id="total">Rs.0</span>
+</div>
 
 <h4>Payment Method</h4>
 <label><input type="radio" name="Payment" value="Cash on Delivery" checked> Cash on Delivery</label><br>
@@ -213,61 +304,68 @@ setInterval(updateCountdown,1000);
 <label><input type="radio" name="Payment" value="JazzCash"> JazzCash</label><br>
 <label><input type="radio" name="Payment" value="Bank Transfer"> Bank Transfer</label><br>
 
+<h4>Need Help?</h4>
+<a href="https://wa.me/03368441232" target="_blank" style="color:green;text-decoration:none;font-weight:bold">
+<i class="fab fa-whatsapp"></i> Contact us on WhatsApp
+</a>
+
 <button type="submit" style="margin-top:10px;padding:10px;border:none;background:gold;border-radius:10px;color:black;font-weight:bold;width:100%">Place Order</button>
 </form>
 </div>
 
 <script>
-function toggleMenu(){document.getElementById("navLinks").classList.toggle("show");}
-let slides=document.querySelectorAll(".slide"),i=0;
-setInterval(()=>{slides.forEach(s=>s.classList.remove("active"));i=(i+1)%slides.length;slides[i].classList.add("active");},5000);
-
-// Cart
+// Cart functionality
 let cart=[];
 function addToCart(name,img,price,qtyId){
-let qty=typeof qtyId==="number"?qtyId:document.getElementById(qtyId).value; qty=parseInt(qty);
-let found=cart.find(i=>i.name===name); found?found.qty+=qty:cart.push({name,img,price,qty});
+let qty=typeof qtyId==="number"?qtyId:document.getElementById(qtyId).value;
+qty=parseInt(qty);
+let found=cart.find(i=>i.name===name);
+found?found.qty+=qty:cart.push({name,img,price,qty});
 document.getElementById("cartCount").innerText=cart.reduce((a,b)=>a+b.qty,0);
-openCart(); updateCart();
+openCart();updateCart();
 }
-function openCart(){document.getElementById("cartModal").classList.add("open");updateCart();}
-function closeCart(){document.getElementById("cartModal").classList.remove("open");}
+
+function openCart(){document.getElementById("cartModal").classList.add("open");updateCart()}
+function closeCart(){document.getElementById("cartModal").classList.remove("open")}
+
 function updateCart(){
-let items=document.getElementById("cartItems"); items.innerHTML=""; let subtotal=0;
-cart.forEach((i,index)=>{ subtotal+=i.price*i.qty; items.innerHTML+=`<div class="product-summary"><img src="${i.img}"><div>${i.name}</div><div class="qty-controls"><button onclick="changeQty(${index},-1)">-</button><input type="text" value="${i.qty}" readonly><button onclick="changeQty(${index},1)">+</button></div><div>Rs.${i.price}</div><button style="margin-left:auto;background:red;color:white;border:none;padding:3px 6px;border-radius:5px;cursor:pointer" onclick="removeItem(${index})">Remove</button></div>`; });
+let items=document.getElementById("cartItems");
+items.innerHTML="";
+let subtotal=0;
+cart.forEach((i,index)=>{
+subtotal+=i.price*i.qty;
+items.innerHTML+=`
+<div class="product-summary" style="display:flex;align-items:center;gap:10px;border-bottom:1px solid #ccc;margin-bottom:8px;padding-bottom:5px">
+<img src="${i.img}" style="width:45px;height:45px;border-radius:5px">
+<div>${i.name}</div>
+<div class="qty-controls" style="display:flex;align-items:center;gap:5px;margin-left:auto">
+<button onclick="changeQty(${index},-1)">-</button>
+<input type="text" value="${i.qty}" readonly style="width:40px;text-align:center;border-radius:5px;border:1px solid #ccc;padding:2px">
+<button onclick="changeQty(${index},1)">+</button>
+</div>
+<div>Rs.${i.price}</div>
+<button style="margin-left:auto;background:red;color:white;border:none;padding:3px 6px;border-radius:5px;cursor:pointer" onclick="removeItem(${index})">Remove</button>
+</div>`;
+});
 document.getElementById("subtotal").innerText="Rs."+subtotal;
 document.getElementById("total").innerText="Rs."+(subtotal+200);
 document.getElementById("cartCount").innerText=cart.reduce((a,b)=>a+b.qty,0);
 }
-function changeQty(index,delta){cart[index].qty+=delta;if(cart[index].qty<1)cart[index].qty=1;updateCart();}
+
+function changeQty(index,delta){cart[index].qty += delta;if(cart[index].qty<1) cart[index].qty=1;updateCart();}
 function removeItem(index){cart.splice(index,1);updateCart();}
 
-// Checkout form
-function generateOrderNumber(){return 'ORD-'+Math.floor(100000+Math.random()*900000);}
-document.getElementById("checkoutForm").addEventListener("submit",function(e){
+// Generate unique order number
+function generateOrderNumber(){return 'ORD-' + Math.floor(100000 + Math.random() * 900000);}
+
+// On form submit
+document.getElementById("checkoutForm").addEventListener("submit", function(e){
 let order=generateOrderNumber();
 document.getElementById("orderNoField").value=order;
 let products=cart.map(i=>`${i.name} x${i.qty}`).join(", ");
 document.getElementById("productsField").value=products;
 document.getElementById("totalField").value=document.getElementById("total").innerText;
-let msg=`New Order\nOrder No: ${order}\nName: ${this.Name.value}\nPhone: ${this.Phone.value}\nAddress:\n${this.City.value}, ${this.Province.value}, ${this.Country.value}\n${this.Street.value}\nProducts:\n${products}\nTotal: ${document.getElementById("total").innerText}\nPayment: ${document.querySelector('input[name="Payment"]:checked').value}`;
+let msg=`New Order\nOrder No: ${order}\n\nName: ${this.Name.value}\nPhone: ${this.Phone.value}\n\nAddress:\n${this.City.value}, ${this.Province.value}, ${this.Country.value}\n${this.Street.value}\n\nProducts:\n${products}\n\nTotal: ${document.getElementById("total").innerText}\n\nPayment: ${document.querySelector('input[name="Payment"]:checked').value}`;
 window.open("https://wa.me/923368441232?text="+encodeURIComponent(msg));
 });
 
-// Reviews
-function addReview(){
-let name=document.getElementById("reviewName").value;
-let text=document.getElementById("reviewText").value;
-let stars=document.getElementById("reviewStars").value;
-if(name && text){
-let container=document.getElementById("reviewsContainer");
-let div=document.createElement("div"); div.className="review-card";
-div.innerHTML=`<div class="stars">${"★".repeat(stars)}</div><p>${text} – ${name}</p><button onclick="removeReview(this)">X</button>`;
-container.appendChild(div);
-document.getElementById("reviewName").value=""; document.getElementById("reviewText").value=""; document.getElementById("reviewStars").value=5;
-}}
-function removeReview(btn){btn.parentElement.remove();}
-
-</script>
-</body>
-</html>
