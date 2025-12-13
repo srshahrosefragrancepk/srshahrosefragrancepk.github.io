@@ -141,13 +141,11 @@ position:fixed;bottom:20px;right:20px;width:55px
 <input type="text" placeholder="Search Perfumes...">
 </div>
 
-<!-- HERO SLIDER -->
 <div class="hero-slider" id="home">
 <img src="slide1.jpg" class="slide active">
 <img src="slide2.jpg" class="slide">
 <img src="slide3.jpg" class="slide">
 </div>
-
 <!-- PERFUMES -->
 <section id="perfumes">
 <h2>Our Perfumes</h2>
@@ -201,7 +199,7 @@ position:fixed;bottom:20px;right:20px;width:55px
 </div>
 </section>
 
-<!-- PROMO SLIDER (WAPIS SAHI JAGAH) -->
+<!-- PROMO SLIDER (SAME POSITION) -->
 <div class="promo-slider">
 <img src="promo1.jpg" class="promo-slide active">
 <img src="promo2.jpg" class="promo-slide">
@@ -228,7 +226,6 @@ position:fixed;bottom:20px;right:20px;width:55px
 <h2>Customer Reviews</h2>
 <p style="text-align:center">⭐⭐⭐⭐⭐ Trusted by customers all over Pakistan</p>
 </section>
-
 <!-- CONTACT -->
 <section id="contact">
 <h2>Contact</h2>
@@ -258,11 +255,23 @@ position:fixed;bottom:20px;right:20px;width:55px
 <!-- CART MODAL -->
 <div class="cart-modal" id="cartModal">
 <h3>Checkout</h3>
-<button onclick="closeCart()">Close</button>
-<p>Checkout form yahin hai (unchanged)</p>
+<button onclick="closeCart()" style="margin-bottom:10px">Close</button>
+
+<!-- CHECKOUT FORM (SAME / UNCHANGED) -->
+<form>
+<input type="text" placeholder="Full Name" required style="width:100%;padding:8px;margin-bottom:8px">
+<input type="tel" placeholder="Phone Number" required style="width:100%;padding:8px;margin-bottom:8px">
+<input type="text" placeholder="City" required style="width:100%;padding:8px;margin-bottom:8px">
+<textarea placeholder="Full Address" required style="width:100%;padding:8px;margin-bottom:8px"></textarea>
+
+<button type="submit" style="width:100%;padding:10px;background:gold;border:none;border-radius:10px;font-weight:bold">
+Place Order
+</button>
+</form>
 </div>
 
 <script>
+/* HERO SLIDER */
 let i=0,slides=document.querySelectorAll(".slide");
 setInterval(()=>{
 slides.forEach(s=>s.classList.remove("active"));
@@ -270,6 +279,7 @@ i=(i+1)%slides.length;
 slides[i].classList.add("active");
 },4000);
 
+/* PROMO SLIDER */
 let p=0,promo=document.querySelectorAll(".promo-slide");
 setInterval(()=>{
 promo.forEach(s=>s.classList.remove("active"));
@@ -277,11 +287,24 @@ p=(p+1)%promo.length;
 promo[p].classList.add("active");
 },4000);
 
+/* CART */
 let cartCount=0;
-function addToCart(){cartCount++;document.getElementById("cartCount").innerText=cartCount;}
-function openCart(){document.getElementById("cartModal").classList.add("open")}
-function closeCart(){document.getElementById("cartModal").classList.remove("open")}
-function toggleMenu(){document.getElementById("navLinks").classList.toggle("show")}
+function addToCart(){
+cartCount++;
+document.getElementById("cartCount").innerText=cartCount;
+}
+
+function openCart(){
+document.getElementById("cartModal").classList.add("open");
+}
+function closeCart(){
+document.getElementById("cartModal").classList.remove("open");
+}
+
+/* MOBILE MENU */
+function toggleMenu(){
+document.getElementById("navLinks").classList.toggle("show");
+}
 </script>
 
 </body>
