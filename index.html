@@ -146,152 +146,70 @@ position:fixed;bottom:20px;right:20px;width:55px
 <img src="slide2.jpg" class="slide">
 <img src="slide3.jpg" class="slide">
 </div>
-<!-- PERFUMES -->
-<section id="perfumes">
-<h2>Our Perfumes</h2>
-<div class="products-grid">
-
-<div class="product-card">
-<span class="discount-badge">30% OFF</span>
-<img src="aura.jpg">
-<h3>Aura</h3>
-<p class="old-price">Rs.3700</p>
-<p class="new-price">Rs.2590</p>
-<button class="addCart" onclick="addToCart('Aura',2590)">Add to Cart</button>
-</div>
-
-<div class="product-card">
-<span class="discount-badge">30% OFF</span>
-<img src="romance-king.jpg">
-<h3>Romance King</h3>
-<p class="old-price">Rs.2800</p>
-<p class="new-price">Rs.1960</p>
-<button class="addCart" onclick="addToCart('Romance King',1960)">Add to Cart</button>
-</div>
-
-<div class="product-card">
-<span class="discount-badge">30% OFF</span>
-<img src="black-coat.jpg">
-<h3>Black Coat</h3>
-<p class="old-price">Rs.2800</p>
-<p class="new-price">Rs.1960</p>
-<button class="addCart" onclick="addToCart('Black Coat',1960)">Add to Cart</button>
-</div>
-
-<div class="product-card">
-<span class="discount-badge">30% OFF</span>
-<img src="laila.jpg">
-<h3>Laila</h3>
-<p class="old-price">Rs.2800</p>
-<p class="new-price">Rs.1960</p>
-<button class="addCart" onclick="addToCart('Laila',1960)">Add to Cart</button>
-</div>
-
-<div class="product-card">
-<span class="discount-badge">30% OFF</span>
-<img src="oud-of-honour.jpg">
-<h3>Oud Of Honor</h3>
-<p class="old-price">Rs.2800</p>
-<p class="new-price">Rs.1960</p>
-<button class="addCart" onclick="addToCart('Oud Of Honor',1960)">Add to Cart</button>
-</div>
-
-</div>
-</section>
-
-<!-- PROMO SLIDER (SAME POSITION) -->
-<div class="promo-slider">
-<img src="promo1.jpg" class="promo-slide active">
-<img src="promo2.jpg" class="promo-slide">
-<img src="promo3.jpg" class="promo-slide">
-</div>
-
 <!-- TESTERS -->
 <section id="testers">
 <h2>Testers</h2>
 <div class="testers-grid">
-<div class="tester-card">Premium Tester – Rs.800</div>
-<div class="tester-card">Budget Tester – Rs.640</div>
+
+<div class="tester-card">
+<img src="tester1.jpg" style="width:120px;border-radius:10px;margin-bottom:10px">
+<h4>Premium Tester</h4>
+<p>Long lasting premium fragrance tester</p>
+<b>Rs.800</b>
+</div>
+
+<div class="tester-card">
+<img src="tester2.jpg" style="width:120px;border-radius:10px;margin-bottom:10px">
+<h4>Budget Tester</h4>
+<p>Best choice for daily use</p>
+<b>Rs.640</b>
+</div>
+
 </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ABOUT (PEHLE JAISE BHARA HUA) -->
 <section id="about" style="background:white;color:black">
 <h2>About Us</h2>
-<p>Luxury perfumes crafted with passion and long-lasting quality.</p>
+<p style="max-width:900px;margin:auto;line-height:1.7;text-align:center">
+SR Shahrose Fragrance is a premium perfume brand dedicated to delivering
+luxury fragrances at affordable prices.  
+We focus on long-lasting impressions, high-quality oils, and customer trust.
+Our perfumes are specially crafted to suit Pakistan’s climate, especially
+cities like Quetta.  
+No outlets — no middleman — direct delivery to your doorstep.
+</p>
 </section>
-
-<!-- REVIEWS -->
-<section id="reviews">
-<h2>Customer Reviews</h2>
-<p style="text-align:center">⭐⭐⭐⭐⭐ Trusted by customers all over Pakistan</p>
-</section>
-<!-- CONTACT -->
-<section id="contact">
-<h2>Contact</h2>
-<p style="text-align:center">Airport Road, Quetta</p>
-<p style="text-align:center">Whatsapp: 03368441232</p>
-</section>
-
-<!-- FOLLOW -->
-<section style="text-align:center">
-<h2>Follow Us</h2>
-<i class="fab fa-facebook"></i>
-<i class="fab fa-instagram"></i>
-<i class="fab fa-tiktok"></i>
-</section>
-
-<!-- CART ICON -->
-<div id="cartIcon" onclick="openCart()">
-<i class="fas fa-shopping-cart"></i>
-<span id="cartCount">0</span>
-</div>
-
-<!-- WHATSAPP -->
-<a id="whatsappBtn" href="https://wa.me/03368441232">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
-</a>
-
 <!-- CART MODAL -->
 <div class="cart-modal" id="cartModal">
+<span style="float:right;font-size:22px;cursor:pointer" onclick="closeCart()">&times;</span>
 <h3>Checkout</h3>
-<button onclick="closeCart()" style="margin-bottom:10px">Close</button>
 
-<!-- CHECKOUT FORM (SAME / UNCHANGED) -->
-<form>
-<input type="text" placeholder="Full Name" required style="width:100%;padding:8px;margin-bottom:8px">
-<input type="tel" placeholder="Phone Number" required style="width:100%;padding:8px;margin-bottom:8px">
-<input type="text" placeholder="City" required style="width:100%;padding:8px;margin-bottom:8px">
-<textarea placeholder="Full Address" required style="width:100%;padding:8px;margin-bottom:8px"></textarea>
+<form id="checkoutForm">
+<input type="text" id="cName" placeholder="Full Name" required style="width:100%;padding:8px;margin-bottom:8px">
+<input type="tel" id="cPhone" placeholder="Phone Number" required style="width:100%;padding:8px;margin-bottom:8px">
+<input type="text" id="cCity" placeholder="City" required style="width:100%;padding:8px;margin-bottom:8px">
+<textarea id="cAddress" placeholder="Full Address" required style="width:100%;padding:8px;margin-bottom:8px"></textarea>
 
-<button type="submit" style="width:100%;padding:10px;background:gold;border:none;border-radius:10px;font-weight:bold">
+<h4>Payment Method</h4>
+<label><input type="radio" name="payment" value="Cash on Delivery" checked> Cash on Delivery</label><br>
+<label><input type="radio" name="payment" value="Easypaisa"> Easypaisa</label><br>
+<label><input type="radio" name="payment" value="JazzCash"> JazzCash</label>
+
+<button type="submit" style="width:100%;padding:10px;background:gold;border:none;border-radius:10px;font-weight:bold;margin-top:10px">
 Place Order
 </button>
 </form>
 </div>
 
 <script>
-/* HERO SLIDER */
-let i=0,slides=document.querySelectorAll(".slide");
-setInterval(()=>{
-slides.forEach(s=>s.classList.remove("active"));
-i=(i+1)%slides.length;
-slides[i].classList.add("active");
-},4000);
-
-/* PROMO SLIDER */
-let p=0,promo=document.querySelectorAll(".promo-slide");
-setInterval(()=>{
-promo.forEach(s=>s.classList.remove("active"));
-p=(p+1)%promo.length;
-promo[p].classList.add("active");
-},4000);
-
 /* CART */
-let cartCount=0;
-function addToCart(){
-cartCount++;
-document.getElementById("cartCount").innerText=cartCount;
+let cartItems=[];
+
+function addToCart(name,price){
+cartItems.push({name,price});
+document.getElementById("cartCount").innerText=cartItems.length;
+openCart();
 }
 
 function openCart(){
@@ -301,11 +219,26 @@ function closeCart(){
 document.getElementById("cartModal").classList.remove("open");
 }
 
-/* MOBILE MENU */
-function toggleMenu(){
-document.getElementById("navLinks").classList.toggle("show");
-}
-</script>
+/* CHECKOUT WHATSAPP */
+document.getElementById("checkoutForm").addEventListener("submit",function(e){
+e.preventDefault();
 
-</body>
-</html>
+let name=cName.value;
+let phone=cPhone.value;
+let city=cCity.value;
+let address=cAddress.value;
+let payment=document.querySelector('input[name="payment"]:checked').value;
+
+let products=cartItems.map(p=>p.name+" (Rs."+p.price+")").join(", ");
+
+let msg=`New Order%0A
+Name: ${name}%0A
+Phone: ${phone}%0A
+City: ${city}%0A
+Address: ${address}%0A
+Payment: ${payment}%0A
+Products: ${products}`;
+
+window.open("https://wa.me/923368441232?text="+msg);
+});
+</script>
