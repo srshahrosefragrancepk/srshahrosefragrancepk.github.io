@@ -144,49 +144,49 @@ h2{text-align:center;color:gold;margin-bottom:1rem}
 <span class="discount-badge">30% OFF</span>
 <img src="aura.jpg">
 <h3>Aura</h3>
-<p class="old-price">Rs.3200</p>
-<p class="new-price">Rs.2240</p>
+<p class="old-price">Rs.3800</p>
+<p class="new-price">Rs.2660</p>
 <input type="number" value="1" min="1" id="qtyAura">
-<button class="addCart" onclick="addToCart('Aura','aura.jpg',2240,'qtyAura')">Add to Cart</button>
+<button class="addCart" onclick="addToCart('Aura','aura.jpg',2660,'qtyAura')">Add to Cart</button>
 </div>
+
 <div class="product-card">
 <span class="discount-badge">30% OFF</span>
 <img src="romance-king.jpg">
 <h3>Romance King</h3>
-<p class="old-price">Rs.2200</p>
-<p class="new-price">Rs.1540</p>
+<p class="old-price">Rs.2700</p>
+<p class="new-price">Rs.1890</p>
 <input type="number" value="1" min="1" id="qtyRomance">
-<button class="addCart" onclick="addToCart('Romance King','romance-king.jpg',1540,'qtyRomance')">Add to Cart</button>
+<button class="addCart" onclick="addToCart('Romance King','romance-king.jpg',1890,'qtyRomance')">Add to Cart</button>
 </div>
 
 <div class="product-card">
 <span class="discount-badge">30% OFF</span>
 <img src="black-coat.jpg">
 <h3>Black Coat</h3>
-<p class="old-price">Rs.2200</p>
-<p class="new-price">Rs.1540</p>
+<p class="old-price">Rs.2700</p>
+<p class="new-price">Rs.1890</p>
 <input type="number" value="1" min="1" id="qtyBlack">
-<button class="addCart" onclick="addToCart('Black Coat','black-coat.jpg',1540,'qtyBlack')">Add to Cart</button>
+<button class="addCart" onclick="addToCart('Black Coat','black-coat.jpg',1890,'qtyBlack')">Add to Cart</button>
 </div>
-
 <div class="product-card">
 <span class="discount-badge">30% OFF</span>
 <img src="laila.jpg">
 <h3>Laila</h3>
-<p class="old-price">Rs.2200</p>
-<p class="new-price">Rs.1540</p>
+<p class="old-price">Rs.2700</p>
+<p class="new-price">Rs.1890</p>
 <input type="number" value="1" min="1" id="qtyLaila">
-<button class="addCart" onclick="addToCart('Laila','laila.jpg',1540,'qtyLaila')">Add to Cart</button>
+<button class="addCart" onclick="addToCart('Laila','laila.jpg',1890,'qtyLaila')">Add to Cart</button>
 </div>
 
 <div class="product-card">
 <span class="discount-badge">30% OFF</span>
 <img src="oud-of-honour.jpg">
 <h3>Oud Of Honor</h3>
-<p class="old-price">Rs.2200</p>
-<p class="new-price">Rs.1540</p>
+<p class="old-price">Rs.2700</p>
+<p class="new-price">Rs.1890</p>
 <input type="number" value="1" min="1" id="qtyOud">
-<button class="addCart" onclick="addToCart('Oud Of Honor','oud-of-honour.jpg',1540,'qtyOud')">Add to Cart</button>
+<button class="addCart" onclick="addToCart('Oud Of Honor','oud-of-honour.jpg',1890,'qtyOud')">Add to Cart</button>
 </div>
 </div>
 </section>
@@ -272,7 +272,8 @@ Committed to excellence, SR Shahrose Fragrance combines tradition with modern pe
 </div>
 </div>
 </section>
-<!-- Contact Section -->
+
+<!-- Contact -->
 <section id="contact">
 <h2>Contact</h2>
 <p style="text-align:center">Airport Road, Quetta</p>
@@ -300,7 +301,7 @@ Committed to excellence, SR Shahrose Fragrance combines tradition with modern pe
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </a>
 
-<!-- Cart Modal / Checkout Form -->
+<!-- Cart Modal -->
 <div class="cart-modal" id="cartModal">
 <span class="close" onclick="closeCart()">&times;</span>
 <h3>Checkout</h3>
@@ -334,26 +335,13 @@ Committed to excellence, SR Shahrose Fragrance combines tradition with modern pe
 </div>
 
 <script>
-// Hamburger Menu
 function toggleMenu(){document.getElementById("navLinks").classList.toggle("show")}
-
-// Hero Slider
 let slides=document.querySelectorAll(".slide"),i=0;
-setInterval(()=>{
-slides.forEach(s=>s.classList.remove("active"));
-i=(i+1)%slides.length;
-slides[i].classList.add("active");
-},5000);
+setInterval(()=>{slides.forEach(s=>s.classList.remove("active"));i=(i+1)%slides.length;slides[i].classList.add("active")},5000)
 
-// Promo Slider
 let promo=document.querySelectorAll(".promo-slide"),p=0;
-setInterval(()=>{
-promo.forEach(s=>s.classList.remove("active"));
-p=(p+1)%promo.length;
-promo[p].classList.add("active");
-},4000);
+setInterval(()=>{promo.forEach(s=>s.classList.remove("active"));p=(p+1)%promo.length;promo[p].classList.add("active")},4000)
 
-// Cart Logic
 let cart=[];
 function addToCart(name,img,price,qtyId){
 let qty=typeof qtyId==="number"?qtyId:document.getElementById(qtyId).value;
@@ -368,10 +356,8 @@ function openCart(){document.getElementById("cartModal").classList.add("open");u
 function closeCart(){document.getElementById("cartModal").classList.remove("open")}
 
 function updateCart(){
-let items=document.getElementById("cartItems");items.innerHTML="";
-let subtotal=0;
-cart.forEach((i,index)=>{
-subtotal+=i.price*i.qty;
+let items=document.getElementById("cartItems");items.innerHTML="";let subtotal=0;
+cart.forEach((i,index)=>{subtotal+=i.price*i.qty;
 items.innerHTML+=`<div class="product-summary">
 <img src="${i.img}">
 <div>${i.name}</div>
@@ -382,8 +368,7 @@ items.innerHTML+=`<div class="product-summary">
 </div>
 <div>Rs.${i.price}</div>
 <button style="margin-left:auto;background:red;color:white;border:none;padding:3px 6px;border-radius:5px;cursor:pointer" onclick="removeItem(${index})">Remove</button>
-</div>`;
-});
+</div>`;});
 document.getElementById("subtotal").innerText="Rs."+subtotal;
 document.getElementById("total").innerText="Rs."+(subtotal+200);
 document.getElementById("cartCount").innerText=cart.reduce((a,b)=>a+b.qty,0);
@@ -392,23 +377,16 @@ document.getElementById("cartCount").innerText=cart.reduce((a,b)=>a+b.qty,0);
 function changeQty(index,delta){cart[index].qty += delta;if(cart[index].qty<1) cart[index].qty=1;updateCart()}
 function removeItem(index){cart.splice(index,1);updateCart()}
 
-// Countdown Timer
+// Countdown
 let endDate = new Date();endDate.setDate(endDate.getDate()+6);
-function updateCountdown(){
-let now=new Date();let diff=endDate-now;if(diff<=0){document.getElementById('countdown').innerText="Offer Ended";return;}
-let days=Math.floor(diff/(1000*60*60*24)),
-hrs=Math.floor((diff%(1000*60*60*24))/(1000*60*60)),
-mins=Math.floor((diff%(1000*60*60))/(1000*60)),
-secs=Math.floor((diff%60000)/1000);
-document.getElementById('countdown').innerText=`${days}d ${hrs}h ${mins}m ${secs}s`;
-}
+function updateCountdown(){let now=new Date();let diff=endDate-now;if(diff<=0){document.getElementById('countdown').innerText="Offer Ended";return;}
+let days=Math.floor(diff/(1000*60*60*24)),hrs=Math.floor((diff%(1000*60*60*24))/(1000*60*60)),mins=Math.floor((diff%(1000*60*60))/(1000*60)),secs=Math.floor((diff%60000)/1000);document.getElementById('countdown').innerText=`${days}d ${hrs}h ${mins}m ${secs}s`}
 setInterval(updateCountdown,1000);
 
-// Checkout Form Submission
+// Checkout Form
 function generateOrderNumber(){return 'ORD-'+Math.floor(100000+Math.random()*900000);}
 document.getElementById("checkoutForm").addEventListener("submit",function(e){
-let order=generateOrderNumber();
-document.getElementById("orderNoField").value=order;
+let order=generateOrderNumber();document.getElementById("orderNoField").value=order;
 let products=cart.map(i=>`${i.name} x${i.qty}`).join(", ");
 document.getElementById("productsField").value=products;
 document.getElementById("totalField").value=document.getElementById("total").innerText;
